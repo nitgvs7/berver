@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #f5f5f5;
+  color: #111111;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+.label-100x150 {
+  width: 100mm;
+  height: 150mm;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75mm;
+  overflow: hidden;
+  background: #ffffff;
+  color: #000000;
+  border: 0.35mm solid #000000;
+  padding: 3.2mm;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.label-100x150 p {
+  margin: 0;
+}
+
+.label-barcode canvas {
+  width: 100% !important;
+  height: 100% !important;
+  image-rendering: crisp-edges;
+  object-fit: contain;
+}
+
+.label-gs1-block,
+.label-bottom-barcode {
+  padding-inline: 2.5mm;
+}
+
+.label-gs1-block {
+  padding-bottom: 2mm;
+}
+
+.label-bottom-barcode {
+  padding-bottom: 2.5mm;
+}
+
+.label-company {
+  font-size: 3.2mm;
+  line-height: 1.18;
+  font-weight: 700;
+  min-height: 10.5mm;
+}
+
+.label-company-name {
+  font-size: 3.8mm;
+  font-weight: 900;
+}
+
+.label-divider {
+  height: 0;
+  border-top: 0.35mm solid #000000;
+  flex: 0 0 auto;
+}
+
+.label-product {
+  min-height: 11mm;
+}
+
+.label-caption {
+  font-size: 3mm;
+  font-weight: 900;
+}
+
+.label-product-name {
+  font-size: 4.1mm;
+  line-height: 1.1;
+  font-weight: 900;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.label-data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85mm 2.5mm;
+  font-size: 3.1mm;
+  line-height: 1.12;
+}
+
+.label-data-grid div {
+  display: flex;
+  gap: 1.2mm;
+  min-width: 0;
+}
+
+.label-data-grid span,
+.label-sscc-row span {
+  font-weight: 900;
+}
+
+.label-data-grid strong,
+.label-sscc-row strong {
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.label-data-wide {
+  grid-column: 1 / -1;
+}
+
+.label-sscc {
+  min-height: 6mm;
+}
+
+.label-sscc-row {
+  display: flex;
+  gap: 1.5mm;
+  align-items: baseline;
+  font-size: 4mm;
+  line-height: 1;
+  margin-bottom: 0.8mm;
+}
+
+.label-gs1-block {
+  min-height: 30mm;
+}
+
+.label-gs1-block .label-barcode {
+  height: 23mm;
+}
+
+.label-gs1-block p,
+.label-bottom-barcode p {
+  font-size: 2.7mm;
+  line-height: 1;
+  text-align: center;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.label-gs1-small {
+  min-height: 29mm;
+}
+
+.label-gs1-small .label-barcode {
+  height: 22mm;
+}
+
+.label-bottom-barcode {
+  min-height: 26mm;
+  margin-top: auto;
+}
+
+.label-bottom-barcode .label-barcode {
+  height: 18mm;
+}
+
+.label-page {
+  width: 100mm;
+  height: 150mm;
+  background: #ffffff;
+  page-break-after: always;
+  break-after: page;
+}
+
+@page {
+  size: 100mm 150mm;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    width: 100mm;
+    margin: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .no-print,
+  .app-header {
+    display: none !important;
+  }
+
+  .app-shell,
+  .print-route {
+    min-height: auto !important;
+    background: #ffffff !important;
+  }
+
+  .app-main,
+  .print-container {
+    width: 100mm !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .label-page {
+    width: 100mm;
+    height: 150mm;
+    margin: 0;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .label-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .label-100x150 {
+    border: 0;
+  }
+}

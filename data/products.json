@@ -1,0 +1,102 @@
+[
+  {
+    "id": "1",
+    "name": "SALSA EM FOLHAS 1 KG",
+    "ean": "560393602421",
+    "ean_cdi": "5603936024210",
+    "itf": "1560393602421",
+    "itf_cdi": "15603936024212",
+    "codigo_auchan": "3452107",
+    "caixa_default": 2
+  },
+  {
+    "id": "2",
+    "name": "CEVADA INTEGRAL JFF KG",
+    "ean": "560393602449",
+    "ean_cdi": "5603936024499",
+    "itf": "1560393602449",
+    "itf_cdi": "15603936024496",
+    "codigo_auchan": "3336345",
+    "caixa_default": 6
+  },
+  {
+    "id": "3",
+    "name": "CEBOLINHO JFF KG",
+    "ean": "560393602450",
+    "ean_cdi": "5603936024505",
+    "itf": "1560393602450",
+    "itf_cdi": "15603936024502",
+    "codigo_auchan": "3336349",
+    "caixa_default": 2
+  },
+  {
+    "id": "4",
+    "name": "ERVAS DA PROVENCE 1KG JFF",
+    "ean": "560393602454",
+    "ean_cdi": "5603936024543",
+    "itf": "1560393602454",
+    "itf_cdi": "15603936024540",
+    "codigo_auchan": "3347997",
+    "caixa_default": 2
+  },
+  {
+    "id": "5",
+    "name": "ALGA AGAR AGAR EM PO 1KG",
+    "ean": "560393602456",
+    "ean_cdi": "5603936024567",
+    "itf": "1560393602456",
+    "itf_cdi": "15603936024564",
+    "codigo_auchan": "3348149",
+    "caixa_default": 2
+  },
+  {
+    "id": "6",
+    "name": "CHA FLOR LARANJEIRA KG",
+    "ean": "560393602487",
+    "ean_cdi": "5603936024871",
+    "itf": "1560393602487",
+    "itf_cdi": "15603936024878",
+    "codigo_auchan": "3452107",
+    "caixa_default": 3
+  },
+  {
+    "id": "7",
+    "name": "CHA PLANTA CORTADA URTIGA VULGAR KG",
+    "ean": "560393602496",
+    "ean_cdi": "5603936024963",
+    "itf": "1560393602496",
+    "itf_cdi": "15603936024960",
+    "codigo_auchan": "3458057",
+    "caixa_default": 3
+  },
+  {
+    "id": "8",
+    "name": "CHA CASCA CANELA KG",
+    "ean": "560393602484",
+    "ean_cdi": "5603936024840",
+    "itf": "1560393602484",
+    "itf_cdi": "15603936024847",
+    "codigo_auchan": "3458169",
+    "caixa_default": 3
+  },
+  {
+    "id": "9",
+    "name": "CHA FLOR HIBISCO KG",
+    "ean": "560393602489",
+    "ean_cdi": "5603936024895",
+    "itf": "1560393602489",
+    "itf_cdi": "15603936024892",
+    "codigo_auchan": "3458190",
+    "caixa_default": 3
+  },
+  {
+    "id": "10",
+    "name": "CHA FOLHAS HORTELA PIMENTA KG",
+    "ean": "560393602490",
+    "ean_cdi": "5603936024901",
+    "itf": "1560393602490",
+    "itf_cdi": "15603936024908",
+    "codigo_auchan": "3458194",
+    "caixa_default": 3
+  }
+]
