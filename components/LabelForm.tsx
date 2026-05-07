@@ -153,10 +153,10 @@ export function LabelForm() {
 
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_390px]">
-      <form onSubmit={handleSubmit} className="space-y-5 rounded-lg border border-neutral-300 bg-white p-4 shadow-sm md:p-5">
+      <form onSubmit={handleSubmit} className="space-y-5 rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm md:p-5">
         <div>
-          <h1 className="text-2xl font-black text-neutral-950">Criar Etiqueta</h1>
-          <p className="mt-1 text-sm font-semibold text-neutral-700">Preencha os dados da etiqueta de palete/produto.</p>
+          <h1 className="text-2xl font-black text-[#1f3679]">Criar Etiqueta</h1>
+          <p className="mt-1 text-sm font-semibold text-[#2f4fb3]">Preencha os dados da etiqueta de palete/produto.</p>
         </div>
 
         {values.product ? (
@@ -177,18 +177,18 @@ export function LabelForm() {
           />
           <Field label="Lote" error={errors.lote} value={values.lote} onChange={(event) => updateField("lote", event.target.value)} placeholder="060426" />
           <label className="block">
-            <span className="mb-2 block text-sm font-black uppercase text-neutral-800">Data de Validade</span>
+            <span className="mb-2 block text-sm font-black uppercase text-[#1f3679]">Data de Validade</span>
             <div className="grid gap-2 sm:grid-cols-[1fr_11rem]">
               <input
                 value={values.validade_texto}
                 onChange={handleValidityTextChange}
                 inputMode="numeric"
-                className="min-h-14 w-full rounded-md border-2 border-neutral-400 px-3 text-lg font-black outline-none focus:border-neutral-950"
+                className="min-h-14 w-full rounded-md border-2 border-[#5ab2e8] px-3 text-lg font-black outline-none focus:border-[#1f3679]"
                 placeholder="30-06-2027"
               />
               <label className="grid gap-1">
                 <span className="sr-only">Calendário</span>
-                <span className="flex min-h-14 items-center gap-2 rounded-md border-2 border-neutral-800 bg-white px-3 text-neutral-950 focus-within:border-neutral-950">
+                <span className="flex min-h-14 items-center gap-2 rounded-md border-2 border-[#2f4fb3] bg-white px-3 text-[#1f3679] focus-within:border-[#1f3679]">
                   <CalendarDays aria-hidden="true" className="h-5 w-5 shrink-0" />
                   <input
                     aria-label="Escolher data de validade"
@@ -204,7 +204,7 @@ export function LabelForm() {
             {errors.validade_texto ? <span className="mt-1 block text-sm font-bold text-red-700">{errors.validade_texto}</span> : null}
           </label>
           <label className="block">
-            <span className="mb-2 block text-sm font-black uppercase text-neutral-800">Validade Barras</span>
+            <span className="mb-2 block text-sm font-black uppercase text-[#1f3679]">Validade Barras</span>
             <div className="flex gap-2">
               <input
                 value={values.validade_barras}
@@ -213,14 +213,14 @@ export function LabelForm() {
                   updateField("validade_barras", event.target.value.replace(/\D/g, "").slice(0, 6));
                 }}
                 inputMode="numeric"
-                className="min-h-14 w-full rounded-md border-2 border-neutral-400 px-3 text-lg font-black outline-none focus:border-neutral-950"
+                className="min-h-14 w-full rounded-md border-2 border-[#5ab2e8] px-3 text-lg font-black outline-none focus:border-[#1f3679]"
                 placeholder="270630"
               />
               <button
                 type="button"
                 onClick={resetBarcodeDate}
                 title="Gerar de novo a partir da validade"
-                className="inline-flex min-h-14 w-14 shrink-0 items-center justify-center rounded-md border-2 border-neutral-800 bg-white text-neutral-950"
+                className="inline-flex min-h-14 w-14 shrink-0 items-center justify-center rounded-md border-2 border-[#2f4fb3] bg-white text-[#1f3679]"
               >
                 <RotateCcw aria-hidden="true" className="h-5 w-5" />
               </button>
@@ -245,7 +245,7 @@ export function LabelForm() {
           />
         </div>
 
-        <button type="submit" className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-md bg-neutral-950 px-5 py-3 text-lg font-black text-white">
+        <button type="submit" className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-md bg-[#1f3679] px-5 py-3 text-lg font-black text-white">
           <ClipboardCheck aria-hidden="true" className="h-6 w-6" />
           Pré-visualizar
         </button>
@@ -270,12 +270,12 @@ type FieldProps = {
 function Field({ label, value, error, placeholder, inputMode = "text", onChange }: FieldProps) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm font-black uppercase text-neutral-800">{label}</span>
+      <span className="mb-2 block text-sm font-black uppercase text-[#1f3679]">{label}</span>
       <input
         value={value}
         onChange={onChange}
         inputMode={inputMode}
-        className="min-h-14 w-full rounded-md border-2 border-neutral-400 px-3 text-lg font-black outline-none focus:border-neutral-950"
+        className="min-h-14 w-full rounded-md border-2 border-[#5ab2e8] px-3 text-lg font-black outline-none focus:border-[#1f3679]"
         placeholder={placeholder}
       />
       {error ? <span className="mt-1 block text-sm font-bold text-red-700">{error}</span> : null}

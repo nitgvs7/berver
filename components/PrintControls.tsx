@@ -16,11 +16,11 @@ export function PrintControls({ onPrint }: PrintControlsProps) {
   }
 
   return (
-    <div className="no-print flex flex-col gap-3 rounded-lg border border-neutral-300 bg-white p-4 shadow-sm sm:flex-row">
+    <div className="no-print flex flex-col gap-3 rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm sm:flex-row">
       <button
         type="button"
         onClick={handlePrint}
-        className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md bg-neutral-950 px-4 py-3 text-base font-black text-white"
+        className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md bg-[#1f3679] px-4 py-3 text-base font-black text-white"
       >
         <Printer aria-hidden="true" className="h-5 w-5" />
         Imprimir
@@ -28,7 +28,7 @@ export function PrintControls({ onPrint }: PrintControlsProps) {
       <button
         type="button"
         onClick={() => router.back()}
-        className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md border-2 border-neutral-800 bg-white px-4 py-3 text-base font-black text-neutral-950"
+        className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] bg-white px-4 py-3 text-base font-black text-[#1f3679]"
       >
         <ArrowLeft aria-hidden="true" className="h-5 w-5" />
         Voltar
@@ -36,7 +36,7 @@ export function PrintControls({ onPrint }: PrintControlsProps) {
       <button
         type="button"
         onClick={() => router.push("/scan")}
-        className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md border-2 border-neutral-800 bg-white px-4 py-3 text-base font-black text-neutral-950"
+        className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] bg-white px-4 py-3 text-base font-black text-[#1f3679]"
       >
         <FilePlus2 aria-hidden="true" className="h-5 w-5" />
         Nova Etiqueta

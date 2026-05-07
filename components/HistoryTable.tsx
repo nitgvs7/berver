@@ -20,14 +20,14 @@ export function HistoryTable() {
   }
 
   if (history.length === 0) {
-    return <div className="rounded-lg border border-neutral-300 bg-white p-5 text-base font-bold text-neutral-800">Ainda não existem etiquetas impressas.</div>;
+    return <div className="rounded-lg border border-[#b9d8f6] bg-white p-5 text-base font-bold text-[#1f3679]">Ainda não existem etiquetas impressas.</div>;
   }
 
   return (
-    <div className="overflow-hidden rounded-lg border border-neutral-300 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-lg border border-[#b9d8f6] bg-white shadow-sm">
       <div className="overflow-x-auto">
         <table className="min-w-full text-left text-sm">
-          <thead className="bg-neutral-950 text-white">
+          <thead className="bg-[#1f3679] text-white">
             <tr>
               <th className="px-3 py-3 font-black">Produto</th>
               <th className="px-3 py-3 font-black">Lote</th>
@@ -39,7 +39,7 @@ export function HistoryTable() {
           </thead>
           <tbody>
             {history.map((label) => (
-              <tr key={label.id} className="border-t border-neutral-200">
+              <tr key={label.id} className="border-t border-[#d8e9fb]">
                 <td className="max-w-72 px-3 py-3 font-bold">{label.product.name}</td>
                 <td className="px-3 py-3 font-mono">{label.lote}</td>
                 <td className="px-3 py-3 font-mono">{label.validade_texto}</td>
@@ -49,7 +49,7 @@ export function HistoryTable() {
                   <button
                     type="button"
                     onClick={() => reprint(label)}
-                    className="inline-flex min-h-11 items-center gap-2 rounded-md border-2 border-neutral-800 px-3 py-2 font-black"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-md border-2 border-[#2f4fb3] px-3 py-2 font-black"
                   >
                     <RefreshCw aria-hidden="true" className="h-4 w-4" />
                     Reimprimir

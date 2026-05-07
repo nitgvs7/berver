@@ -32,7 +32,7 @@ export default function PrintPage() {
   }
 
   return (
-    <main className="print-container bg-neutral-200 p-4">
+    <main className="print-container bg-[#dcecff] p-4">
       <PrintControls onPrint={recordPrint} />
       <div className="mt-4 flex flex-col items-start gap-4 print:mt-0 print:block">
         {Array.from({ length: label.quantidade_etiquetas }).map((_, index) => (

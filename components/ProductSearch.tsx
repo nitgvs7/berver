@@ -29,9 +29,9 @@ export function ProductSearch({ onSelect, actionLabel, initialQuery = "" }: Prod
   return (
     <section className="space-y-4">
       <label className="block">
-        <span className="mb-2 block text-sm font-black uppercase text-neutral-800">Procurar Produto</span>
-        <div className="flex items-center gap-2 rounded-lg border-2 border-neutral-400 bg-white px-3 focus-within:border-neutral-950">
-          <Search aria-hidden="true" className="h-5 w-5 shrink-0 text-neutral-700" />
+        <span className="mb-2 block text-sm font-black uppercase text-[#1f3679]">Procurar Produto</span>
+        <div className="flex items-center gap-2 rounded-lg border-2 border-[#5ab2e8] bg-white px-3 focus-within:border-[#1f3679]">
+          <Search aria-hidden="true" className="h-5 w-5 shrink-0 text-[#2f4fb3]" />
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
@@ -45,7 +45,7 @@ export function ProductSearch({ onSelect, actionLabel, initialQuery = "" }: Prod
       {products.length === 0 ? (
         <div className="rounded-lg border border-amber-300 bg-amber-50 p-4 font-bold text-amber-900">
           <p>Base de produtos vazia.</p>
-          <button type="button" onClick={handleResetProducts} className="mt-3 min-h-12 w-full rounded-md bg-neutral-950 px-4 py-3 font-black text-white">
+          <button type="button" onClick={handleResetProducts} className="mt-3 min-h-12 w-full rounded-md bg-[#1f3679] px-4 py-3 font-black text-white">
             Repor produtos
           </button>
         </div>

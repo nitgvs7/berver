@@ -109,7 +109,7 @@ export function BarcodeScanner() {
   return (
     <div className="grid gap-5 lg:grid-cols-[1fr_420px]">
       <section className="space-y-4">
-        <div className="overflow-hidden rounded-lg border-2 border-neutral-500 bg-black">
+        <div className="overflow-hidden rounded-lg border-2 border-[#2f4fb3] bg-black">
           <video ref={videoRef} className="aspect-[4/3] w-full bg-black object-cover" muted playsInline />
         </div>
 
@@ -117,7 +117,7 @@ export function BarcodeScanner() {
           <button
             type="button"
             onClick={startScanner}
-            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-md bg-neutral-950 px-4 py-3 text-base font-black text-white"
+            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-md bg-[#1f3679] px-4 py-3 text-base font-black text-white"
           >
             <Camera aria-hidden="true" className="h-5 w-5" />
             Digitalizar EAN
@@ -125,14 +125,14 @@ export function BarcodeScanner() {
           <button
             type="button"
             onClick={stopScanner}
-            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-md border-2 border-neutral-800 bg-white px-4 py-3 text-base font-black text-neutral-950"
+            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] bg-white px-4 py-3 text-base font-black text-[#1f3679]"
           >
             <XCircle aria-hidden="true" className="h-5 w-5" />
             Parar
           </button>
         </div>
 
-        <p className="rounded-lg border border-neutral-300 bg-white p-3 text-sm font-bold text-neutral-800" aria-live="polite">
+        <p className="rounded-lg border border-[#b9d8f6] bg-white p-3 text-sm font-bold text-[#1f3679]" aria-live="polite">
           {scanning ? "Câmara ativa. " : ""}
           {status}
         </p>
@@ -143,9 +143,9 @@ export function BarcodeScanner() {
       </section>
 
       <aside className="space-y-5">
-        <form onSubmit={submitManualCode} className="rounded-lg border border-neutral-300 bg-white p-4 shadow-sm">
+        <form onSubmit={submitManualCode} className="rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm">
           <label className="block">
-            <span className="mb-2 flex items-center gap-2 text-sm font-black uppercase text-neutral-800">
+            <span className="mb-2 flex items-center gap-2 text-sm font-black uppercase text-[#1f3679]">
               <Keyboard aria-hidden="true" className="h-4 w-4" />
               Código Manual
             </span>
@@ -153,13 +153,13 @@ export function BarcodeScanner() {
               value={manualCode}
               onChange={(event) => setManualCode(event.target.value)}
               inputMode="numeric"
-              className="min-h-14 w-full rounded-md border-2 border-neutral-400 px-3 text-lg font-black outline-none focus:border-neutral-950"
+              className="min-h-14 w-full rounded-md border-2 border-[#5ab2e8] px-3 text-lg font-black outline-none focus:border-[#1f3679]"
               placeholder="EAN, ITF ou código"
             />
           </label>
           <button
             type="submit"
-            className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-neutral-950 px-4 py-3 text-base font-black text-white"
+            className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-[#1f3679] px-4 py-3 text-base font-black text-white"
           >
             <Search aria-hidden="true" className="h-5 w-5" />
             Procurar Produto

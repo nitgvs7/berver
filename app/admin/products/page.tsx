@@ -147,14 +147,14 @@ export default function AdminProductsPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-black text-neutral-950">Admin Produtos</h1>
+        <h1 className="text-2xl font-black text-[#1f3679]">Admin Produtos</h1>
       </div>
 
-      <section className="grid gap-5 lg:grid-cols-[390px_minmax(0,1fr)]">
-        <form onSubmit={submitProduct} className="space-y-4 rounded-lg border border-neutral-300 bg-white p-4 shadow-sm">
-          <h2 className="text-lg font-black">{isEditingExisting ? "Editar Produto" : "Adicionar Produto"}</h2>
+      <section className="grid min-w-0 gap-5 xl:grid-cols-[420px_minmax(0,1fr)]">
+        <form onSubmit={submitProduct} className="min-w-0 space-y-4 rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm">
+          <h2 className="text-lg font-black text-[#1f3679]">{isEditingExisting ? "Editar Produto" : "Adicionar Produto"}</h2>
           <AdminField label="Nome" value={editing.name} onChange={(event) => updateEditing("name", event.target.value)} />
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid min-w-0 grid-cols-1 gap-3 md:grid-cols-2">
             <AdminField label="EAN" value={editing.ean ?? ""} onChange={(event) => updateEditing("ean", event.target.value)} inputMode="numeric" />
             <AdminField label="EAN CDI" value={editing.ean_cdi ?? ""} onChange={(event) => updateEditing("ean_cdi", event.target.value)} inputMode="numeric" />
             <AdminField label="ITF" value={editing.itf ?? ""} onChange={(event) => updateEditing("itf", event.target.value)} inputMode="numeric" />
@@ -176,46 +176,46 @@ export default function AdminProductsPage() {
           {error ? <div className="rounded-md border border-red-300 bg-red-50 p-3 text-sm font-bold text-red-900">{error}</div> : null}
           {message ? <div className="rounded-md border border-emerald-300 bg-emerald-50 p-3 text-sm font-bold text-emerald-900">{message}</div> : null}
 
-          <div className="grid grid-cols-2 gap-3">
-            <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-neutral-950 px-4 py-3 font-black text-white">
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+            <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#1f3679] px-4 py-3 font-black text-white">
               {isEditingExisting ? <Save aria-hidden="true" className="h-5 w-5" /> : <Plus aria-hidden="true" className="h-5 w-5" />}
               {isEditingExisting ? "Guardar" : "Adicionar"}
             </button>
             <button
               type="button"
               onClick={() => setEditing(emptyProduct)}
-              className="inline-flex min-h-12 items-center justify-center rounded-md border-2 border-neutral-800 px-4 py-3 font-black"
+              className="inline-flex min-h-12 items-center justify-center rounded-md border-2 border-[#2f4fb3] px-4 py-3 font-black text-[#1f3679]"
             >
               Limpar
             </button>
           </div>
         </form>
 
-        <div className="space-y-4">
-          <div className="rounded-lg border border-neutral-300 bg-white p-4 shadow-sm">
+        <div className="min-w-0 space-y-4">
+          <div className="rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm">
             <label className="block">
-              <span className="mb-2 block text-sm font-black uppercase text-neutral-800">Procurar Produto</span>
+              <span className="mb-2 block text-sm font-black uppercase text-[#1f3679]">Procurar Produto</span>
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                className="min-h-14 w-full rounded-md border-2 border-neutral-400 px-3 text-base font-bold outline-none focus:border-neutral-950"
+                className="min-h-14 w-full rounded-md border-2 border-[#5ab2e8] px-3 text-base font-bold outline-none focus:border-[#1f3679]"
                 placeholder="Nome, EAN, ITF ou código"
               />
             </label>
-            <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4">
-              <button type="button" onClick={exportProducts} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-neutral-800 px-3 py-2 font-black">
+            <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
+              <button type="button" onClick={exportProducts} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] px-3 py-2 font-black text-[#1f3679]">
                 <Download aria-hidden="true" className="h-5 w-5" />
                 Exportar
               </button>
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-neutral-800 px-3 py-2 font-black"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] px-3 py-2 font-black text-[#1f3679]"
               >
                 <Upload aria-hidden="true" className="h-5 w-5" />
                 Importar
               </button>
-              <button type="button" onClick={resetToSeed} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-neutral-800 px-3 py-2 font-black">
+              <button type="button" onClick={resetToSeed} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] px-3 py-2 font-black text-[#1f3679]">
                 <RotateCcw aria-hidden="true" className="h-5 w-5" />
                 Repor
               </button>
@@ -223,10 +223,55 @@ export default function AdminProductsPage() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-lg border border-neutral-300 bg-white shadow-sm">
+          <div className="rounded-lg border border-[#b9d8f6] bg-white p-3 shadow-sm md:hidden">
+            <div className="grid gap-3">
+              {results.map((product) => (
+                <article key={product.id} className="rounded-md border border-[#b9d8f6] bg-[#eef6ff] p-3">
+                  <h3 className="text-base font-black uppercase leading-snug text-[#1f3679]">{product.name}</h3>
+                  <dl className="mt-3 grid grid-cols-2 gap-2 text-sm">
+                    <div>
+                      <dt className="font-black text-[#2f4fb3]">EAN</dt>
+                      <dd className="break-all font-mono">{product.ean_cdi || product.ean || "-"}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-black text-[#2f4fb3]">ITF</dt>
+                      <dd className="break-all font-mono">{product.itf_cdi || product.itf || "-"}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-black text-[#2f4fb3]">Auchan</dt>
+                      <dd className="font-mono">{product.codigo_auchan || "-"}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-black text-[#2f4fb3]">Caixa</dt>
+                      <dd className="font-mono">{product.caixa_default ?? "-"}</dd>
+                    </div>
+                  </dl>
+                  <div className="mt-3 grid grid-cols-[1fr_3rem] gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setEditing(product)}
+                      className="min-h-11 rounded-md border-2 border-[#2f4fb3] bg-white px-3 py-2 font-black text-[#1f3679]"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => deleteProduct(product)}
+                      title="Apagar produto"
+                      className="inline-flex min-h-11 items-center justify-center rounded-md border-2 border-red-700 bg-white text-red-800"
+                    >
+                      <Trash2 aria-hidden="true" className="h-5 w-5" />
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="hidden overflow-hidden rounded-lg border border-[#b9d8f6] bg-white shadow-sm md:block">
             <div className="overflow-x-auto">
               <table className="min-w-full text-left text-sm">
-                <thead className="bg-neutral-950 text-white">
+                <thead className="bg-[#1f3679] text-white">
                   <tr>
                     <th className="px-3 py-3 font-black">Nome</th>
                     <th className="px-3 py-3 font-black">EAN</th>
@@ -238,7 +283,7 @@ export default function AdminProductsPage() {
                 </thead>
                 <tbody>
                   {results.map((product) => (
-                    <tr key={product.id} className="border-t border-neutral-200">
+                    <tr key={product.id} className="border-t border-[#d8e9fb]">
                       <td className="max-w-80 px-3 py-3 font-bold">{product.name}</td>
                       <td className="px-3 py-3 font-mono">{product.ean_cdi || product.ean}</td>
                       <td className="px-3 py-3 font-mono">{product.itf_cdi || product.itf}</td>
@@ -249,7 +294,7 @@ export default function AdminProductsPage() {
                           <button
                             type="button"
                             onClick={() => setEditing(product)}
-                            className="min-h-11 rounded-md border-2 border-neutral-800 px-3 py-2 font-black"
+                            className="min-h-11 rounded-md border-2 border-[#2f4fb3] px-3 py-2 font-black text-[#1f3679]"
                           >
                             Editar
                           </button>
@@ -285,12 +330,12 @@ type AdminFieldProps = {
 function AdminField({ label, value, inputMode = "text", onChange }: AdminFieldProps) {
   return (
     <label className="block">
-      <span className="mb-2 block text-xs font-black uppercase text-neutral-800">{label}</span>
+      <span className="mb-2 block text-xs font-black uppercase text-[#1f3679]">{label}</span>
       <input
         value={value}
         onChange={onChange}
         inputMode={inputMode}
-        className="min-h-12 w-full rounded-md border-2 border-neutral-400 px-3 text-base font-bold outline-none focus:border-neutral-950"
+        className="min-h-12 w-full rounded-md border-2 border-[#5ab2e8] px-3 text-base font-bold outline-none focus:border-[#1f3679]"
       />
     </label>
   );

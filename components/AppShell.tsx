@@ -22,8 +22,8 @@ export function AppShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="app-shell min-h-screen bg-neutral-100 text-neutral-950">
-      <header className="app-header no-print sticky top-0 z-20 border-b border-neutral-300 bg-white">
+    <div className="app-shell min-h-screen bg-[#eef6ff] text-[#1f3679]">
+      <header className="app-header no-print sticky top-0 z-20 border-b border-[#b9d8f6] bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
           <Link href="/" className="flex items-center gap-2 text-base font-black uppercase tracking-normal">
             <ClipboardList aria-hidden="true" className="h-6 w-6" />
@@ -39,7 +39,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                   key={item.href}
                   href={item.href}
                   className={`inline-flex min-h-11 items-center gap-2 rounded-md px-3 text-sm font-bold ${
-                    active ? "bg-neutral-950 text-white" : "text-neutral-800 hover:bg-neutral-200"
+                    active ? "bg-[#1f3679] text-white" : "text-[#1f3679] hover:bg-[#dcecff]"
                   }`}
                 >
                   <Icon aria-hidden="true" className="h-4 w-4" />
@@ -53,7 +53,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <main className="app-main mx-auto w-full max-w-5xl px-4 py-5 md:py-8">{children}</main>
       <nav
         aria-label="Navegação móvel"
-        className="no-print fixed inset-x-0 bottom-0 z-20 grid grid-cols-5 border-t border-neutral-300 bg-white md:hidden"
+        className="no-print fixed inset-x-0 bottom-0 z-20 grid grid-cols-5 border-t border-[#b9d8f6] bg-white md:hidden"
       >
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -64,7 +64,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               key={item.href}
               href={item.href}
               className={`flex min-h-16 flex-col items-center justify-center gap-1 text-xs font-bold ${
-                active ? "bg-neutral-950 text-white" : "text-neutral-800"
+                active ? "bg-[#1f3679] text-white" : "text-[#1f3679]"
               }`}
             >
               <Icon aria-hidden="true" className="h-5 w-5" />
