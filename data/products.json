@@ -1,16 +1,976 @@
 [
   {
     "id": "1",
-    "name": "SALSA EM FOLHAS 1 KG",
-    "ean": "560393602421",
-    "ean_cdi": "5603936024210",
-    "itf": "1560393602421",
-    "itf_cdi": "15603936024212",
-    "codigo_auchan": "3452107",
-    "caixa_default": 2
+    "name": "AGUA COCO LATA 320ML COCONAUT",
+    "ean": "893602005253",
+    "ean_cdi": "8936020052533",
+    "itf": "0893602005602",
+    "itf_cdi": "8936020056029",
+    "codigo_auchan": "3373239",
+    "caixa_default": 24
   },
   {
     "id": "2",
+    "name": "AGUA COCO C/ ANANAS LATA 320ML COCONAUT",
+    "ean": "893527080574",
+    "ean_cdi": "8935270805746",
+    "itf": "1893527080574",
+    "itf_cdi": "18935270805743",
+    "codigo_auchan": "3385712",
+    "caixa_default": 20
+  },
+  {
+    "id": "3",
+    "name": "AGUA COCO C/MELANCIA LATA 320ML COCONAUT",
+    "ean": "893527080575",
+    "ean_cdi": "8935270805753",
+    "itf": "1893527080575",
+    "itf_cdi": "18935270805750",
+    "codigo_auchan": "3385713",
+    "caixa_default": 20
+  },
+  {
+    "id": "4",
+    "name": "BUBLLE TEA MADAM HONG:LADY BOBA AÇUCAR MASC. LATA 0.315L",
+    "ean": "471111502002",
+    "ean_cdi": "4711115020024",
+    "itf": "0471039411901",
+    "itf_cdi": "4710394119016",
+    "codigo_auchan": "3621696",
+    "caixa_default": 24
+  },
+  {
+    "id": "5",
+    "name": "BUBBLE TEA MADAM HONG:LADY BOBA CLASSICO LATA 0.315L",
+    "ean": "471111502004",
+    "ean_cdi": "4711115020048",
+    "itf": "0471039402600",
+    "itf_cdi": "4710394026000",
+    "codigo_auchan": "3621835",
+    "caixa_default": 24
+  },
+  {
+    "id": "6",
+    "name": "AGUA COCO COM GÁS LATA 320ML COCONAUT",
+    "ean": "893602005256",
+    "ean_cdi": "8936020052564",
+    "itf": "0893602005603",
+    "itf_cdi": "8936020056036",
+    "codigo_auchan": "3644895",
+    "caixa_default": 20
+  },
+  {
+    "id": "7",
+    "name": "BUBBLE TEA MADAM HONG:LATA MAÇÃ 0.32L",
+    "ean": "471111502006",
+    "ean_cdi": "4711115020062",
+    "itf": "0471111502016",
+    "itf_cdi": "4711115020161",
+    "codigo_auchan": "3644899",
+    "caixa_default": 24
+  },
+  {
+    "id": "8",
+    "name": "BUBBLE TEA MADAM HONG:LATA PÊSSEGO 0.32L",
+    "ean": "471111502007",
+    "ean_cdi": "4711115020079",
+    "itf": "0471111502017",
+    "itf_cdi": "4711115020178",
+    "codigo_auchan": "3644900",
+    "caixa_default": 24
+  },
+  {
+    "id": "9",
+    "name": "BEBIDA DISNEY:PRINCESS MAÇÃ 0.75L",
+    "ean": "599988358015",
+    "ean_cdi": "5999883580158",
+    "itf": "0599988358016",
+    "itf_cdi": "5999883580165",
+    "codigo_auchan": "3687489",
+    "caixa_default": 6
+  },
+  {
+    "id": "10",
+    "name": "BEBIDA DISNEY:MICKEY & FRIENDS UVA 0.75L",
+    "ean": "599988358009",
+    "ean_cdi": "5999883580097",
+    "itf": "0599988358010",
+    "itf_cdi": "5999883580103",
+    "codigo_auchan": "3687490",
+    "caixa_default": 6
+  },
+  {
+    "id": "11",
+    "name": "BEBIDA PRIME: ICE POP 0.50L",
+    "ean": "081011612036",
+    "ean_cdi": "0810116120369",
+    "itf": "0081011612049",
+    "itf_cdi": "810116120499",
+    "codigo_auchan": "",
+    "caixa_default": 12
+  },
+  {
+    "id": "12",
+    "name": "BEBIDA PRIME: LEMON 0.50L",
+    "ean": "081011612034",
+    "ean_cdi": "0810116120345",
+    "itf": "0081011612052",
+    "itf_cdi": "00810116120529",
+    "codigo_auchan": "",
+    "caixa_default": 12
+  },
+  {
+    "id": "13",
+    "name": "BEBIDA PRIME: BLUE RASPBERRY 0.50L",
+    "ean": "081011612035",
+    "ean_cdi": "0810116120352",
+    "itf": "0081011612050",
+    "itf_cdi": "00810116120505",
+    "codigo_auchan": "",
+    "caixa_default": 12
+  },
+  {
+    "id": "14",
+    "name": "BEBIDA ENERGÉTICA MELÂNCIA 0.25L SQUID GAME",
+    "ean": "872108287588",
+    "ean_cdi": "8721082875882",
+    "itf": "0872108287570",
+    "itf_cdi": "08721082875707",
+    "codigo_auchan": "3856933",
+    "caixa_default": 24
+  },
+  {
+    "id": "15",
+    "name": "BEBIDA ENERGÉTICA MANGA 0.25L SQUID GAME",
+    "ean": "872108287587",
+    "ean_cdi": "8721082875875",
+    "itf": "0872108287569",
+    "itf_cdi": "08721082875691",
+    "codigo_auchan": "3856938",
+    "caixa_default": 24
+  },
+  {
+    "id": "16",
+    "name": "CERVEJA 1664 FRANÇA 6X0.25L KRONENBOURG",
+    "ean": "308021605430",
+    "ean_cdi": "3080216054308",
+    "itf": "1308021605430",
+    "itf_cdi": "13080216054305",
+    "codigo_auchan": "3792447",
+    "caixa_default": 4
+  },
+  {
+    "id": "17",
+    "name": "CERVEJA TSINGTAO CHINA 0.33L ESTRANGEIRA",
+    "ean": "690103560103",
+    "ean_cdi": "6901035601030",
+    "itf": "0690103560690",
+    "itf_cdi": "6901035606905",
+    "codigo_auchan": "3795915",
+    "caixa_default": 24
+  },
+  {
+    "id": "18",
+    "name": "CERVEJA ASAHI 330ML",
+    "ean": "800844024922",
+    "ean_cdi": "8008440249227",
+    "itf": "0800844014922",
+    "itf_cdi": "8008440149220",
+    "codigo_auchan": "3795916",
+    "caixa_default": 24
+  },
+  {
+    "id": "19",
+    "name": "CERVEJA CAMBOJA 330ML ANGKOR",
+    "ean": "884885812003",
+    "ean_cdi": "8848858120035",
+    "itf": "1884885812003",
+    "itf_cdi": "18848858120032",
+    "codigo_auchan": "3795920",
+    "caixa_default": 24
+  },
+  {
+    "id": "20",
+    "name": "CERVEJA SINGHA TAILÂNDIA 0.33L ESTRANGEIRA",
+    "ean": "885099911210",
+    "ean_cdi": "8850999112107",
+    "itf": "0885099911211",
+    "itf_cdi": "08850999112114",
+    "codigo_auchan": "3795919",
+    "caixa_default": 24
+  },
+  {
+    "id": "21",
+    "name": "CERVEJA COBRA 330L",
+    "ean": "501003846242",
+    "ean_cdi": "5010038462423",
+    "itf": "1501003846242",
+    "itf_cdi": "15010038462420",
+    "codigo_auchan": "",
+    "caixa_default": 24
+  },
+  {
+    "id": "22",
+    "name": "CERVEJA ESTRANGEIRA TERRA COREIA 0.33L",
+    "ean": "880111977011",
+    "ean_cdi": "8801119770110",
+    "itf": "1880111977011",
+    "itf_cdi": "18801119770117",
+    "codigo_auchan": "3879444",
+    "caixa_default": 24
+  },
+  {
+    "id": "23",
+    "name": "ARROZ GRÃO LONGO 1KG UNCLE BENS",
+    "ean": "541067300446",
+    "ean_cdi": "5410673004468",
+    "itf": "1541067300446",
+    "itf_cdi": "15410673004465",
+    "codigo_auchan": "42457",
+    "caixa_default": 6
+  },
+  {
+    "id": "24",
+    "name": "MOLHO BOVRIL 125G",
+    "ean": "000009611683",
+    "ean_cdi": "96116838",
+    "itf": "1000096116838",
+    "itf_cdi": "10000961168389",
+    "codigo_auchan": "653724",
+    "caixa_default": 12
+  },
+  {
+    "id": "25",
+    "name": "EXTRATO FERMENTO 125 G MARMITE",
+    "ean": "000050184385",
+    "ean_cdi": "50184385",
+    "itf": "0871060474237",
+    "itf_cdi": "08710604742375",
+    "codigo_auchan": "653787",
+    "caixa_default": 6
+  },
+  {
+    "id": "26",
+    "name": "AMENDOIM TORRADO C/SAL PITTJES 500 GR",
+    "ean": "400020603831",
+    "ean_cdi": "4000206038315",
+    "itf": "0400143101930",
+    "itf_cdi": "4001431019308",
+    "codigo_auchan": "825685",
+    "caixa_default": 12
+  },
+  {
+    "id": "27",
+    "name": "PISTACHO TOST. C/SAL 125 GR PITTJES",
+    "ean": "400020620001",
+    "ean_cdi": "4000206200019",
+    "itf": "0400020620031",
+    "itf_cdi": "04000206200316",
+    "codigo_auchan": "825693",
+    "caixa_default": 24
+  },
+  {
+    "id": "28",
+    "name": "ARROZ BASMATI MEGA EXTRA LONGO 1KG VEETEE",
+    "ean": "890600498754",
+    "ean_cdi": "8906004987540",
+    "itf": "0501680500154",
+    "itf_cdi": "5016805001543",
+    "codigo_auchan": "956077",
+    "caixa_default": 12
+  },
+  {
+    "id": "29",
+    "name": "ARROZ BASMATI MEGA EXTRA LONGO SACO 5KG",
+    "ean": "890600498749",
+    "ean_cdi": "8906004987496",
+    "itf": "1890600498749",
+    "itf_cdi": "18906004987493",
+    "codigo_auchan": "1145315",
+    "caixa_default": 4
+  },
+  {
+    "id": "30",
+    "name": "AZEITONA CURA NAT. TREMOCEIRA C/ERVAS E ALHO",
+    "ean": "560436020437",
+    "ean_cdi": "5604360204372",
+    "itf": "1560436020437",
+    "itf_cdi": "15604360204379",
+    "codigo_auchan": "1163716",
+    "caixa_default": 12
+  },
+  {
+    "id": "31",
+    "name": "AZEITONA VERDE TREMOÇEIRA: 360G",
+    "ean": "560436000701",
+    "ean_cdi": "5604360007010",
+    "itf": "1560436000701",
+    "itf_cdi": "15604360007017",
+    "codigo_auchan": "1168255",
+    "caixa_default": 12
+  },
+  {
+    "id": "32",
+    "name": "PICKLES MISTOS TREMOÇEIRA: 360G",
+    "ean": "560436003006",
+    "ean_cdi": "5604360030063",
+    "itf": "1560436003006",
+    "itf_cdi": "15604360030060",
+    "codigo_auchan": "1168259",
+    "caixa_default": 12
+  },
+  {
+    "id": "33",
+    "name": "AZEITONA VERDE TREMOÇEIRA: RECHEADA 360G",
+    "ean": "560436001010",
+    "ean_cdi": "5604360010102",
+    "itf": "1560436001010",
+    "itf_cdi": "15604360010109",
+    "codigo_auchan": "1168261",
+    "caixa_default": 12
+  },
+  {
+    "id": "34",
+    "name": "AZEITONA MISTA TREMOÇEIRA: CURA NATURAL 360G",
+    "ean": "560436004120",
+    "ean_cdi": "5604360041205",
+    "itf": "1560436004120",
+    "itf_cdi": "15604360041202",
+    "codigo_auchan": "1168275",
+    "caixa_default": 12
+  },
+  {
+    "id": "35",
+    "name": "AZEITONA VERDE TREMOÇEIRA: DESCAROÇADA",
+    "ean": "560436000108",
+    "ean_cdi": "5604360001087",
+    "itf": "1560436000108",
+    "itf_cdi": "15604360001084",
+    "codigo_auchan": "1168276",
+    "caixa_default": 12
+  },
+  {
+    "id": "36",
+    "name": "AZEITONA VERDE TREMOÇEIRA: FATIADA 360G",
+    "ean": "560436020300",
+    "ean_cdi": "5604360203009",
+    "itf": "1560436020300",
+    "itf_cdi": "15604360203006",
+    "codigo_auchan": "1168277",
+    "caixa_default": 12
+  },
+  {
+    "id": "37",
+    "name": "AZEITONA PRETA TREMOÇEIRA: DESCAROÇADA",
+    "ean": "560436020112",
+    "ean_cdi": "5604360201128",
+    "itf": "1560436020112",
+    "itf_cdi": "15604360201125",
+    "codigo_auchan": "1168280",
+    "caixa_default": 12
+  },
+  {
+    "id": "38",
+    "name": "AZEITONA PRETA TREMOÇEIRA: FATIADA 360G",
+    "ean": "560436002020",
+    "ean_cdi": "5604360020200",
+    "itf": "1560436002020",
+    "itf_cdi": "15604360020207",
+    "codigo_auchan": "1168281",
+    "caixa_default": 12
+  },
+  {
+    "id": "39",
+    "name": "PASTA DE AZEITONA PRETA 90G",
+    "ean": "560436020671",
+    "ean_cdi": "5604360206710",
+    "itf": "1560436020671",
+    "itf_cdi": "15604360206717",
+    "codigo_auchan": "2170544",
+    "caixa_default": 12
+  },
+  {
+    "id": "40",
+    "name": "PASTA DE AZEITONA VERDE 90G",
+    "ean": "560436020670",
+    "ean_cdi": "5604360206703",
+    "itf": "1560436020670",
+    "itf_cdi": "15604360206700",
+    "codigo_auchan": "2170546",
+    "caixa_default": 12
+  },
+  {
+    "id": "41",
+    "name": "FARINHA ARARUTA 250G",
+    "ean": "560393602366",
+    "ean_cdi": "5603936023669",
+    "itf": "0202251234588",
+    "itf_cdi": "2022512345880",
+    "codigo_auchan": "3075201",
+    "caixa_default": 6
+  },
+  {
+    "id": "42",
+    "name": "FARINHA DE AMENDOIM 500GR JFF",
+    "ean": "560393602452",
+    "ean_cdi": "5603936024529",
+    "itf": "1560393602452",
+    "itf_cdi": "15603936024526",
+    "codigo_auchan": "3356228",
+    "caixa_default": 6
+  },
+  {
+    "id": "43",
+    "name": "COUVE-FLOR EM VINAGRE TREMOCEIRA:",
+    "ean": "560436021525",
+    "ean_cdi": "5604360215255",
+    "itf": "1560436021525",
+    "itf_cdi": "15604360215252",
+    "codigo_auchan": "3357435",
+    "caixa_default": 12
+  },
+  {
+    "id": "44",
+    "name": "ARROZ BOMBA 1KG NOMEN",
+    "ean": "841149511372",
+    "ean_cdi": "8411495113724",
+    "itf": "2841149511372",
+    "itf_cdi": "28411495113728",
+    "codigo_auchan": "3492859",
+    "caixa_default": 10
+  },
+  {
+    "id": "45",
+    "name": "SNACK OTHER FOODS COG. SHITAKE CROCANTES 40G",
+    "ean": "506055142065",
+    "ean_cdi": "5060551420653",
+    "itf": "0506055142735",
+    "itf_cdi": "5060551427355",
+    "codigo_auchan": "3633027",
+    "caixa_default": 6
+  },
+  {
+    "id": "46",
+    "name": "SNACK OTHER FOODS ALCACHOFRAS CROCANTES 25G",
+    "ean": "506055142164",
+    "ean_cdi": "5060551421643",
+    "itf": "0506055142163",
+    "itf_cdi": "5060551421636",
+    "codigo_auchan": "3633037",
+    "caixa_default": 16
+  },
+  {
+    "id": "47",
+    "name": "SNACK OTHER FOODS QUIABOS CROCANTES 40G",
+    "ean": "506055142068",
+    "ean_cdi": "5060551420684",
+    "itf": "0506055142738",
+    "itf_cdi": "5060551427386",
+    "codigo_auchan": "3633041",
+    "caixa_default": 6
+  },
+  {
+    "id": "48",
+    "name": "SNACKS OTHER FOODS COGUMELOS PLEUROTUS 40G",
+    "ean": "506055142066",
+    "ean_cdi": "5060551420660",
+    "itf": "0506055142736",
+    "itf_cdi": "5060551427362",
+    "codigo_auchan": "3633047",
+    "caixa_default": 6
+  },
+  {
+    "id": "49",
+    "name": "CEBOLA FRITA GOLDEN TURTLE:CROCANTE 200G",
+    "ean": "872820040866",
+    "ean_cdi": "8728200408663",
+    "itf": "0872820040867",
+    "itf_cdi": "8728200408670",
+    "codigo_auchan": "3656924",
+    "caixa_default": 20
+  },
+  {
+    "id": "50",
+    "name": "AIPO RALADO 345/180G JJJ",
+    "ean": "842775401802",
+    "ean_cdi": "8427754018020",
+    "itf": "1842775401802",
+    "itf_cdi": "18427754018027",
+    "codigo_auchan": "3739129",
+    "caixa_default": 12
+  },
+  {
+    "id": "51",
+    "name": "SNACK OTHER FOODS COG. SHITAKE TRUFA NEGRA E SAL 40G",
+    "ean": "506055142162",
+    "ean_cdi": "5060551421629",
+    "itf": "0506055142162",
+    "itf_cdi": "05060551421629",
+    "codigo_auchan": "3815959",
+    "caixa_default": 6
+  },
+  {
+    "id": "52",
+    "name": "ATUM VEGAN LOMA PIMENTA LIMÃO 142G",
+    "ean": "123000003710",
+    "ean_cdi": "1230000037105",
+    "itf": "2123000003710",
+    "itf_cdi": "21230000037109",
+    "codigo_auchan": "3815962",
+    "caixa_default": 12
+  },
+  {
+    "id": "53",
+    "name": "ATUM VEGAN LOMA PIMENTA DOCE TAILANDESA 142G",
+    "ean": "123000003711",
+    "ean_cdi": "1230000037112",
+    "itf": "2123000003711",
+    "itf_cdi": "21230000037116",
+    "codigo_auchan": "3815963",
+    "caixa_default": 12
+  },
+  {
+    "id": "54",
+    "name": "CARACÓIS POLGRI MOLHO DE TOMATE 390(190)G",
+    "ean": "841105500056",
+    "ean_cdi": "8411055000563",
+    "itf": "2841105500056",
+    "itf_cdi": "28411055000567",
+    "codigo_auchan": "3825085",
+    "caixa_default": 12
+  },
+  {
+    "id": "55",
+    "name": "PREPARADO DE ARROZ VEETEE THAI SRIRACHA 250G",
+    "ean": "501680501177",
+    "ean_cdi": "5016805011771",
+    "itf": "1501680501177",
+    "itf_cdi": "15016805011778",
+    "codigo_auchan": "3926004",
+    "caixa_default": 6
+  },
+  {
+    "id": "56",
+    "name": "PREPARADO DE ARROZ  KOREAN GOCHUJANG 250G VEETEE",
+    "ean": "501680501174",
+    "ean_cdi": "5016805011740",
+    "itf": "1501680501174",
+    "itf_cdi": "15016805011747",
+    "codigo_auchan": "3926005",
+    "caixa_default": 6
+  },
+  {
+    "id": "57",
+    "name": "PREPARADO DE ARROZ JAPANESE TOGARASHI 280G VEETEE",
+    "ean": "501680501140",
+    "ean_cdi": "5016805011405",
+    "itf": "3501680501140",
+    "itf_cdi": "35016805011406",
+    "codigo_auchan": "3926007",
+    "caixa_default": 6
+  },
+  {
+    "id": "58",
+    "name": "TEMPERO SHICHIMI TOGARASHI 45G THE PINCH",
+    "ean": "560072473308",
+    "ean_cdi": "5600724733083",
+    "itf": "1560072473314",
+    "itf_cdi": "15600724733141",
+    "codigo_auchan": "3959785",
+    "caixa_default": 6
+  },
+  {
+    "id": "59",
+    "name": "TEMPERO LUSITANO 45G THE PINCH",
+    "ean": "560072473325",
+    "ean_cdi": "5600724733250",
+    "itf": "1560072473311",
+    "itf_cdi": "15600724733110",
+    "codigo_auchan": "3959790",
+    "caixa_default": 6
+  },
+  {
+    "id": "60",
+    "name": "TEMPERO ITALIANO 45G THE PINCH",
+    "ean": "560072473303",
+    "ean_cdi": "5600724733038",
+    "itf": "1560072473309",
+    "itf_cdi": "15600724733097",
+    "codigo_auchan": "3959792",
+    "caixa_default": 6
+  },
+  {
+    "id": "61",
+    "name": "TEMPERO CHIMICHURRI 45G THE PINCH",
+    "ean": "560072473306",
+    "ean_cdi": "5600724733069",
+    "itf": "1560072473302",
+    "itf_cdi": "15600724733028",
+    "codigo_auchan": "3959794",
+    "caixa_default": 6
+  },
+  {
+    "id": "62",
+    "name": "SNACKS COGUMELOS SHITAKE MISO E CARAMELO 40G OTHER FOODS",
+    "ean": "506055142198",
+    "ean_cdi": "5060551421988",
+    "itf": "0506055142207",
+    "itf_cdi": "05060551422077",
+    "codigo_auchan": "4015901",
+    "caixa_default": 8
+  },
+  {
+    "id": "63",
+    "name": "SNACK COGUMELOS SHITAKE MEL E PICANTE 40G OTHER FOODS",
+    "ean": "506055142197",
+    "ean_cdi": "5060551421971",
+    "itf": "0506055142206",
+    "itf_cdi": "05060551422060",
+    "codigo_auchan": "4015919",
+    "caixa_default": 8
+  },
+  {
+    "id": "64",
+    "name": "FLOCOS FRUTOS DA NATUREZA CEVADA 1KG",
+    "ean": "560393602234",
+    "ean_cdi": "5603936022341",
+    "itf": "1560393602234",
+    "itf_cdi": "15603936022348",
+    "codigo_auchan": "2525255",
+    "caixa_default": 8
+  },
+  {
+    "id": "65",
+    "name": "FLOCOS FRUTOS DA NATUREZA CENTEIO 1KG",
+    "ean": "560393602233",
+    "ean_cdi": "5603936022334",
+    "itf": "1560393602233",
+    "itf_cdi": "15603936022331",
+    "codigo_auchan": "2525256",
+    "caixa_default": 8
+  },
+  {
+    "id": "66",
+    "name": "CEBOLA FRUTOS DA NATUREZA: FRITA 1KG.",
+    "ean": "560393602235",
+    "ean_cdi": "5603936022358",
+    "itf": "1560393602235",
+    "itf_cdi": "15603936022355",
+    "codigo_auchan": "2525257",
+    "caixa_default": 5
+  },
+  {
+    "id": "67",
+    "name": "MANJERICAO EM FOLHAS 1 KG",
+    "ean": "502888106423",
+    "ean_cdi": "5028881064237",
+    "itf": "1502888106423",
+    "itf_cdi": "15028881064234",
+    "codigo_auchan": "2607849",
+    "caixa_default": 3
+  },
+  {
+    "id": "68",
+    "name": "COENTROS EM PÓ 1 KG",
+    "ean": "502888101089",
+    "ean_cdi": "502881010890",
+    "itf": "1502888101089",
+    "itf_cdi": "15028881010897",
+    "codigo_auchan": "2607850",
+    "caixa_default": 8
+  },
+  {
+    "id": "69",
+    "name": "MOSTARDA EM PÓ 1 KG",
+    "ean": "502888106422",
+    "ean_cdi": "5028881064220",
+    "itf": "1502888106422",
+    "itf_cdi": "15028881064227",
+    "codigo_auchan": "2607854",
+    "caixa_default": 12
+  },
+  {
+    "id": "70",
+    "name": "NOZ MOSCADA EM PÓ 1 KG",
+    "ean": "502888106424",
+    "ean_cdi": "5028881064244",
+    "itf": "1502888106424",
+    "itf_cdi": "15028881064241",
+    "codigo_auchan": "2607861",
+    "caixa_default": 2
+  },
+  {
+    "id": "71",
+    "name": "OREGAOS EM FOLHAS 1 KG",
+    "ean": "502888106425",
+    "ean_cdi": "5028881064251",
+    "itf": "1502888106425",
+    "itf_cdi": "15028881064258",
+    "codigo_auchan": "2608383",
+    "caixa_default": 3
+  },
+  {
+    "id": "72",
+    "name": "SALSA EM FOLHAS 1 KG",
+    "ean": "502888106421",
+    "ean_cdi": "5028881064213",
+    "itf": "1502888106421",
+    "itf_cdi": "15028881064210",
+    "codigo_auchan": "2608389",
+    "caixa_default": 2
+  },
+  {
+    "id": "73",
+    "name": "PIMENTA VERMELHA PICANTE EM PÓ 1KG",
+    "ean": "502888101101",
+    "ean_cdi": "5028881011019",
+    "itf": "1502888101101",
+    "itf_cdi": "15028881011016",
+    "codigo_auchan": "2608398",
+    "caixa_default": 12
+  },
+  {
+    "id": "74",
+    "name": "CARIL INDIANO EM PÓ 1 KG",
+    "ean": "502888106426",
+    "ean_cdi": "5028881064268",
+    "itf": "1502888106426",
+    "itf_cdi": "15028881064265",
+    "codigo_auchan": "2608404",
+    "caixa_default": 12
+  },
+  {
+    "id": "75",
+    "name": "FIGO SECO TURKIA Nº2 1KG",
+    "ean": "560393602263",
+    "ean_cdi": "5603936022631",
+    "itf": "1560393602263",
+    "itf_cdi": "15603936022638",
+    "codigo_auchan": "2647141",
+    "caixa_default": 5
+  },
+  {
+    "id": "76",
+    "name": "TAMARAS MEDJOOL ISRAEL 1KG",
+    "ean": "560393602264",
+    "ean_cdi": "5603936022648",
+    "itf": "1560393602264",
+    "itf_cdi": "15603936022645",
+    "codigo_auchan": "2648098",
+    "caixa_default": 2
+  },
+  {
+    "id": "77",
+    "name": "TAMARAS S/CAROÇO DEGLET 1KG",
+    "ean": "560393602262",
+    "ean_cdi": "5603936022624",
+    "itf": "1560393602262",
+    "itf_cdi": "15603936022621",
+    "codigo_auchan": "2648101",
+    "caixa_default": 5
+  },
+  {
+    "id": "78",
+    "name": "PIMENTA ROSA GRAO 1KG",
+    "ean": "502888106451",
+    "ean_cdi": "5028881064510",
+    "itf": "0502888106452",
+    "itf_cdi": "5028881064527",
+    "codigo_auchan": "2676451",
+    "caixa_default": 6
+  },
+  {
+    "id": "79",
+    "name": "COUSCOUS  DE TRIGO MARROCOS KG",
+    "ean": "611125003078",
+    "ean_cdi": "6111250030786",
+    "itf": "1611125003078",
+    "itf_cdi": "16111250030783",
+    "codigo_auchan": "2705903",
+    "caixa_default": 10
+  },
+  {
+    "id": "80",
+    "name": "MISTURA PIMENTA PRETA/VERDE/ROSA 1KG",
+    "ean": "502888106457",
+    "ean_cdi": "5028881064572",
+    "itf": "1502888106457",
+    "itf_cdi": "15028881064579",
+    "codigo_auchan": "2739456",
+    "caixa_default": 6
+  },
+  {
+    "id": "81",
+    "name": "ANANAS SECO RODELAS KG",
+    "ean": "842006301061",
+    "ean_cdi": "8420063010617",
+    "itf": "1842006301061",
+    "itf_cdi": "18420063010614",
+    "codigo_auchan": "2883131",
+    "caixa_default": 10
+  },
+  {
+    "id": "82",
+    "name": "FLOR DE HIBISCO A GRANEL DESIDRATADA KG",
+    "ean": "240002883185",
+    "ean_cdi": "2400028831859",
+    "itf": "1240002883185",
+    "itf_cdi": "12400028831856",
+    "codigo_auchan": "2883185",
+    "caixa_default": 1
+  },
+  {
+    "id": "83",
+    "name": "COGUMELOS SHITAKE:DESIDRATADOS KG",
+    "ean": "560305394000",
+    "ean_cdi": "5603053940009",
+    "itf": "1560305394000",
+    "itf_cdi": "15603053940006",
+    "codigo_auchan": "2883187",
+    "caixa_default": 1
+  },
+  {
+    "id": "84",
+    "name": "TOMATE SECO PREP/ARTESANAL KG",
+    "ean": "842006301379",
+    "ean_cdi": "8420063013793",
+    "itf": "1842006301379",
+    "itf_cdi": "18420063013790",
+    "codigo_auchan": "2883214",
+    "caixa_default": 4
+  },
+  {
+    "id": "85",
+    "name": "NOZ: CARAMELIZADA KG",
+    "ean": "560393602336",
+    "ean_cdi": "5603936023362",
+    "itf": "1560393602336",
+    "itf_cdi": "15603936023369",
+    "codigo_auchan": "2986137",
+    "caixa_default": 2
+  },
+  {
+    "id": "86",
+    "name": "AVELA CARAMELIZADA KG",
+    "ean": "560393602335",
+    "ean_cdi": "5603936023355",
+    "itf": "1560393602335",
+    "itf_cdi": "15603936023352",
+    "codigo_auchan": "2986141",
+    "caixa_default": 2
+  },
+  {
+    "id": "87",
+    "name": "AMENDOA CARAMELIZADA KG",
+    "ean": "560393602337",
+    "ean_cdi": "5603936023379",
+    "itf": "1560393602337",
+    "itf_cdi": "15603936023376",
+    "codigo_auchan": "2986146",
+    "caixa_default": 2
+  },
+  {
+    "id": "88",
+    "name": "BULGUR CLARA 1KG",
+    "ean": "869144010100",
+    "ean_cdi": "8691440101000",
+    "itf": "1869144010100",
+    "itf_cdi": "18691440101007",
+    "codigo_auchan": "3013036",
+    "caixa_default": 3
+  },
+  {
+    "id": "89",
+    "name": "CURCUMA/AÇAFRÃO EM PÓ 1KG HEERA",
+    "ean": "503141622118",
+    "ean_cdi": "5031416221180",
+    "itf": "1503141622118",
+    "itf_cdi": "15031416221187",
+    "codigo_auchan": "3013037",
+    "caixa_default": 3
+  },
+  {
+    "id": "90",
+    "name": "FARINHA DE CENTEIO INTEGRAL",
+    "ean": "560393602410",
+    "ean_cdi": "5603936024109",
+    "itf": "1560393602410",
+    "itf_cdi": "15603936024106",
+    "codigo_auchan": "3239535",
+    "caixa_default": 6
+  },
+  {
+    "id": "91",
+    "name": "SPIRULINA EM PO",
+    "ean": "560393602405",
+    "ean_cdi": "5603936024055",
+    "itf": "1560393602405",
+    "itf_cdi": "15603936024052",
+    "codigo_auchan": "3241460",
+    "caixa_default": 6
+  },
+  {
+    "id": "92",
+    "name": "MACA EM PO",
+    "ean": "560393602404",
+    "ean_cdi": "5603936024048",
+    "itf": "1560393602404",
+    "itf_cdi": "15603936024045",
+    "codigo_auchan": "3241487",
+    "caixa_default": 6
+  },
+  {
+    "id": "93",
+    "name": "FARINHA DE TRIGO SARRACENO",
+    "ean": "560393602406",
+    "ean_cdi": "5603936024062",
+    "itf": "1560393602406",
+    "itf_cdi": "15603936024069",
+    "codigo_auchan": "3241496",
+    "caixa_default": 6
+  },
+  {
+    "id": "94",
+    "name": "FARINHA DE SOJA",
+    "ean": "560393602408",
+    "ean_cdi": "5603936024086",
+    "itf": "1560393602408",
+    "itf_cdi": "15603936024083",
+    "codigo_auchan": "3246725",
+    "caixa_default": 6
+  },
+  {
+    "id": "95",
+    "name": "FARINHA ESPELTA",
+    "ean": "560393602409",
+    "ean_cdi": "5603936024093",
+    "itf": "1560393602409",
+    "itf_cdi": "15603936024090",
+    "codigo_auchan": "3246731",
+    "caixa_default": 6
+  },
+  {
+    "id": "96",
+    "name": "FARINHA DE GRÃO",
+    "ean": "560393602407",
+    "ean_cdi": "5603936024079",
+    "itf": "1560393602407",
+    "itf_cdi": "15603936024076",
+    "codigo_auchan": "3246737",
+    "caixa_default": 6
+  },
+  {
+    "id": "97",
+    "name": "CAJU CARAMELIZADO KG",
+    "ean": "560393602442",
+    "ean_cdi": "5603936024420",
+    "itf": "1560393602442",
+    "itf_cdi": "15603936024427",
+    "codigo_auchan": "3304530",
+    "caixa_default": 2
+  },
+  {
+    "id": "98",
     "name": "CEVADA INTEGRAL JFF KG",
     "ean": "560393602449",
     "ean_cdi": "5603936024499",
@@ -20,7 +980,7 @@
     "caixa_default": 6
   },
   {
-    "id": "3",
+    "id": "99",
     "name": "CEBOLINHO JFF KG",
     "ean": "560393602450",
     "ean_cdi": "5603936024505",
@@ -30,7 +990,17 @@
     "caixa_default": 2
   },
   {
-    "id": "4",
+    "id": "100",
+    "name": "CEBOLA ROXA DESIDRATADA JFF KG",
+    "ean": "560393602451",
+    "ean_cdi": "5603936024512",
+    "itf": "1560393602451",
+    "itf_cdi": "15603936024519",
+    "codigo_auchan": "3336352",
+    "caixa_default": 2
+  },
+  {
+    "id": "101",
     "name": "ERVAS DA PROVENCE 1KG JFF",
     "ean": "560393602454",
     "ean_cdi": "5603936024543",
@@ -40,8 +1010,18 @@
     "caixa_default": 2
   },
   {
-    "id": "5",
-    "name": "ALGA AGAR AGAR EM PO 1KG",
+    "id": "102",
+    "name": "COGUMELOS PORCINI DESIDRATADOS 1KG",
+    "ean": "560393602455",
+    "ean_cdi": "5603936024550",
+    "itf": "1560393602455",
+    "itf_cdi": "15603936024557",
+    "codigo_auchan": "3348033",
+    "caixa_default": 1
+  },
+  {
+    "id": "103",
+    "name": "ALGA AGAR AGAR EM PÓ 1KG",
     "ean": "560393602456",
     "ean_cdi": "5603936024567",
     "itf": "1560393602456",
@@ -50,8 +1030,8 @@
     "caixa_default": 2
   },
   {
-    "id": "6",
-    "name": "CHA FLOR LARANJEIRA KG",
+    "id": "104",
+    "name": "CHÁ FLOR LARANGEIRA KG",
     "ean": "560393602487",
     "ean_cdi": "5603936024871",
     "itf": "1560393602487",
@@ -60,8 +1040,8 @@
     "caixa_default": 3
   },
   {
-    "id": "7",
-    "name": "CHA PLANTA CORTADA URTIGA VULGAR KG",
+    "id": "105",
+    "name": "CHÁ PLANTA CORTADA URTIGA VULGAR KG",
     "ean": "560393602496",
     "ean_cdi": "5603936024963",
     "itf": "1560393602496",
@@ -70,8 +1050,18 @@
     "caixa_default": 3
   },
   {
-    "id": "8",
-    "name": "CHA CASCA CANELA KG",
+    "id": "106",
+    "name": "CHÁ FLOR BOTÕES DE ROSA KG",
+    "ean": "560393602483",
+    "ean_cdi": "5603936024833",
+    "itf": "1560393602483",
+    "itf_cdi": "15603936024830",
+    "codigo_auchan": "3458166",
+    "caixa_default": 3
+  },
+  {
+    "id": "107",
+    "name": "CHÁ CASCA CANELA KG",
     "ean": "560393602484",
     "ean_cdi": "5603936024840",
     "itf": "1560393602484",
@@ -80,8 +1070,38 @@
     "caixa_default": 3
   },
   {
-    "id": "9",
-    "name": "CHA FLOR HIBISCO KG",
+    "id": "108",
+    "name": "CHÁ PLANTA CORTADA CARDO MARIANO KG",
+    "ean": "560393602485",
+    "ean_cdi": "5603936024857",
+    "itf": "1560393602485",
+    "itf_cdi": "15603936024854",
+    "codigo_auchan": "3458175",
+    "caixa_default": 3
+  },
+  {
+    "id": "109",
+    "name": "CHÁ PLANTA CORTADA ERVA PRÍNCIPE KG",
+    "ean": "560393602486",
+    "ean_cdi": "5603936024864",
+    "itf": "1560393602486",
+    "itf_cdi": "15603936024861",
+    "codigo_auchan": "3458181",
+    "caixa_default": 3
+  },
+  {
+    "id": "110",
+    "name": "CHÁ SEMENTES FUNCHO KG",
+    "ean": "560393602488",
+    "ean_cdi": "5603936024888",
+    "itf": "1560393602488",
+    "itf_cdi": "15603936024885",
+    "codigo_auchan": "3458186",
+    "caixa_default": 3
+  },
+  {
+    "id": "111",
+    "name": "CHÁ FLOR HIBISCO KG",
     "ean": "560393602489",
     "ean_cdi": "5603936024895",
     "itf": "1560393602489",
@@ -90,13 +1110,3843 @@
     "caixa_default": 3
   },
   {
-    "id": "10",
-    "name": "CHA FOLHAS HORTELA PIMENTA KG",
+    "id": "112",
+    "name": "CHÁ FOLHAS HORTELÃ PIMENTA KG",
     "ean": "560393602490",
     "ean_cdi": "5603936024901",
     "itf": "1560393602490",
     "itf_cdi": "15603936024908",
     "codigo_auchan": "3458194",
     "caixa_default": 3
+  },
+  {
+    "id": "113",
+    "name": "CHÁ FLOR JASMIM KG",
+    "ean": "560393602491",
+    "ean_cdi": "5603936024918",
+    "itf": "1560393602491",
+    "itf_cdi": "15603936024915",
+    "codigo_auchan": "3458195",
+    "caixa_default": 3
+  },
+  {
+    "id": "114",
+    "name": "CHÁ FLOR PERPÉTUA ROXA KG",
+    "ean": "560393602492",
+    "ean_cdi": "5603936024925",
+    "itf": "1560393602492",
+    "itf_cdi": "15603936024922",
+    "codigo_auchan": "3458198",
+    "caixa_default": 3
+  },
+  {
+    "id": "115",
+    "name": "CHÁ FLOR PÉTALAS DE ROSA KG",
+    "ean": "560393602493",
+    "ean_cdi": "5603936024932",
+    "itf": "1560393602493",
+    "itf_cdi": "15603936024939",
+    "codigo_auchan": "3458200",
+    "caixa_default": 3
+  },
+  {
+    "id": "116",
+    "name": "CHÁ FOLHAS PU ERH VERMELHO KG",
+    "ean": "560393602494",
+    "ean_cdi": "5603936024949",
+    "itf": "1560393602494",
+    "itf_cdi": "15603936024946",
+    "codigo_auchan": "3458203",
+    "caixa_default": 3
+  },
+  {
+    "id": "117",
+    "name": "CHÁ FOLHAS ROOIBOS KG",
+    "ean": "560393602495",
+    "ean_cdi": "5603936024956",
+    "itf": "1560393602495",
+    "itf_cdi": "15603936024953",
+    "codigo_auchan": "3458205",
+    "caixa_default": 3
+  },
+  {
+    "id": "118",
+    "name": "LARANJA DESIDRATADA KG",
+    "ean": "560393602523",
+    "ean_cdi": "5603936025236",
+    "itf": "1560393602523",
+    "itf_cdi": "15603936025233",
+    "codigo_auchan": "3494507",
+    "caixa_default": 3
+  },
+  {
+    "id": "119",
+    "name": "LIMA DESIDRATADA KG",
+    "ean": "560393602522",
+    "ean_cdi": "5603936025229",
+    "itf": "1560393602522",
+    "itf_cdi": "15603936025226",
+    "codigo_auchan": "3494509",
+    "caixa_default": 3
+  },
+  {
+    "id": "120",
+    "name": "TOMILHO EM FOLHA KG",
+    "ean": "560393602520",
+    "ean_cdi": "5603936025205",
+    "itf": "1560393602520",
+    "itf_cdi": "15603936025202",
+    "codigo_auchan": "3494512",
+    "caixa_default": 3
+  },
+  {
+    "id": "121",
+    "name": "GENGIBRE EM PO KG",
+    "ean": "560393602521",
+    "ean_cdi": "5603936025212",
+    "itf": "1560393602521",
+    "itf_cdi": "15603936025219",
+    "codigo_auchan": "3494515",
+    "caixa_default": 3
+  },
+  {
+    "id": "122",
+    "name": "ERVA DOCE EM GRÃO KG",
+    "ean": "560393602519",
+    "ean_cdi": "5603936025199",
+    "itf": "1560393602519",
+    "itf_cdi": "15603936025196",
+    "codigo_auchan": "3495343",
+    "caixa_default": 3
+  },
+  {
+    "id": "123",
+    "name": "PIMENTA CAYENNA EM PÓ KG",
+    "ean": "560393602518",
+    "ean_cdi": "5603936025182",
+    "itf": "1560393602518",
+    "itf_cdi": "15603936025189",
+    "codigo_auchan": "3495347",
+    "caixa_default": 3
+  },
+  {
+    "id": "124",
+    "name": "ALGA WAKAME A GRANEL KG",
+    "ean": "560393602665",
+    "ean_cdi": "5603936026653",
+    "itf": "1560393602665",
+    "itf_cdi": "15603936026650",
+    "codigo_auchan": "3876939",
+    "caixa_default": 1
+  },
+  {
+    "id": "125",
+    "name": "ALGA KOMBU A GRANEL KG",
+    "ean": "560393602666",
+    "ean_cdi": "5603936026660",
+    "itf": "1560393602666",
+    "itf_cdi": "15603936026667",
+    "codigo_auchan": "3876942",
+    "caixa_default": 1
+  },
+  {
+    "id": "126",
+    "name": "BETERRABA PÓ A GRANEL KG",
+    "ean": "560393602659",
+    "ean_cdi": "5603936026592",
+    "itf": "1560393602659",
+    "itf_cdi": "15603936026599",
+    "codigo_auchan": "3876946",
+    "caixa_default": 4
+  },
+  {
+    "id": "127",
+    "name": "ESPINAFRES EM PÓ A GRANEL KG",
+    "ean": "560393602661",
+    "ean_cdi": "5603936026615",
+    "itf": "1560393602661",
+    "itf_cdi": "15603936026612",
+    "codigo_auchan": "3877046",
+    "caixa_default": 4
+  },
+  {
+    "id": "128",
+    "name": "ESTRAGÃO EM FOLHA A GRANEL KG",
+    "ean": "560393602664",
+    "ean_cdi": "5603936026646",
+    "itf": "1560393602664",
+    "itf_cdi": "15603936026643",
+    "codigo_auchan": "3877061",
+    "caixa_default": 4
+  },
+  {
+    "id": "129",
+    "name": "CHÁ MALVA AZUL A GRANEL KG",
+    "ean": "560393602663",
+    "ean_cdi": "5603936026639",
+    "itf": "1560393602663",
+    "itf_cdi": "15603936026636",
+    "codigo_auchan": "3877072",
+    "caixa_default": 4
+  },
+  {
+    "id": "130",
+    "name": "COURGETE DESIDRATADA A GRANEL KG",
+    "ean": "560393602662",
+    "ean_cdi": "5603936026622",
+    "itf": "1560393602662",
+    "itf_cdi": "15603936026629",
+    "codigo_auchan": "3901891",
+    "caixa_default": 4
+  },
+  {
+    "id": "131",
+    "name": "NOZ MOSCADA EM GRÃO A GRANEL KG",
+    "ean": "560393602660",
+    "ean_cdi": "5603936026608",
+    "itf": "1560393602660",
+    "itf_cdi": "15603936026605",
+    "codigo_auchan": "3901925",
+    "caixa_default": 4
+  },
+  {
+    "id": "132",
+    "name": "CEBOLA BRANCA DESIDRATADA A GRANEL KG",
+    "ean": "560393602652",
+    "ean_cdi": "5603936026523",
+    "itf": "1560393602652",
+    "itf_cdi": "15603936026520",
+    "codigo_auchan": "3901942",
+    "caixa_default": 4
+  },
+  {
+    "id": "133",
+    "name": "CHÁ FLOR CAMOMILA A GRANEL KG",
+    "ean": "560393602679",
+    "ean_cdi": "5603936026790",
+    "itf": "1560393602679",
+    "itf_cdi": "15603936026797",
+    "codigo_auchan": "3908813",
+    "caixa_default": 3
+  },
+  {
+    "id": "134",
+    "name": "PISTACHIO TORRADO  COM SAL A GRANEL KG",
+    "ean": "560393602680",
+    "ean_cdi": "5603936026806",
+    "itf": "1560393602680",
+    "itf_cdi": "15603936026803",
+    "codigo_auchan": "3912255",
+    "caixa_default": 4
+  },
+  {
+    "id": "135",
+    "name": "PISTACHIO TORRADO SEM SAL A GRANEL KG",
+    "ean": "560393602681",
+    "ean_cdi": "5603936026813",
+    "itf": "1560393602681",
+    "itf_cdi": "15603936026810",
+    "codigo_auchan": "3912258",
+    "caixa_default": 4
+  },
+  {
+    "id": "136",
+    "name": "FIGO A GRANEL SECO TURCO KG",
+    "ean": "560393602712",
+    "ean_cdi": "5603936027124",
+    "itf": "1560393602712",
+    "itf_cdi": "15603936027121",
+    "codigo_auchan": "4000066",
+    "caixa_default": 2
+  },
+  {
+    "id": "137",
+    "name": "BOMBONS AVELÃ A GRANEL:3 CHOCOLATES KG",
+    "ean": "560393602710",
+    "ean_cdi": "5603936027100",
+    "itf": "1560393602710",
+    "itf_cdi": "15603936027107",
+    "codigo_auchan": "4000070",
+    "caixa_default": 3
+  },
+  {
+    "id": "138",
+    "name": "ROMÃ A GRANEL:PÓ KG",
+    "ean": "560393602709",
+    "ean_cdi": "5603936027094",
+    "itf": "1560393602709",
+    "itf_cdi": "15603936027091",
+    "codigo_auchan": "4000073",
+    "caixa_default": 3
+  },
+  {
+    "id": "139",
+    "name": "BERINGELA DESIDRATADA A GRANEL KG",
+    "ean": "560393602684",
+    "ean_cdi": "5603936026844",
+    "itf": "1560393602684",
+    "itf_cdi": "15603936026841",
+    "codigo_auchan": "4000268",
+    "caixa_default": 4
+  },
+  {
+    "id": "140",
+    "name": "STEVIA VERDE FOLHA A GRANEL KG",
+    "ean": "560393602693",
+    "ean_cdi": "5603936026936",
+    "itf": "1560393602693",
+    "itf_cdi": "15603936026933",
+    "codigo_auchan": "4000269",
+    "caixa_default": 4
+  },
+  {
+    "id": "141",
+    "name": "POEJO FOLHA A GRANEL KG",
+    "ean": "560393602692",
+    "ean_cdi": "5603936026929",
+    "itf": "1560393602692",
+    "itf_cdi": "15603936026926",
+    "codigo_auchan": "4000272",
+    "caixa_default": 4
+  },
+  {
+    "id": "142",
+    "name": "PIMENTO VERMELHO A GRANEL DESIDRATADO KG",
+    "ean": "560393602691",
+    "ean_cdi": "5603936026912",
+    "itf": "1560393602691",
+    "itf_cdi": "15603936026919",
+    "codigo_auchan": "4000280",
+    "caixa_default": 4
+  },
+  {
+    "id": "143",
+    "name": "PIMENTO VERDE A GRANEL DESIDRATADO KG",
+    "ean": "560393602690",
+    "ean_cdi": "5603936026905",
+    "itf": "1560393602690",
+    "itf_cdi": "15603936026902",
+    "codigo_auchan": "4000282",
+    "caixa_default": 4
+  },
+  {
+    "id": "144",
+    "name": "CENOURA DESIDRATADA A GRANEL KG",
+    "ean": "560393602688",
+    "ean_cdi": "5603936026882",
+    "itf": "1560393602688",
+    "itf_cdi": "15603936026889",
+    "codigo_auchan": "4000289",
+    "caixa_default": 4
+  },
+  {
+    "id": "145",
+    "name": "CASCA DE LARANJA A GRANEL TRITURADA KG",
+    "ean": "560393602687",
+    "ean_cdi": "5603936026875",
+    "itf": "1560393602687",
+    "itf_cdi": "15603936026872",
+    "codigo_auchan": "4000290",
+    "caixa_default": 4
+  },
+  {
+    "id": "146",
+    "name": "CARIL VERMELHO A GRANEL KG",
+    "ean": "560393602686",
+    "ean_cdi": "5603936026868",
+    "itf": "1560393602686",
+    "itf_cdi": "15603936026865",
+    "codigo_auchan": "4000295",
+    "caixa_default": 4
+  },
+  {
+    "id": "147",
+    "name": "CARIL VERDE A GRANEL KG",
+    "ean": "560393602685",
+    "ean_cdi": "5603936026851",
+    "itf": "1560393602685",
+    "itf_cdi": "15603936026858",
+    "codigo_auchan": "4000302",
+    "caixa_default": 4
+  },
+  {
+    "id": "148",
+    "name": "GRANOLA DE CHOCOLATE A GRANEL KG",
+    "ean": "560393602713",
+    "ean_cdi": "5603936027131",
+    "itf": "1560393602713",
+    "itf_cdi": "15603936027138",
+    "codigo_auchan": "4008013",
+    "caixa_default": 6
+  },
+  {
+    "id": "149",
+    "name": "GRANOLA SEM AÇUCAR A GRANEL KG",
+    "ean": "560393602714",
+    "ean_cdi": "5603936027148",
+    "itf": "1560393602714",
+    "itf_cdi": "15603936027145",
+    "codigo_auchan": "4008014",
+    "caixa_default": 6
+  },
+  {
+    "id": "150",
+    "name": "CARIL DA INDIA  EM PÓ 200GR JALPUR",
+    "ean": "502888101112",
+    "ean_cdi": "5028881011125",
+    "itf": "1502888101112",
+    "itf_cdi": "15028881011122",
+    "codigo_auchan": "253346",
+    "caixa_default": 20
+  },
+  {
+    "id": "151",
+    "name": "MASSA DE ARROZ FINO 200GR WAI WAI",
+    "ean": "885010020602",
+    "ean_cdi": "8850100206022",
+    "itf": "1885010020602",
+    "itf_cdi": "18850100206029",
+    "codigo_auchan": "503572",
+    "caixa_default": 40
+  },
+  {
+    "id": "152",
+    "name": "MOLHO HOISIN 397GR. LEE KUM KEE",
+    "ean": "007889570002",
+    "ean_cdi": "78895700022",
+    "itf": "3007889570002",
+    "itf_cdi": "30078895700023",
+    "codigo_auchan": "731238",
+    "caixa_default": 12
+  },
+  {
+    "id": "153",
+    "name": "CHACUTI 95GR OS QUINHENTOS",
+    "ean": "560393602041",
+    "ean_cdi": "5603936020415",
+    "itf": "1560393602041",
+    "itf_cdi": "15603936020412",
+    "codigo_auchan": "1113090",
+    "caixa_default": 12
+  },
+  {
+    "id": "154",
+    "name": "LEICESTER PAO PITA POCKETS ROUND B IN ONE",
+    "ean": "502725507816",
+    "ean_cdi": "5027255078160",
+    "itf": "1502725507816",
+    "itf_cdi": "15027255078167",
+    "codigo_auchan": "1160128",
+    "caixa_default": 15
+  },
+  {
+    "id": "155",
+    "name": "LEICESTER PAO MINI NAN ALHO & COENTROS IN ONE",
+    "ean": "502725507882",
+    "ean_cdi": "5027255078825",
+    "itf": "1502725507882",
+    "itf_cdi": "15027255078822",
+    "codigo_auchan": "1160140",
+    "caixa_default": 15
+  },
+  {
+    "id": "156",
+    "name": "LEICESTER PAO MINI NAN PLAIN IN ONE PACK 6UN",
+    "ean": "502725507881",
+    "ean_cdi": "5027255078818",
+    "itf": "1502725507881",
+    "itf_cdi": "15027255078815",
+    "codigo_auchan": "1160144",
+    "caixa_default": 15
+  },
+  {
+    "id": "157",
+    "name": "LEICESTER PAO NAN ALHO & COENTROS IN ONE",
+    "ean": "502725507872",
+    "ean_cdi": "5027255078726",
+    "itf": "1502725507872",
+    "itf_cdi": "15027255078723",
+    "codigo_auchan": "1160151",
+    "caixa_default": 10
+  },
+  {
+    "id": "158",
+    "name": "LEICESTER PAO NAN PICANTE IN ONE PACK 4UN",
+    "ean": "502725507814",
+    "ean_cdi": "5027255078146",
+    "itf": "1502725507814",
+    "itf_cdi": "15027255078143",
+    "codigo_auchan": "1160153",
+    "caixa_default": 10
+  },
+  {
+    "id": "159",
+    "name": "CARNE SECA ORIGINAL 25G WILD WEST",
+    "ean": "506003054081",
+    "ean_cdi": "5060030540810",
+    "itf": "1506003054081",
+    "itf_cdi": "15060030540817",
+    "codigo_auchan": "1171965",
+    "caixa_default": 16
+  },
+  {
+    "id": "160",
+    "name": "CARNE SECA MEL E BARBECUE 25G WILD WEST",
+    "ean": "506003054019",
+    "ean_cdi": "5060030540193",
+    "itf": "1506003054019",
+    "itf_cdi": "15060030540190",
+    "codigo_auchan": "1171979",
+    "caixa_default": 16
+  },
+  {
+    "id": "161",
+    "name": "TEMPERO OS QUINHENTOS: CARIL GOA MEIO PICANTE",
+    "ean": "560393602071",
+    "ean_cdi": "5603936020712",
+    "itf": "1560393602071",
+    "itf_cdi": "15603936020719",
+    "codigo_auchan": "1174823",
+    "caixa_default": 12
+  },
+  {
+    "id": "162",
+    "name": "TEMPERO OS QUINHENTOS: CARIL DE GOA 95GR.",
+    "ean": "560393602070",
+    "ean_cdi": "5603936020705",
+    "itf": "1560393602070",
+    "itf_cdi": "15603936020702",
+    "codigo_auchan": "1174827",
+    "caixa_default": 12
+  },
+  {
+    "id": "163",
+    "name": "TEMPERO OS QUINHENTOS: PO DE CARIL GOA 95GR.",
+    "ean": "560393602073",
+    "ean_cdi": "5603936020736",
+    "itf": "1560393602073",
+    "itf_cdi": "15603936020733",
+    "codigo_auchan": "1174839",
+    "caixa_default": 12
+  },
+  {
+    "id": "164",
+    "name": "MOLHO HOT PEPPER 142ML ENCONA",
+    "ean": "000005076114",
+    "ean_cdi": "0000050761142",
+    "itf": "0501238952203",
+    "itf_cdi": "05012389522030",
+    "codigo_auchan": "2110815",
+    "caixa_default": 6
+  },
+  {
+    "id": "165",
+    "name": "MOLHO THAI SWEET CHILLI 142ML ENCONA",
+    "ean": "000005076118",
+    "ean_cdi": "0000050761180",
+    "itf": "0501238952300",
+    "itf_cdi": "05012389523006",
+    "codigo_auchan": "2110824",
+    "caixa_default": 6
+  },
+  {
+    "id": "166",
+    "name": "COGUMELOS AURICULARIA 80G SHANYUAN",
+    "ean": "694665520106",
+    "ean_cdi": "6946655201062",
+    "itf": "1694665520106",
+    "itf_cdi": "16946655201069",
+    "codigo_auchan": "2167394",
+    "caixa_default": 6
+  },
+  {
+    "id": "167",
+    "name": "COGUMELOS SECOS SHITAKE 100GR.",
+    "ean": "694665520038",
+    "ean_cdi": "6946655200386",
+    "itf": "1694665520038",
+    "itf_cdi": "16946655200383",
+    "codigo_auchan": "2167398",
+    "caixa_default": 6
+  },
+  {
+    "id": "168",
+    "name": "MANTEIGA GHEE KHANUM:CLARIFICADA 500 G",
+    "ean": "501912405805",
+    "ean_cdi": "5019124058052",
+    "itf": "0501912405806",
+    "itf_cdi": "5019124058069",
+    "codigo_auchan": "2221130",
+    "caixa_default": 12
+  },
+  {
+    "id": "169",
+    "name": "CERVEJA DE GENGIBRE 330ML GRACE",
+    "ean": "503513921353",
+    "ean_cdi": "5035139213538",
+    "itf": "0503513937353",
+    "itf_cdi": "05035139373539",
+    "codigo_auchan": "2224509",
+    "caixa_default": 24
+  },
+  {
+    "id": "170",
+    "name": "BEBIDA DE MALTE 330ML GRACE",
+    "ean": "503513921365",
+    "ean_cdi": "5035139213651",
+    "itf": "0503513937365",
+    "itf_cdi": "05035139373652",
+    "codigo_auchan": "2224516",
+    "caixa_default": 24
+  },
+  {
+    "id": "171",
+    "name": "PREP. P/PANCAKES MRS BUTTER: WORTHS",
+    "ean": "064420930112",
+    "ean_cdi": "644209301126",
+    "itf": "1064420930112",
+    "itf_cdi": "10644209301123",
+    "codigo_auchan": "2226132",
+    "caixa_default": 12
+  },
+  {
+    "id": "172",
+    "name": "XAROPE P/PANCAKES COUNTRY: KITCHEN",
+    "ean": "064420900067",
+    "ean_cdi": "644209000678",
+    "itf": "1064420900067",
+    "itf_cdi": "10644209000675",
+    "codigo_auchan": "2226221",
+    "caixa_default": 12
+  },
+  {
+    "id": "173",
+    "name": "MACARRÃO FOODTOWN: COM QUEIJO 206G",
+    "ean": "001115322610",
+    "ean_cdi": "11153226100",
+    "itf": "1011153226100",
+    "itf_cdi": "10111532261009",
+    "codigo_auchan": "2226267",
+    "caixa_default": 24
+  },
+  {
+    "id": "174",
+    "name": "MOLHO PARA PATO A PEQUIM 383GR LEE KUM KEE",
+    "ean": "007889512409",
+    "ean_cdi": "78895124095",
+    "itf": "3007889512409",
+    "itf_cdi": "30078895124096",
+    "codigo_auchan": "2228102",
+    "caixa_default": 12
+  },
+  {
+    "id": "175",
+    "name": "BOLACHA DE SESAMO 130G. 8PÇS",
+    "ean": "337914010170",
+    "ean_cdi": "3379140101708",
+    "itf": "0337914750609",
+    "itf_cdi": "3379147506094",
+    "codigo_auchan": "2478935",
+    "caixa_default": 50
+  },
+  {
+    "id": "176",
+    "name": "REBUÇADO GENGIBRE 56G SINA",
+    "ean": "001174761510",
+    "ean_cdi": "11747615105",
+    "itf": "1001174761510",
+    "itf_cdi": "10011747615102",
+    "codigo_auchan": "2478943",
+    "caixa_default": 50
+  },
+  {
+    "id": "177",
+    "name": "MOLHO OYSTER PANDA BRAND 255G LEEKUM KEE",
+    "ean": "007889530001",
+    "ean_cdi": "78895300017",
+    "itf": "3007889530001",
+    "itf_cdi": "30078895300018",
+    "codigo_auchan": "2596178",
+    "caixa_default": 12
+  },
+  {
+    "id": "178",
+    "name": "ÓLEO PALMA (PET) 500ML KTC",
+    "ean": "501363510191",
+    "ean_cdi": "5013635101917",
+    "itf": "0501363510196",
+    "itf_cdi": "5013635101962",
+    "codigo_auchan": "2663329",
+    "caixa_default": 12
+  },
+  {
+    "id": "179",
+    "name": "OLEO COCO 500ML KTC",
+    "ean": "501363548202",
+    "ean_cdi": "5013635482023",
+    "itf": "0501363510281",
+    "itf_cdi": "5013635102815",
+    "codigo_auchan": "2663872",
+    "caixa_default": 12
+  },
+  {
+    "id": "180",
+    "name": "APERITIVO INDIANO KRISHNA TIKHI SEV 200GR",
+    "ean": "614657300000",
+    "ean_cdi": "6146573000000",
+    "itf": "1614657300000",
+    "itf_cdi": "16146573000007",
+    "codigo_auchan": "2708209",
+    "caixa_default": 14
+  },
+  {
+    "id": "181",
+    "name": "APERITIVO INDIANO KRISHNA DAL MUTH 200GR",
+    "ean": "614659000000",
+    "ean_cdi": "6146590000007",
+    "itf": "1614659000000",
+    "itf_cdi": "16146590000004",
+    "codigo_auchan": "2708213",
+    "caixa_default": 14
+  },
+  {
+    "id": "182",
+    "name": "APERITIVO INDIANO KRISHNA FULI GATHIA 200GR",
+    "ean": "614656400000",
+    "ean_cdi": "6146564000002",
+    "itf": "1614656400000",
+    "itf_cdi": "16146564000009",
+    "codigo_auchan": "2708215",
+    "caixa_default": 14
+  },
+  {
+    "id": "183",
+    "name": "APERITIVO INDIANO KRISHNA BOMBAY MIX 200GR",
+    "ean": "614655000000",
+    "ean_cdi": "6146550000009",
+    "itf": "1614655000000",
+    "itf_cdi": "16146550000006",
+    "codigo_auchan": "2708216",
+    "caixa_default": 14
+  },
+  {
+    "id": "184",
+    "name": "MOLHO RÁBANO 136G COLMAN'S",
+    "ean": "871410053620",
+    "ean_cdi": "8714100536209",
+    "itf": "0871410061085",
+    "itf_cdi": "08714100610855",
+    "codigo_auchan": "2734844",
+    "caixa_default": 8
+  },
+  {
+    "id": "185",
+    "name": "MOLHO MENTA 165G COLMAN´S",
+    "ean": "871410053618",
+    "ean_cdi": "8714100536186",
+    "itf": "0871410061084",
+    "itf_cdi": "08714100610848",
+    "codigo_auchan": "2734874",
+    "caixa_default": 8
+  },
+  {
+    "id": "186",
+    "name": "MOLHO DE TARTARO 144G COLMAN´S",
+    "ean": "871410053614",
+    "ean_cdi": "8714100536148",
+    "itf": "0871410061083",
+    "itf_cdi": "08714100610831",
+    "codigo_auchan": "2745818",
+    "caixa_default": 8
+  },
+  {
+    "id": "187",
+    "name": "COGUMELO BLACK FUNGUS 50G JADE PHOENIX",
+    "ean": "931043207005",
+    "ean_cdi": "9310432070054",
+    "itf": "2931043207005",
+    "itf_cdi": "29310432070058",
+    "codigo_auchan": "2880656",
+    "caixa_default": 10
+  },
+  {
+    "id": "188",
+    "name": "DOCE LEITE 250G DON GAUCHO",
+    "ean": "843656279001",
+    "ean_cdi": "8436562790011",
+    "itf": "1843656279001",
+    "itf_cdi": "18436562790018",
+    "codigo_auchan": "3010473",
+    "caixa_default": 6
+  },
+  {
+    "id": "189",
+    "name": "MOLHO DE FEIJÃO PICANTE 368G LEE KUM KEE",
+    "ean": "007889573103",
+    "ean_cdi": "78895731033",
+    "itf": "3007889573103",
+    "itf_cdi": "30078895731034",
+    "codigo_auchan": "3335515",
+    "caixa_default": 12
+  },
+  {
+    "id": "190",
+    "name": "MOLHO DE AMENDOIM 226G LEE KUM KEE",
+    "ean": "007889592001",
+    "ean_cdi": "78895920017",
+    "itf": "3007889592001",
+    "itf_cdi": "30078895920018",
+    "codigo_auchan": "3335517",
+    "caixa_default": 12
+  },
+  {
+    "id": "191",
+    "name": "MOLHO DE AMEIXA 397G  LEE KUM KEE",
+    "ean": "007889512300",
+    "ean_cdi": "78895123005",
+    "itf": "3007889512300",
+    "itf_cdi": "30078895123006",
+    "codigo_auchan": "3356487",
+    "caixa_default": 12
+  },
+  {
+    "id": "192",
+    "name": "MOLHO DE SOJA PREMIUM DARK 150ML  LEE KUM KEE",
+    "ean": "007889513528",
+    "ean_cdi": "78895135282",
+    "itf": "3007889513528",
+    "itf_cdi": "30078895135283",
+    "codigo_auchan": "3356495",
+    "caixa_default": 12
+  },
+  {
+    "id": "193",
+    "name": "PASTA DE AMEIXA UMEBOSHI PROVIDA 250GR",
+    "ean": "560235390317",
+    "ean_cdi": "5602353903172",
+    "itf": "1560235390317",
+    "itf_cdi": "15602353903179",
+    "codigo_auchan": "3368845",
+    "caixa_default": 6
+  },
+  {
+    "id": "194",
+    "name": "MOLHO PICKLE 360G BRANSTON ORIGINAL",
+    "ean": "506033650238",
+    "ean_cdi": "5060336502383",
+    "itf": "0506033650503",
+    "itf_cdi": "5060336505032",
+    "codigo_auchan": "3473768",
+    "caixa_default": 6
+  },
+  {
+    "id": "195",
+    "name": "PASTA GENGIBRE LEE KUM KEE: 326G",
+    "ean": "007889540457",
+    "ean_cdi": "78895404579",
+    "itf": "3007889540457",
+    "itf_cdi": "30078895404570",
+    "codigo_auchan": "3486772",
+    "caixa_default": 12
+  },
+  {
+    "id": "196",
+    "name": "ALHO PICADO 326G LEE KUM KEE",
+    "ean": "007889540557",
+    "ean_cdi": "78895405576",
+    "itf": "3007889540557",
+    "itf_cdi": "30078895405577",
+    "codigo_auchan": "3486793",
+    "caixa_default": 12
+  },
+  {
+    "id": "197",
+    "name": "MOLHO MEL E SOJA 70GR LEE KUM KEE",
+    "ean": "007889513117",
+    "ean_cdi": "78895131178",
+    "itf": "3007889513117",
+    "itf_cdi": "30078895131179",
+    "codigo_auchan": "3486796",
+    "caixa_default": 12
+  },
+  {
+    "id": "198",
+    "name": "ALGAS SABOR A KIMCHI 4G KWANGCHEON",
+    "ean": "880927350106",
+    "ean_cdi": "8809273501069",
+    "itf": "1880927350175",
+    "itf_cdi": "18809273501752",
+    "codigo_auchan": "3486800",
+    "caixa_default": 8
+  },
+  {
+    "id": "199",
+    "name": "PASTA PIMENTO VERMELHO 170G GOCHUJANG OBAP",
+    "ean": "931043200469",
+    "ean_cdi": "9310432004691",
+    "itf": "1931043200469",
+    "itf_cdi": "19310432004698",
+    "codigo_auchan": "3486816",
+    "caixa_default": 24
+  },
+  {
+    "id": "200",
+    "name": "MOLHO MA PO TOFU 80G LEE KUM KEE",
+    "ean": "007889512033",
+    "ean_cdi": "78895120332",
+    "itf": "3007889516068",
+    "itf_cdi": "30078895160681",
+    "codigo_auchan": "3486854",
+    "caixa_default": 12
+  },
+  {
+    "id": "201",
+    "name": "FAVA FRITA PICANTE 86G KWS FOODS",
+    "ean": "693576892111",
+    "ean_cdi": "6935768921110",
+    "itf": "1693576892111",
+    "itf_cdi": "16935768921117",
+    "codigo_auchan": "3486896",
+    "caixa_default": 24
+  },
+  {
+    "id": "202",
+    "name": "ROLO ALGA TOSTADA BBQ 3G TAOKAENOI",
+    "ean": "885870241495",
+    "ean_cdi": "8858702414951",
+    "itf": "1885870241495",
+    "itf_cdi": "18858702414958",
+    "codigo_auchan": "3486898",
+    "caixa_default": 9
+  },
+  {
+    "id": "203",
+    "name": "ROLO ALGA TOSTADA PICANTE 3G TAOKAENOI",
+    "ean": "885870241084",
+    "ean_cdi": "8858702410847",
+    "itf": "1885870241084",
+    "itf_cdi": "18858702410844",
+    "codigo_auchan": "3486899",
+    "caixa_default": 9
+  },
+  {
+    "id": "204",
+    "name": "ROLO ALGA TOSTADA ORIGINAL/CLÁSSICO",
+    "ean": "885870241081",
+    "ean_cdi": "8858702410816",
+    "itf": "1885870241081",
+    "itf_cdi": "18858702410813",
+    "codigo_auchan": "3486902",
+    "caixa_default": 9
+  },
+  {
+    "id": "205",
+    "name": "MOCHI BUBBLE  MILK TEA 120GR TAIWAN DESSERT",
+    "ean": "471193103516",
+    "ean_cdi": "4711931035165",
+    "itf": "1471193103516",
+    "itf_cdi": "14711931035162",
+    "codigo_auchan": "3486908",
+    "caixa_default": 24
+  },
+  {
+    "id": "206",
+    "name": "BEBIDA SAKE 300ML HBI",
+    "ean": "693726446757",
+    "ean_cdi": "6937264467574",
+    "itf": "6937264467581",
+    "itf_cdi": "6937264467581",
+    "codigo_auchan": "3491006",
+    "caixa_default": 24
+  },
+  {
+    "id": "207",
+    "name": "BEBIDA SAKE 700ML BAEKWHA SOOBOK",
+    "ean": "880103061136",
+    "ean_cdi": "8801030611363",
+    "itf": "1880103061136",
+    "itf_cdi": "18801030611360",
+    "codigo_auchan": "3492858",
+    "caixa_default": 0
+  },
+  {
+    "id": "208",
+    "name": "BASE/MOLHO P/ SOPA SICHUAN HOT POT 70G LEE KUM",
+    "ean": "007889512339",
+    "ean_cdi": "78895123395",
+    "itf": "8007889512340",
+    "itf_cdi": "80078895123407",
+    "codigo_auchan": "3500174",
+    "caixa_default": 12
+  },
+  {
+    "id": "209",
+    "name": "MOCHI FRAMBOESA 110GR TAIWAN DESSERT",
+    "ean": "471193103492",
+    "ean_cdi": "4711931034922",
+    "itf": "1471193103492",
+    "itf_cdi": "14711931034929",
+    "codigo_auchan": "3512657",
+    "caixa_default": 24
+  },
+  {
+    "id": "210",
+    "name": "MOCHI LIMÃO 110G TAIWAN DESSERT",
+    "ean": "471193103494",
+    "ean_cdi": "4711931034946",
+    "itf": "1471993103494",
+    "itf_cdi": "14719931034949",
+    "codigo_auchan": "3512658",
+    "caixa_default": 24
+  },
+  {
+    "id": "211",
+    "name": "CRACKERS CAMARÃO 75G NONGSHIM",
+    "ean": "880104321612",
+    "ean_cdi": "8801043216128",
+    "itf": "1880104321612",
+    "itf_cdi": "18801043216125",
+    "codigo_auchan": "3515462",
+    "caixa_default": 20
+  },
+  {
+    "id": "212",
+    "name": "AROS CEBOLA 50G NONGSHIM",
+    "ean": "880104321614",
+    "ean_cdi": "8801043216142",
+    "itf": "0880104370147",
+    "itf_cdi": "08801043701471",
+    "codigo_auchan": "3515464",
+    "caixa_default": 20
+  },
+  {
+    "id": "213",
+    "name": "GELATINA SABOR A MORANGO 70G WANT WANT",
+    "ean": "692054886713",
+    "ean_cdi": "6920548867139",
+    "itf": "1692054886713",
+    "itf_cdi": "16920548867136",
+    "codigo_auchan": "3516720",
+    "caixa_default": 20
+  },
+  {
+    "id": "214",
+    "name": "GELATINA SABOR A UVA 70G WANT WANT",
+    "ean": "692054886207",
+    "ean_cdi": "6920548862073",
+    "itf": "1692054886207",
+    "itf_cdi": "16920548862070",
+    "codigo_auchan": "3516750",
+    "caixa_default": 20
+  },
+  {
+    "id": "215",
+    "name": "BARRAS DE ARROZ 100G MR. MIN",
+    "ean": "880941930029",
+    "ean_cdi": "8809419300297",
+    "itf": "0880941930363",
+    "itf_cdi": "8809419303632",
+    "codigo_auchan": "3573593",
+    "caixa_default": 14
+  },
+  {
+    "id": "216",
+    "name": "BARRAS DE GRÃO 100G MR. MIN",
+    "ean": "880941930336",
+    "ean_cdi": "8809419303366",
+    "itf": "0880941930364",
+    "itf_cdi": "8809419303649",
+    "codigo_auchan": "3573599",
+    "caixa_default": 14
+  },
+  {
+    "id": "217",
+    "name": "CHIPS DE ALGAS SABOR ORIGINAL 4G MR. MIN",
+    "ean": "880917881707",
+    "ean_cdi": "8809178817074",
+    "itf": "1880917881707",
+    "itf_cdi": "18809178817071",
+    "codigo_auchan": "3573605",
+    "caixa_default": 36
+  },
+  {
+    "id": "218",
+    "name": "CHIPS DE ALGAS SABOR WASABI 4G MR. MIN",
+    "ean": "880917881708",
+    "ean_cdi": "8809178817081",
+    "itf": "1880917881965",
+    "itf_cdi": "18809178819655",
+    "codigo_auchan": "3573619",
+    "caixa_default": 36
+  },
+  {
+    "id": "219",
+    "name": "NOODLES UDON SABOR PICANTE 220G MR. MIN",
+    "ean": "880941930101",
+    "ean_cdi": "8809419301010",
+    "itf": "0880941930103",
+    "itf_cdi": "8809419301034",
+    "codigo_auchan": "3573631",
+    "caixa_default": 12
+  },
+  {
+    "id": "220",
+    "name": "NOODLES UDON SABOR ORIGINAL 220G MR. MIN",
+    "ean": "880938663000",
+    "ean_cdi": "8809386630007",
+    "itf": "0880938663001",
+    "itf_cdi": "8809386630014",
+    "codigo_auchan": "3573645",
+    "caixa_default": 12
+  },
+  {
+    "id": "221",
+    "name": "MOLHO DE CHILLI, LIMA E MEL THAI DANCER",
+    "ean": "885264611150",
+    "ean_cdi": "8852646111501",
+    "itf": "0885264600284",
+    "itf_cdi": "08852646002847",
+    "codigo_auchan": "3617421",
+    "caixa_default": 12
+  },
+  {
+    "id": "222",
+    "name": "PASTA DE CARIL VERDE THAI DANCER",
+    "ean": "885264630227",
+    "ean_cdi": "8852646302275",
+    "itf": "0885264600663",
+    "itf_cdi": "08852646006630",
+    "codigo_auchan": "3617424",
+    "caixa_default": 12
+  },
+  {
+    "id": "223",
+    "name": "MOLHO DE MANGOSTÃO E CHILLI THAI DANCER",
+    "ean": "885264613150",
+    "ean_cdi": "8852646131509",
+    "itf": "0885264600287",
+    "itf_cdi": "08852646002878",
+    "codigo_auchan": "3617425",
+    "caixa_default": 12
+  },
+  {
+    "id": "224",
+    "name": "MOLHO DE ANANÁS E CHILLI THAI DANCER",
+    "ean": "885264610150",
+    "ean_cdi": "8852646101502",
+    "itf": "0885264600286",
+    "itf_cdi": "08852646002861",
+    "codigo_auchan": "3617441",
+    "caixa_default": 12
+  },
+  {
+    "id": "225",
+    "name": "MOLHO DE MAIONESE TERIYAKI THAI DANCER",
+    "ean": "885264650200",
+    "ean_cdi": "8852646502002",
+    "itf": "0885264600826",
+    "itf_cdi": "08852646008269",
+    "codigo_auchan": "3617489",
+    "caixa_default": 12
+  },
+  {
+    "id": "226",
+    "name": "MOLHO DE MAIONESE WASABI THAI DANCER",
+    "ean": "885264649200",
+    "ean_cdi": "8852646492006",
+    "itf": "0885264600825",
+    "itf_cdi": "08852646008252",
+    "codigo_auchan": "3617607",
+    "caixa_default": 12
+  },
+  {
+    "id": "227",
+    "name": "MOLHO DE ESPECIARIAS THAI E LONGAN THAI DANCER",
+    "ean": "885264612150",
+    "ean_cdi": "8852646121500",
+    "itf": "0885264600285",
+    "itf_cdi": "08852646002854",
+    "codigo_auchan": "3617660",
+    "caixa_default": 12
+  },
+  {
+    "id": "228",
+    "name": "SEMENTES DE SÉSAMO COM WASABI 100G",
+    "ean": "064070000301",
+    "ean_cdi": "640700003019",
+    "itf": "1064070000301",
+    "itf_cdi": "10640700003016",
+    "codigo_auchan": "3617664",
+    "caixa_default": 10
+  },
+  {
+    "id": "229",
+    "name": "SEMENTES DE SÉSAMO COM WASABI FOREWAY",
+    "ean": "064070000301",
+    "ean_cdi": "640700003019",
+    "itf": "1064070000301",
+    "itf_cdi": "10640700003016",
+    "codigo_auchan": "3617664",
+    "caixa_default": 12
+  },
+  {
+    "id": "230",
+    "name": "HOSTIAS/CRACKERS CAMARÃO 200G SAGIANG",
+    "ean": "893474601632",
+    "ean_cdi": "8934746016327",
+    "itf": "0893474605102",
+    "itf_cdi": "8934746051021",
+    "codigo_auchan": "3629185",
+    "caixa_default": 55
+  },
+  {
+    "id": "231",
+    "name": "MIX APERITIVOS GOLDEN TURTLE:JAPÃO 150G",
+    "ean": "871770361697",
+    "ean_cdi": "8717703616972",
+    "itf": "0871770361698",
+    "itf_cdi": "08717703616989",
+    "codigo_auchan": "3629743",
+    "caixa_default": 10
+  },
+  {
+    "id": "232",
+    "name": "REFEIÇÃO TADKA DAL SWAD:300G",
+    "ean": "060817102507",
+    "ean_cdi": "608171025077",
+    "itf": "0060817102508",
+    "itf_cdi": "608171025084",
+    "codigo_auchan": "3629747",
+    "caixa_default": 10
+  },
+  {
+    "id": "233",
+    "name": "REFEIÇÃO MUTTER PANER SWAD:300G",
+    "ean": "060817102510",
+    "ean_cdi": "608171025107",
+    "itf": "0060817102511",
+    "itf_cdi": "608171025114",
+    "codigo_auchan": "3629748",
+    "caixa_default": 10
+  },
+  {
+    "id": "234",
+    "name": "REFEIÇÃO ALOO MUTTER SWAD:300G",
+    "ean": "060817102501",
+    "ean_cdi": "608171025015",
+    "itf": "0060817102502",
+    "itf_cdi": "608171025022",
+    "codigo_auchan": "3629749",
+    "caixa_default": 10
+  },
+  {
+    "id": "235",
+    "name": "REFEIÇÃO TIKKA MASALA SWAD:300G",
+    "ean": "060817102516",
+    "ean_cdi": "608171025169",
+    "itf": "0060817102517",
+    "itf_cdi": "608171025176",
+    "codigo_auchan": "3629750",
+    "caixa_default": 10
+  },
+  {
+    "id": "236",
+    "name": "SEMENTES DE SÉSAMO PRETAS TOSTADAS FOREWAY",
+    "ean": "064070000323",
+    "ean_cdi": "640700003231",
+    "itf": "1064070000323",
+    "itf_cdi": "10640700003238",
+    "codigo_auchan": "3630885",
+    "caixa_default": 12
+  },
+  {
+    "id": "237",
+    "name": "MOCHI DE MISTURA 450G YUKI & LOVE",
+    "ean": "471290501610",
+    "ean_cdi": "4712905016104",
+    "itf": "2471290501610",
+    "itf_cdi": "24712905016108",
+    "codigo_auchan": "3635494",
+    "caixa_default": 12
+  },
+  {
+    "id": "238",
+    "name": "BISCOITOS DA SORTE TIN LUNG:12 UNID 72G",
+    "ean": "871886814571",
+    "ean_cdi": "8718868145710",
+    "itf": "1871886814571",
+    "itf_cdi": "18718868145717",
+    "codigo_auchan": "3646508",
+    "caixa_default": 15
+  },
+  {
+    "id": "239",
+    "name": "PICKLES SWAD:MANGA PICANTE 300G",
+    "ean": "060817103148",
+    "ean_cdi": "0608171031481",
+    "itf": "0060817103083",
+    "itf_cdi": "00608171030835",
+    "codigo_auchan": "3653111",
+    "caixa_default": 6
+  },
+  {
+    "id": "240",
+    "name": "SNACKS SWAD:PAPPADUM DE PIMENTA PRETA 200G",
+    "ean": "060817106071",
+    "ean_cdi": "0608171060719",
+    "itf": "0060817106009",
+    "itf_cdi": "00608171060092",
+    "codigo_auchan": "3653113",
+    "caixa_default": 10
+  },
+  {
+    "id": "241",
+    "name": "SNACKS SWAD:PAPPADUM DE COMINHOS",
+    "ean": "060817106029",
+    "ean_cdi": "0608171060290",
+    "itf": "0060817106030",
+    "itf_cdi": "00608171060306",
+    "codigo_auchan": "3653118",
+    "caixa_default": 10
+  },
+  {
+    "id": "242",
+    "name": "PAPPADUM SWAD:DE ALHO 200G",
+    "ean": "060817106008",
+    "ean_cdi": "0608171060085",
+    "itf": "0060817106072",
+    "itf_cdi": "00608171060726",
+    "codigo_auchan": "3653121",
+    "caixa_default": 10
+  },
+  {
+    "id": "243",
+    "name": "PAPPADUM SWAD:SIMPLES",
+    "ean": "060817106064",
+    "ean_cdi": "0608171060641",
+    "itf": "0060817106065",
+    "itf_cdi": "00608171060658",
+    "codigo_auchan": "3653155",
+    "caixa_default": 10
+  },
+  {
+    "id": "244",
+    "name": "NOODLES MR. MIN:COPO RAMEN PICANTE 65G",
+    "ean": "880112854268",
+    "ean_cdi": "8801128542685",
+    "itf": "0880112854278",
+    "itf_cdi": "08801128542784",
+    "codigo_auchan": "3655850",
+    "caixa_default": 24
+  },
+  {
+    "id": "245",
+    "name": "NOODLES MR. MIN:COPO RAMEN FRANGO 65G",
+    "ean": "880112854270",
+    "ean_cdi": "8801128542708",
+    "itf": "0880112854280",
+    "itf_cdi": "08801128542807",
+    "codigo_auchan": "3655852",
+    "caixa_default": 24
+  },
+  {
+    "id": "246",
+    "name": "MOCHI TAIWAN DESSERT: BANANA 80G",
+    "ean": "471193103386",
+    "ean_cdi": "4711931033864",
+    "itf": "1841105500867",
+    "itf_cdi": "18411055008672",
+    "codigo_auchan": "3657488",
+    "caixa_default": 24
+  },
+  {
+    "id": "247",
+    "name": "MOCHI TAIWAN DESSERT: CHOCOLATE 80G",
+    "ean": "471193103052",
+    "ean_cdi": "4711931030528",
+    "itf": "1471193103052",
+    "itf_cdi": "14711931030525",
+    "codigo_auchan": "3657489",
+    "caixa_default": 24
+  },
+  {
+    "id": "248",
+    "name": "MOCHI ROYAL FAMILY:TARO(SEM GLUTEN) 210G",
+    "ean": "471193103228",
+    "ean_cdi": "4711931032287",
+    "itf": "1471193103228",
+    "itf_cdi": "14711931032284",
+    "codigo_auchan": "3657496",
+    "caixa_default": 24
+  },
+  {
+    "id": "249",
+    "name": "MOCHI ROYAL FAMILY: CHA VERDE(SEM GLUTEN) 210G",
+    "ean": "471193103227",
+    "ean_cdi": "4711931032270",
+    "itf": "1471193103227",
+    "itf_cdi": "14711931032277",
+    "codigo_auchan": "3657497",
+    "caixa_default": 24
+  },
+  {
+    "id": "250",
+    "name": "MOCHI TAIWAN DESSERT:PÊSSEGO 104G",
+    "ean": "471193103576",
+    "ean_cdi": "4711931035769",
+    "itf": "1471193103576",
+    "itf_cdi": "14711931035766",
+    "codigo_auchan": "3657510",
+    "caixa_default": 24
+  },
+  {
+    "id": "251",
+    "name": "MOCHI TAIWAN DESSERT:MANGA 104G",
+    "ean": "471193103575",
+    "ean_cdi": "4711931035752",
+    "itf": "1471193103575",
+    "itf_cdi": "14711931035759",
+    "codigo_auchan": "3657512",
+    "caixa_default": 24
+  },
+  {
+    "id": "252",
+    "name": "KETCHUP ORIGINAL 300ML HELA",
+    "ean": "402740018794",
+    "ean_cdi": "4027400187946",
+    "itf": "0402740018795",
+    "itf_cdi": "04027400187953",
+    "codigo_auchan": "3657513",
+    "caixa_default": 6
+  },
+  {
+    "id": "253",
+    "name": "TOPOKKI BOLO DE ARROZ YOPOKKI:DOCE E PICANTE 140G",
+    "ean": "880905440903",
+    "ean_cdi": "8809054409034",
+    "itf": "2880905440903",
+    "itf_cdi": "28809054409038",
+    "codigo_auchan": "3657631",
+    "caixa_default": 12
+  },
+  {
+    "id": "254",
+    "name": "TOPOKKI BOLO DE ARROZ YOPOKKI:SOJA 120G",
+    "ean": "880905440052",
+    "ean_cdi": "8809054400529",
+    "itf": "1880905440052",
+    "itf_cdi": "18809054400526",
+    "codigo_auchan": "3657635",
+    "caixa_default": 12
+  },
+  {
+    "id": "255",
+    "name": "TOPOKKI MATAMUN:BOLO DE ARROZ 600G",
+    "ean": "880905440148",
+    "ean_cdi": "8809054401489",
+    "itf": "1880905440148",
+    "itf_cdi": "18809054401486",
+    "codigo_auchan": "3657647",
+    "caixa_default": 12
+  },
+  {
+    "id": "256",
+    "name": "TOPOKKI BOLO DE ARROZ YOPOKKI:PICANTE 120G",
+    "ean": "880905440152",
+    "ean_cdi": "8809054401526",
+    "itf": "1880905440152",
+    "itf_cdi": "18809054401523",
+    "codigo_auchan": "3657669",
+    "caixa_default": 12
+  },
+  {
+    "id": "257",
+    "name": "CARNE SECA KINGS:VEGAN 25G",
+    "ean": "506007965265",
+    "ean_cdi": "5060079652659",
+    "itf": "0506007965265",
+    "itf_cdi": "05060079652659",
+    "codigo_auchan": "3657673",
+    "caixa_default": 16
+  },
+  {
+    "id": "258",
+    "name": "CONFITADO DE PATO POLGRI:1350(688,5)G",
+    "ean": "841105500867",
+    "ean_cdi": "8411055008675",
+    "itf": "1841105500867",
+    "itf_cdi": "18411055008672",
+    "codigo_auchan": "3657681",
+    "caixa_default": 6
+  },
+  {
+    "id": "259",
+    "name": "GLUTAMATO AJINOMOTO: 200G",
+    "ean": "370041730012",
+    "ean_cdi": "3700417300126",
+    "itf": "0370041730011",
+    "itf_cdi": "03700417300119",
+    "codigo_auchan": "3657686",
+    "caixa_default": 12
+  },
+  {
+    "id": "260",
+    "name": "PASTA DE CARIL VERMELHO 227G THAI DANCER",
+    "ean": "885264629227",
+    "ean_cdi": "8852646292279",
+    "itf": "0885264600662",
+    "itf_cdi": "08852646006623",
+    "codigo_auchan": "3662181",
+    "caixa_default": 12
+  },
+  {
+    "id": "261",
+    "name": "PASTA DE CARIL AMARELO 227G THAI DANCER",
+    "ean": "885264631227",
+    "ean_cdi": "8852646312274",
+    "itf": "0885264600664",
+    "itf_cdi": "08852646006647",
+    "codigo_auchan": "3662190",
+    "caixa_default": 12
+  },
+  {
+    "id": "262",
+    "name": "MOLHO SATAY 227G THAI DANCER",
+    "ean": "885264621227",
+    "ean_cdi": "8852646212277",
+    "itf": "0885264600374",
+    "itf_cdi": "08852646003745",
+    "codigo_auchan": "3662196",
+    "caixa_default": 12
+  },
+  {
+    "id": "263",
+    "name": "MOLHO PAD THAI 200ML PANTAI",
+    "ean": "885005800427",
+    "ean_cdi": "8850058004275",
+    "itf": "1885005800427",
+    "itf_cdi": "18850058004272",
+    "codigo_auchan": "3662235",
+    "caixa_default": 12
+  },
+  {
+    "id": "264",
+    "name": "MOLHO YAKISOBA 253ML(300G) OTAFUKU",
+    "ean": "497007716357",
+    "ean_cdi": "4970077163570",
+    "itf": "1497007716357",
+    "itf_cdi": "14970077163577",
+    "codigo_auchan": "3662241",
+    "caixa_default": 12
+  },
+  {
+    "id": "265",
+    "name": "PASTA DE MISO BRANCA 400G HIKARI",
+    "ean": "490266300752",
+    "ean_cdi": "4902663007524",
+    "itf": "1490266300752",
+    "itf_cdi": "14902663007521",
+    "codigo_auchan": "3662244",
+    "caixa_default": 20
+  },
+  {
+    "id": "266",
+    "name": "ALGAS CROCANTES PICANTES 32G TAOKAENOI",
+    "ean": "885870242167",
+    "ean_cdi": "8858702421676",
+    "itf": "0885870242168",
+    "itf_cdi": "08858702421683",
+    "codigo_auchan": "3662253",
+    "caixa_default": 6
+  },
+  {
+    "id": "267",
+    "name": "FARINHA DE ARROZ GLUTINOSO 400G FARMER",
+    "ean": "885052115121",
+    "ean_cdi": "8850521151215",
+    "itf": "3885052115121",
+    "itf_cdi": "38850521151216",
+    "codigo_auchan": "3662324",
+    "caixa_default": 34
+  },
+  {
+    "id": "268",
+    "name": "SNACKS GOLDEN TURTLE:WASABI EDAMAME 140G",
+    "ean": "872030110077",
+    "ean_cdi": "8720301100774",
+    "itf": "0872030110078",
+    "itf_cdi": "08720301100781",
+    "codigo_auchan": "3662326",
+    "caixa_default": 12
+  },
+  {
+    "id": "269",
+    "name": "PASTA CARIL PICANTE 270G PASCO",
+    "ean": "717860000013",
+    "ean_cdi": "7178600000133",
+    "itf": "0717860000107",
+    "itf_cdi": "07178600001079",
+    "codigo_auchan": "3668508",
+    "caixa_default": 6
+  },
+  {
+    "id": "270",
+    "name": "PASTA CARIL SUAVE 270G PASCO",
+    "ean": "717860000014",
+    "ean_cdi": "7178600000140",
+    "itf": "0717860000106",
+    "itf_cdi": "07178600001062",
+    "codigo_auchan": "3668514",
+    "caixa_default": 6
+  },
+  {
+    "id": "271",
+    "name": "KETCHUP DE ESPECIARIAS SUAVE 300ML HELA",
+    "ean": "402740018797",
+    "ean_cdi": "4027400187977",
+    "itf": "0402740018798",
+    "itf_cdi": "04027400187984",
+    "codigo_auchan": "3668526",
+    "caixa_default": 6
+  },
+  {
+    "id": "272",
+    "name": "NOODLES YAKISOBA ORIGINAL 132G MR.MIN",
+    "ean": "880941930305",
+    "ean_cdi": "8809419303052",
+    "itf": "0880941930362",
+    "itf_cdi": "08809419303625",
+    "codigo_auchan": "3679954",
+    "caixa_default": 16
+  },
+  {
+    "id": "273",
+    "name": "SNACK BATATA FRITA PICANTE LISA 60G KOIKEYA",
+    "ean": "490133500366",
+    "ean_cdi": "4901335003666",
+    "itf": "1490133500366",
+    "itf_cdi": "14901335003663",
+    "codigo_auchan": "3679957",
+    "caixa_default": 12
+  },
+  {
+    "id": "274",
+    "name": "BUBBLE TEA KIT MATCHA  TOKIMEKI 255G",
+    "ean": "872081277020",
+    "ean_cdi": "8720812770206",
+    "itf": "1872081277020",
+    "itf_cdi": "18720812770203",
+    "codigo_auchan": "3689334",
+    "caixa_default": 12
+  },
+  {
+    "id": "275",
+    "name": "BUBBLE TEA KIT COCOA MOCHA TOKIMEKI 255G",
+    "ean": "872081277021",
+    "ean_cdi": "8720812770213",
+    "itf": "1872081277021",
+    "itf_cdi": "18720812770210",
+    "codigo_auchan": "3689335",
+    "caixa_default": 12
+  },
+  {
+    "id": "276",
+    "name": "BUBBLE TEA KIT AÇUCAR MASCAVADO TOKIMEKI 255G",
+    "ean": "872081277019",
+    "ean_cdi": "8720812770190",
+    "itf": "1872081277019",
+    "itf_cdi": "18720812770197",
+    "codigo_auchan": "3689336",
+    "caixa_default": 12
+  },
+  {
+    "id": "277",
+    "name": "GENGIBRE EM PASTA 300G SWAD",
+    "ean": "060817104025",
+    "ean_cdi": "0608171040254",
+    "itf": "0060817104161",
+    "itf_cdi": "00608171041619",
+    "codigo_auchan": "3703770",
+    "caixa_default": 6
+  },
+  {
+    "id": "278",
+    "name": "SNACK ALGA WASABI 50G THE SEA SNACK CO",
+    "ean": "843564600029",
+    "ean_cdi": "8435646000299",
+    "itf": "1843564600029",
+    "itf_cdi": "18435646000296",
+    "codigo_auchan": "3706900",
+    "caixa_default": 20
+  },
+  {
+    "id": "279",
+    "name": "SNACK ALGA THE SEA SNACK CO:NATURAL 50G",
+    "ean": "843564600006",
+    "ean_cdi": "8435646000060",
+    "itf": "1843564600006",
+    "itf_cdi": "18435646000067",
+    "codigo_auchan": "3706901",
+    "caixa_default": 20
+  },
+  {
+    "id": "280",
+    "name": "MOCHI TOKIMEKI:MARSHMALLOW 120G",
+    "ean": "872081277023",
+    "ean_cdi": "8720812770237",
+    "itf": "1872081277023",
+    "itf_cdi": "18720812770234",
+    "codigo_auchan": "3706903",
+    "caixa_default": 12
+  },
+  {
+    "id": "281",
+    "name": "SNACK ALGA THE SEA SNACK CO:DOCE E PICANTE 50G",
+    "ean": "843564600023",
+    "ean_cdi": "8435646000237",
+    "itf": "1843564600023",
+    "itf_cdi": "18435646000234",
+    "codigo_auchan": "3706904",
+    "caixa_default": 20
+  },
+  {
+    "id": "282",
+    "name": "MOCHI TOKIMEKI:MATCHA 120G",
+    "ean": "872081277024",
+    "ean_cdi": "8720812770244",
+    "itf": "1872081277024",
+    "itf_cdi": "18720812770241",
+    "codigo_auchan": "3706905",
+    "caixa_default": 12
+  },
+  {
+    "id": "283",
+    "name": "NOODLES HOT & SESAME PASTE 135G BASHU FAMILY",
+    "ean": "697480607070",
+    "ean_cdi": "6974806070700",
+    "itf": "1697480607070",
+    "itf_cdi": "16974806070707",
+    "codigo_auchan": "3706908",
+    "caixa_default": 20
+  },
+  {
+    "id": "284",
+    "name": "NOODLES HOT & SOUR 135G BASHU FAMILY",
+    "ean": "697480607072",
+    "ean_cdi": "6974806070724",
+    "itf": "1697480607072",
+    "itf_cdi": "16974806070721",
+    "codigo_auchan": "3706909",
+    "caixa_default": 20
+  },
+  {
+    "id": "285",
+    "name": "NOODLES SPICY MA-LA 123G BASHU FAMILY",
+    "ean": "697480607073",
+    "ean_cdi": "6974806070731",
+    "itf": "1697480607073",
+    "itf_cdi": "16974806070738",
+    "codigo_auchan": "3706911",
+    "caixa_default": 20
+  },
+  {
+    "id": "286",
+    "name": "BEBIDA SOJU MORANGO 13% VOL 350ML JINRO",
+    "ean": "880104817914",
+    "ean_cdi": "8801048179145",
+    "itf": "1880104817801",
+    "itf_cdi": "18801048178015",
+    "codigo_auchan": "3706912",
+    "caixa_default": 20
+  },
+  {
+    "id": "287",
+    "name": "BEBIDA SOJU UVA VERDE 13% VOL 350ML JINRO",
+    "ean": "880104817910",
+    "ean_cdi": "8801048179107",
+    "itf": "1880104892110",
+    "itf_cdi": "18801048921109",
+    "codigo_auchan": "3706915",
+    "caixa_default": 20
+  },
+  {
+    "id": "288",
+    "name": "SNACK MILHO BARBECUE 80G CALBEE",
+    "ean": "489229410112",
+    "ean_cdi": "4892294101121",
+    "itf": "1489229410112",
+    "itf_cdi": "14892294101128",
+    "codigo_auchan": "3706916",
+    "caixa_default": 20
+  },
+  {
+    "id": "289",
+    "name": "BOLACHA CHOCOLATE BRANCO 50G HELLO PANDA",
+    "ean": "888807710920",
+    "ean_cdi": "8888077109206",
+    "itf": "1888807710920",
+    "itf_cdi": "18888077109203",
+    "codigo_auchan": "3706917",
+    "caixa_default": 80
+  },
+  {
+    "id": "290",
+    "name": "SNACK MILHO KABAYAKI 80G CALBEE",
+    "ean": "489229420169",
+    "ean_cdi": "4892294201692",
+    "itf": "1489229420169",
+    "itf_cdi": "14892294201699",
+    "codigo_auchan": "3706918",
+    "caixa_default": 20
+  },
+  {
+    "id": "291",
+    "name": "BOLACHA DUPLO CHOCOLATE 50G HELLO PANDA",
+    "ean": "888807710922",
+    "ean_cdi": "8888077109220",
+    "itf": "1888807710922",
+    "itf_cdi": "18888077109227",
+    "codigo_auchan": "3706919",
+    "caixa_default": 80
+  },
+  {
+    "id": "292",
+    "name": "SNACK MILHO PICANTE 80G CALBEE",
+    "ean": "489229410142",
+    "ean_cdi": "4892294101428",
+    "itf": "1489229410142",
+    "itf_cdi": "14892294101425",
+    "codigo_auchan": "3706920",
+    "caixa_default": 20
+  },
+  {
+    "id": "293",
+    "name": "BOLACHA CHOCOLATE 50G HELLO PANDA",
+    "ean": "888807710915",
+    "ean_cdi": "8888077109152",
+    "itf": "1888807710915",
+    "itf_cdi": "18888077109159",
+    "codigo_auchan": "3706921",
+    "caixa_default": 80
+  },
+  {
+    "id": "294",
+    "name": "BEBIDA RAMUNE MIRTILO 200ML HATAKOSEN",
+    "ean": "490249411004",
+    "ean_cdi": "4902494110042",
+    "itf": "1490249411004",
+    "itf_cdi": "14902494110049",
+    "codigo_auchan": "3706922",
+    "caixa_default": 30
+  },
+  {
+    "id": "295",
+    "name": "BEBIDA RAMUNE HATAKOSEN:MANGA 200ML",
+    "ean": "490249421016",
+    "ean_cdi": "4902494210162",
+    "itf": "1490249421016",
+    "itf_cdi": "14902494210169",
+    "codigo_auchan": "3706923",
+    "caixa_default": 30
+  },
+  {
+    "id": "296",
+    "name": "BEBIDA RAMUNE HATAKOSEN:MOCHI 200ML",
+    "ean": "490249423002",
+    "ean_cdi": "4902494230023",
+    "itf": "1490249423002",
+    "itf_cdi": "14902494230020",
+    "codigo_auchan": "3706924",
+    "caixa_default": 30
+  },
+  {
+    "id": "297",
+    "name": "BEBIDA RAMUNE MELÂNCIA SALGADA 200ML HATAKOSEN",
+    "ean": "490249413000",
+    "ean_cdi": "4902494130002",
+    "itf": "1490249413000",
+    "itf_cdi": "14902494130009",
+    "codigo_auchan": "3706925",
+    "caixa_default": 30
+  },
+  {
+    "id": "298",
+    "name": "GELATINA SWEET MELOW:PALHINHAS SORTIDAS 300G",
+    "ean": "871762400873",
+    "ean_cdi": "8717624008733",
+    "itf": "1871762400873",
+    "itf_cdi": "18717624008730",
+    "codigo_auchan": "3706926",
+    "caixa_default": 30
+  },
+  {
+    "id": "299",
+    "name": "NOODLES RAMEN 300G AYUKO",
+    "ean": "872030110877",
+    "ean_cdi": "8720301108770",
+    "itf": "0872030110878",
+    "itf_cdi": "08720301108787",
+    "codigo_auchan": "3706927",
+    "caixa_default": 16
+  },
+  {
+    "id": "300",
+    "name": "NOODLES AYUKO:SOMEN 300G",
+    "ean": "872030110868",
+    "ean_cdi": "8720301108688",
+    "itf": "0872030110869",
+    "itf_cdi": "08720301108695",
+    "codigo_auchan": "3706928",
+    "caixa_default": 16
+  },
+  {
+    "id": "301",
+    "name": "NOODLES AYUKO:UDON 300G",
+    "ean": "872030110874",
+    "ean_cdi": "8720301108749",
+    "itf": "0872030110875",
+    "itf_cdi": "08720301108756",
+    "codigo_auchan": "3706929",
+    "caixa_default": 16
+  },
+  {
+    "id": "302",
+    "name": "NOODLES AYUKO:SOBA 300G",
+    "ean": "872030110871",
+    "ean_cdi": "8720301108718",
+    "itf": "0872030110872",
+    "itf_cdi": "08720301108725",
+    "codigo_auchan": "3706930",
+    "caixa_default": 16
+  },
+  {
+    "id": "303",
+    "name": "PÃO JAPONÊS TOKIMEKI:MAPLE 70G",
+    "ean": "871762400822",
+    "ean_cdi": "8717624008221",
+    "itf": "1871762400822",
+    "itf_cdi": "18717624008228",
+    "codigo_auchan": "3706931",
+    "caixa_default": 12
+  },
+  {
+    "id": "304",
+    "name": "PÃO JAPONÊS TOKIMEKI:CHOCOLATE 70G",
+    "ean": "871762400818",
+    "ean_cdi": "8717624008184",
+    "itf": "1871762400818",
+    "itf_cdi": "18717624008181",
+    "codigo_auchan": "3706932",
+    "caixa_default": 12
+  },
+  {
+    "id": "305",
+    "name": "PÃO JAPONÊS TOKIMEKI:MANTEIGA SALGADA 70G",
+    "ean": "871762400820",
+    "ean_cdi": "8717624008207",
+    "itf": "1871762400820",
+    "itf_cdi": "18717624008204",
+    "codigo_auchan": "3706935",
+    "caixa_default": 12
+  },
+  {
+    "id": "306",
+    "name": "MOCHI SAN SHU GONG FOOD:MATCHA 180G",
+    "ean": "471104158065",
+    "ean_cdi": "4711041580654",
+    "itf": "1471104158065",
+    "itf_cdi": "14711041580651",
+    "codigo_auchan": "3706936",
+    "caixa_default": 20
+  },
+  {
+    "id": "307",
+    "name": "SNACK ALGAS SELECO NORI 36G",
+    "ean": "885211680788",
+    "ean_cdi": "8852116807880",
+    "itf": "0885211680789",
+    "itf_cdi": "08852116807897",
+    "codigo_auchan": "3706938",
+    "caixa_default": 6
+  },
+  {
+    "id": "308",
+    "name": "CONDIMENTOS THAI DANCER:ALHO FRITO 100G",
+    "ean": "885264603100",
+    "ean_cdi": "8852646031007",
+    "itf": "0885264600536",
+    "itf_cdi": "08852646005367",
+    "codigo_auchan": "3706940",
+    "caixa_default": 24
+  },
+  {
+    "id": "309",
+    "name": "TIRAS DE MANGA SWAD:ALPHONSO EM CALDA 450G",
+    "ean": "060817100009",
+    "ean_cdi": "0608171000098",
+    "itf": "0060817100010",
+    "itf_cdi": "00608171000104",
+    "codigo_auchan": "3706941",
+    "caixa_default": 12
+  },
+  {
+    "id": "310",
+    "name": "BATATAS FRITAS KOIKEYA:WASABI E NORI 100G",
+    "ean": "490133500607",
+    "ean_cdi": "4901335006070",
+    "itf": "1490133500607",
+    "itf_cdi": "14901335006077",
+    "codigo_auchan": "3706943",
+    "caixa_default": 12
+  },
+  {
+    "id": "311",
+    "name": "BATATAS FRITAS KOIKEYA:TERIYAKI 100G",
+    "ean": "490133500608",
+    "ean_cdi": "4901335006087",
+    "itf": "1490133500608",
+    "itf_cdi": "14901335006084",
+    "codigo_auchan": "3706946",
+    "caixa_default": 12
+  },
+  {
+    "id": "312",
+    "name": "BATATAS FRITAS KOIKEYA:PICKLES DE AMEIXA 100G",
+    "ean": "490133500396",
+    "ean_cdi": "4901335003963",
+    "itf": "1490133500396",
+    "itf_cdi": "14901335003960",
+    "codigo_auchan": "3706947",
+    "caixa_default": 12
+  },
+  {
+    "id": "313",
+    "name": "BUBBLE TEA KIT  MORANGO 255G TOKIMEKI",
+    "ean": "872081277075",
+    "ean_cdi": "8720812770756",
+    "itf": "1872081277075",
+    "itf_cdi": "18720812770753",
+    "codigo_auchan": "3732353",
+    "caixa_default": 12
+  },
+  {
+    "id": "314",
+    "name": "BUBBLE TEA KIT  TARO 255G TOKIMEKI",
+    "ean": "872081277076",
+    "ean_cdi": "8720812770763",
+    "itf": "1872081277076",
+    "itf_cdi": "18720812770760",
+    "codigo_auchan": "3732354",
+    "caixa_default": 12
+  },
+  {
+    "id": "315",
+    "name": "MOCHI AMENDOIM 210G  YUKI & LOVE",
+    "ean": "471290501603",
+    "ean_cdi": "4712905016036",
+    "itf": "1471290501603",
+    "itf_cdi": "14712905016033",
+    "codigo_auchan": "3737726",
+    "caixa_default": 12
+  },
+  {
+    "id": "316",
+    "name": "MOCHI CHA VERDE 210G  YUKI & LOVE",
+    "ean": "471290501606",
+    "ean_cdi": "4712905016067",
+    "itf": "471290505064",
+    "itf_cdi": "4712905050641",
+    "codigo_auchan": "3737727",
+    "caixa_default": 12
+  },
+  {
+    "id": "317",
+    "name": "BUBBLE TEA KIT TOKIMEKI ANANÁS E LEITE DE COCO 255G",
+    "ean": "872081277124",
+    "ean_cdi": "8720812771241",
+    "itf": "1872081277124",
+    "itf_cdi": "18720812771248",
+    "codigo_auchan": "3741793",
+    "caixa_default": 24
+  },
+  {
+    "id": "318",
+    "name": "BEBIDA SOJU TORANJA 13% VOL 350ML JINRO",
+    "ean": "880104892100",
+    "ean_cdi": "8801048921003",
+    "itf": "1880104817908",
+    "itf_cdi": "18801048179081",
+    "codigo_auchan": "3753659",
+    "caixa_default": 20
+  },
+  {
+    "id": "319",
+    "name": "BEBIDA SOJU AMEIXA 13% VOL 350ML JINRO",
+    "ean": "880104817912",
+    "ean_cdi": "8801048179121",
+    "itf": "1880104817912",
+    "itf_cdi": "18801048179128",
+    "codigo_auchan": "3753660",
+    "caixa_default": 20
+  },
+  {
+    "id": "320",
+    "name": "BEBIDA SOJU PESSEGO 13% VOL 350ML JINRO",
+    "ean": "880104817916",
+    "ean_cdi": "8801048179169",
+    "itf": "1880104817916",
+    "itf_cdi": "18801048179166",
+    "codigo_auchan": "3753661",
+    "caixa_default": 20
+  },
+  {
+    "id": "321",
+    "name": "MOCHI SÉSAMO 210G YUKI & LOVE",
+    "ean": "471290501604",
+    "ean_cdi": "4712905016043",
+    "itf": "1471290501604",
+    "itf_cdi": "14712905016040",
+    "codigo_auchan": "3754310",
+    "caixa_default": 12
+  },
+  {
+    "id": "322",
+    "name": "PANQUECA JAPONESA CHOCOLATE 165G TOKIMEKI",
+    "ean": "872081277056",
+    "ean_cdi": "8720812770565",
+    "itf": "1872081277056",
+    "itf_cdi": "18720812770562",
+    "codigo_auchan": "3765934",
+    "caixa_default": 12
+  },
+  {
+    "id": "323",
+    "name": "PANQUECA JAPONESA BUBBLE TEA 165G TOKIMEKI",
+    "ean": "871762400840",
+    "ean_cdi": "8717624008405",
+    "itf": "0871762400841",
+    "itf_cdi": "08717624008412",
+    "codigo_auchan": "3765937",
+    "caixa_default": 12
+  },
+  {
+    "id": "324",
+    "name": "BEBIDA DE MALTE EM PO VEGAN 400G HORLICKS",
+    "ean": "506011391964",
+    "ean_cdi": "5060113919649",
+    "itf": "0506011391965",
+    "itf_cdi": "05060113919656",
+    "codigo_auchan": "3771157",
+    "caixa_default": 6
+  },
+  {
+    "id": "325",
+    "name": "BEBIDA DE MALTE EM PO ORIGINAL  400G HORLICKS",
+    "ean": "506011391935",
+    "ean_cdi": "5060113919359",
+    "itf": "0506011391938",
+    "itf_cdi": "05060113919380",
+    "codigo_auchan": "3771159",
+    "caixa_default": 6
+  },
+  {
+    "id": "326",
+    "name": "PALITO DE BISCOITO MORANGO 40G TOKIMEKI",
+    "ean": "872081277026",
+    "ean_cdi": "8720812770268",
+    "itf": "1872081277026",
+    "itf_cdi": "18720812770265",
+    "codigo_auchan": "3771885",
+    "caixa_default": 40
+  },
+  {
+    "id": "327",
+    "name": "PALITO DE BISCOITO CHOCOLATE 40G TOKIMEKI",
+    "ean": "871762400090",
+    "ean_cdi": "8717624000904",
+    "itf": "1871762400090",
+    "itf_cdi": "18717624000901",
+    "codigo_auchan": "3771887",
+    "caixa_default": 40
+  },
+  {
+    "id": "328",
+    "name": "PALITO DE BISCOITO MATCHA 40G TOKIMEKI",
+    "ean": "871762400091",
+    "ean_cdi": "8717624000911",
+    "itf": "1871762400091",
+    "itf_cdi": "18717624000918",
+    "codigo_auchan": "3771889",
+    "caixa_default": 40
+  },
+  {
+    "id": "329",
+    "name": "MOLHO CHIMICHURRI ORIGINAL 220G DON GAUCHO",
+    "ean": "843656279012",
+    "ean_cdi": "8436562790127",
+    "itf": "2843656279012",
+    "itf_cdi": "28436562790121",
+    "codigo_auchan": "3772566",
+    "caixa_default": 12
+  },
+  {
+    "id": "330",
+    "name": "PALITO DE BISCOITO MIRTILO 40G TOKIMEKI",
+    "ean": "871762400093",
+    "ean_cdi": "8717624000935",
+    "itf": "0871762400098",
+    "itf_cdi": "08717624000980",
+    "codigo_auchan": "3773970",
+    "caixa_default": 40
+  },
+  {
+    "id": "331",
+    "name": "MOLHO PERI-PERI EXTRA PICANTE 125G NANDO'S",
+    "ean": "600377000252",
+    "ean_cdi": "6003770002520",
+    "itf": "1600377000252",
+    "itf_cdi": "16003770002527",
+    "codigo_auchan": "3787472",
+    "caixa_default": 6
+  },
+  {
+    "id": "332",
+    "name": "MOLHO PERI-PERI MÉDIO 125G NANO´S",
+    "ean": "600377000095",
+    "ean_cdi": "6003770000953",
+    "itf": "1600377000095",
+    "itf_cdi": "16003770000950",
+    "codigo_auchan": "3787479",
+    "caixa_default": 6
+  },
+  {
+    "id": "333",
+    "name": "MOLHO PERI-PERI LIMÃO E ERVAS 125G NANDO'S",
+    "ean": "600377000240",
+    "ean_cdi": "6003770002407",
+    "itf": "1600377000240",
+    "itf_cdi": "16003770002404",
+    "codigo_auchan": "3787481",
+    "caixa_default": 6
+  },
+  {
+    "id": "334",
+    "name": "MOLHO PERI-PERI MÉDIO DE ALHO 125G NANDO'S",
+    "ean": "600377000019",
+    "ean_cdi": "6003770000199",
+    "itf": "1600377000019",
+    "itf_cdi": "16003770000196",
+    "codigo_auchan": "3787502",
+    "caixa_default": 6
+  },
+  {
+    "id": "335",
+    "name": "ESPIGA MINI MILHO  425G TIN LUNG",
+    "ean": "872093800714",
+    "ean_cdi": "8720938007149",
+    "itf": "1872093800714",
+    "itf_cdi": "18720938007146",
+    "codigo_auchan": "3792311",
+    "caixa_default": 24
+  },
+  {
+    "id": "336",
+    "name": "TIRAS BAMBOO SHOOTS 567G  SPRING HAPPINESS 567G",
+    "ean": "872030110152",
+    "ean_cdi": "8720301101528",
+    "itf": "872030110153",
+    "itf_cdi": "8720301101535",
+    "codigo_auchan": "3792760",
+    "caixa_default": 24
+  },
+  {
+    "id": "337",
+    "name": "BOLACHA PANDA CHOCOLATE 40G  TOKIMEK",
+    "ean": "872081277140",
+    "ean_cdi": "8720812771401",
+    "itf": "1872081277140",
+    "itf_cdi": "18720812771408",
+    "codigo_auchan": "3792762",
+    "caixa_default": 24
+  },
+  {
+    "id": "338",
+    "name": "BOLACHA PANDA MATCHA 40G TOKIMEKI",
+    "ean": "872081277196",
+    "ean_cdi": "8720812771968",
+    "itf": "1872081277196",
+    "itf_cdi": "18720812771965",
+    "codigo_auchan": "3792763",
+    "caixa_default": 24
+  },
+  {
+    "id": "339",
+    "name": "BOLACHA PANDA CEREJA 40G TOKIMEKI",
+    "ean": "800844024922",
+    "ean_cdi": "8008440249227",
+    "itf": "0800844014922",
+    "itf_cdi": "08008440149220",
+    "codigo_auchan": "3792764",
+    "caixa_default": 24
+  },
+  {
+    "id": "340",
+    "name": "MOLHO CHAR SIU MARINADA DE MEL 225G  LEE KUM KEE",
+    "ean": "7889514102",
+    "ean_cdi": "78895141023",
+    "itf": "2007889514102",
+    "itf_cdi": "20078895141027",
+    "codigo_auchan": "3792985",
+    "caixa_default": 6
+  },
+  {
+    "id": "341",
+    "name": "MOLHO TERIYAKI 200G  LEE KUM KEE",
+    "ean": "7889513978",
+    "ean_cdi": "78895139785",
+    "itf": "2007889513978",
+    "itf_cdi": "20078895139789",
+    "codigo_auchan": "3792990",
+    "caixa_default": 6
+  },
+  {
+    "id": "342",
+    "name": "ÓLEO  CHIU CHOW CHILLI 170G LEE KUM KEE",
+    "ean": "7889514184",
+    "ean_cdi": "78895141849",
+    "itf": "2007889514184",
+    "itf_cdi": "20078895141843",
+    "codigo_auchan": "3792991",
+    "caixa_default": 6
+  },
+  {
+    "id": "343",
+    "name": "MOLHO SOJA SÉSAMO ORIENTAL 120ML LEE KUM KEE",
+    "ean": "7889515717",
+    "ean_cdi": "78895157178",
+    "itf": "3007889515717",
+    "itf_cdi": "30078895157179",
+    "codigo_auchan": "3792993",
+    "caixa_default": 12
+  },
+  {
+    "id": "344",
+    "name": "MOLHO SOJA  PICANTE 120ML LEE KUM KEE",
+    "ean": "7889516066",
+    "ean_cdi": "78895160666",
+    "itf": "3007889516066",
+    "itf_cdi": "30078895160667",
+    "codigo_auchan": "3792994",
+    "caixa_default": 12
+  },
+  {
+    "id": "345",
+    "name": "MOLHO VINAGRE DE ARROZ 120ML LEE KUM KEE",
+    "ean": "7889515701",
+    "ean_cdi": "78895157017",
+    "itf": "3007889515701",
+    "itf_cdi": "30078895157018",
+    "codigo_auchan": "3792995",
+    "caixa_default": 12
+  },
+  {
+    "id": "346",
+    "name": "MOLHO PAD THAI STIR FRY 130G THAI DELIGHT",
+    "ean": "885064306804",
+    "ean_cdi": "8850643068040",
+    "itf": "1885064306804",
+    "itf_cdi": "18850643068047",
+    "codigo_auchan": "3792996",
+    "caixa_default": 12
+  },
+  {
+    "id": "347",
+    "name": "MOLHO KUNG PAO FRANGO 60G LEE KUM KEE",
+    "ean": "7889514829",
+    "ean_cdi": "78895148299",
+    "itf": "3007889514829",
+    "itf_cdi": "30078895148290",
+    "codigo_auchan": "3793004",
+    "caixa_default": 12
+  },
+  {
+    "id": "348",
+    "name": "PASTA COCK INSTANT HOT & SOUR 227G  TOM YUM",
+    "ean": "8490900123",
+    "ean_cdi": "84909001238",
+    "itf": "0008490900123",
+    "itf_cdi": "00084909001238",
+    "codigo_auchan": "3793006",
+    "caixa_default": 24
+  },
+  {
+    "id": "349",
+    "name": "BISCOITOS DE ARROZ SENBEI 112G WANT WANT",
+    "ean": "471014410121",
+    "ean_cdi": "4710144101216",
+    "itf": "1471014410121",
+    "itf_cdi": "14710144101213",
+    "codigo_auchan": "3793007",
+    "caixa_default": 20
+  },
+  {
+    "id": "350",
+    "name": "BISCOITOS DE ARROZ SHELLY SENBEI 84G WANT WANT",
+    "ean": "690999510209",
+    "ean_cdi": "6909995102093",
+    "itf": "1690999510209",
+    "itf_cdi": "16909995102090",
+    "codigo_auchan": "3793008",
+    "caixa_default": 20
+  },
+  {
+    "id": "351",
+    "name": "SNACK ALGA  QUEIJO 50G THE SEA SNACK CO",
+    "ean": "843564600027",
+    "ean_cdi": "8435646000275",
+    "itf": "1843564600027",
+    "itf_cdi": "18435646000272",
+    "codigo_auchan": "3793009",
+    "caixa_default": 20
+  },
+  {
+    "id": "352",
+    "name": "FILETES DE PEIXE PICANTE 52G TARO",
+    "ean": "885204465166",
+    "ean_cdi": "8852044651661",
+    "itf": "1885204465166",
+    "itf_cdi": "18852044651668",
+    "codigo_auchan": "3797152",
+    "caixa_default": 36
+  },
+  {
+    "id": "353",
+    "name": "ÓLEO DE MOSTARDA  250ML KTC",
+    "ean": "501363548225",
+    "ean_cdi": "5013635482252",
+    "itf": "1501010211328",
+    "itf_cdi": "15010102113289",
+    "codigo_auchan": "3797198",
+    "caixa_default": 12
+  },
+  {
+    "id": "354",
+    "name": "ÁGUA DE CEVADA  LIMÃO 850ML ROBINSONS",
+    "ean": "501010211328",
+    "ean_cdi": "5010102113282",
+    "itf": "1501010211328",
+    "itf_cdi": "15010102113289",
+    "codigo_auchan": "3797750",
+    "caixa_default": 12
+  },
+  {
+    "id": "355",
+    "name": "ÓLEO LEE KUM KEE SÉSAMO PURO 207ML",
+    "ean": "7889571092",
+    "ean_cdi": "78895710922",
+    "itf": "2007889571092",
+    "itf_cdi": "20078895710926",
+    "codigo_auchan": "3803731",
+    "caixa_default": 6
+  },
+  {
+    "id": "356",
+    "name": "BATATAS FRITAS  TOKIMEKI CHAPZ WASABI 75G",
+    "ean": "871762400807",
+    "ean_cdi": "8717624008078",
+    "itf": "1871762400807",
+    "itf_cdi": "18717624008075",
+    "codigo_auchan": "3803733",
+    "caixa_default": 20
+  },
+  {
+    "id": "357",
+    "name": "BATATAS FR. TOKIMEKI CHAPZ SOUR CREAM CEBOLA 75G",
+    "ean": "871762400809",
+    "ean_cdi": "8717624008092",
+    "itf": "1871762400809",
+    "itf_cdi": "18717624008099",
+    "codigo_auchan": "3803734",
+    "caixa_default": 20
+  },
+  {
+    "id": "358",
+    "name": "BATATAS FRITAS TOKIMEKI CHAPZ CARANGUEIJO 75G",
+    "ean": "871762400806",
+    "ean_cdi": "8717624008061",
+    "itf": "1871762400805",
+    "itf_cdi": "18717624008051",
+    "codigo_auchan": "3803736",
+    "caixa_default": 20
+  },
+  {
+    "id": "359",
+    "name": "BEBIDA RAMUNE MORANGO 200ML GENKI",
+    "ean": "458986227090",
+    "ean_cdi": "4589862270906",
+    "itf": "1458986227090",
+    "itf_cdi": "14589862270903",
+    "codigo_auchan": "3810250",
+    "caixa_default": 30
+  },
+  {
+    "id": "360",
+    "name": "BEBIDAS RAMUNE ORIGINAL 200ML GENKI",
+    "ean": "458986227095",
+    "ean_cdi": "4589862270951",
+    "itf": "1458986227095",
+    "itf_cdi": "14589862270958",
+    "codigo_auchan": "3810251",
+    "caixa_default": 30
+  },
+  {
+    "id": "361",
+    "name": "PÃO MALABAR PARATHA 400G HEERA",
+    "ean": "503141601057",
+    "ean_cdi": "5031416010579",
+    "itf": "1503141601057",
+    "itf_cdi": "15031416010576",
+    "codigo_auchan": "3825179",
+    "caixa_default": 10
+  },
+  {
+    "id": "362",
+    "name": "BOLO CASTELLA TOKIMEKI CHOCOLATE 330G",
+    "ean": "872081277177",
+    "ean_cdi": "8720812771777",
+    "itf": "1872081277177",
+    "itf_cdi": "18720812771774",
+    "codigo_auchan": "3825486",
+    "caixa_default": 12
+  },
+  {
+    "id": "363",
+    "name": "BOLO CASTELLA TOKIMEKI MATCHA 330G",
+    "ean": "872081277175",
+    "ean_cdi": "8720812771753",
+    "itf": "1872081277175",
+    "itf_cdi": "18720812771750",
+    "codigo_auchan": "3825493",
+    "caixa_default": 12
+  },
+  {
+    "id": "364",
+    "name": "TEMPERO BAIANO 40G ZAELI",
+    "ean": "789618390737",
+    "ean_cdi": "7896183907372",
+    "itf": "1789618390737",
+    "itf_cdi": "17896183907379",
+    "codigo_auchan": "3839478",
+    "caixa_default": 20
+  },
+  {
+    "id": "365",
+    "name": "AROS DE CEBOLA PICANTE 40G NONGSHIM",
+    "ean": "880104300734",
+    "ean_cdi": "8801043007344",
+    "itf": "0880104300735",
+    "itf_cdi": "08801043007351",
+    "codigo_auchan": "3840161",
+    "caixa_default": 20
+  },
+  {
+    "id": "366",
+    "name": "TEMPEH CHIPS ORIGINAL 50G MAMAME",
+    "ean": "899702831042",
+    "ean_cdi": "8997028310421",
+    "itf": "1899702831042",
+    "itf_cdi": "18997028310428",
+    "codigo_auchan": "3840164",
+    "caixa_default": 12
+  },
+  {
+    "id": "367",
+    "name": "APERITIVO INDIANO PUNJABI MIX 200G KRISH",
+    "ean": "614657700000",
+    "ean_cdi": "6146577000006",
+    "itf": "1614657700000",
+    "itf_cdi": "16146577000003",
+    "codigo_auchan": "3847755",
+    "caixa_default": 14
+  },
+  {
+    "id": "368",
+    "name": "ALFAJORES DELICIAS GAUCHAS MISTO 220G DON GAUCHO",
+    "ean": "843656279016",
+    "ean_cdi": "8436562790165",
+    "itf": "1843656279016",
+    "itf_cdi": "18436562790162",
+    "codigo_auchan": "3847949",
+    "caixa_default": 40
+  },
+  {
+    "id": "369",
+    "name": "MOCHI TIRAMISU & CREME 120G ROYAL FAMILY",
+    "ean": "471193103672",
+    "ean_cdi": "4711931036728",
+    "itf": "3471193103672",
+    "itf_cdi": "34711931036729",
+    "codigo_auchan": "3848925",
+    "caixa_default": 12
+  },
+  {
+    "id": "370",
+    "name": "TEMPURA DE ALGAS TAOKAENOI PICANTE 40G",
+    "ean": "885870240127",
+    "ean_cdi": "8858702401272",
+    "itf": "0885870240375",
+    "itf_cdi": "08858702403757",
+    "codigo_auchan": "3849132",
+    "caixa_default": 48
+  },
+  {
+    "id": "371",
+    "name": "TEMPURA DE ALGAS TAOKAENOI ORIGINAL 40G",
+    "ean": "885870240126",
+    "ean_cdi": "8858702401265",
+    "itf": "885870240375",
+    "itf_cdi": "8858702403757",
+    "codigo_auchan": "3849135",
+    "caixa_default": 48
+  },
+  {
+    "id": "372",
+    "name": "TEMPEH CHIPS PICANTE 50G MAMAME",
+    "ean": "899702831043",
+    "ean_cdi": "8997028310438",
+    "itf": "1899702831043",
+    "itf_cdi": "18997028310435",
+    "codigo_auchan": "3857598",
+    "caixa_default": 12
+  },
+  {
+    "id": "373",
+    "name": "FOLHAS SECAS DE LIMA KAFFIR 10G COCK",
+    "ean": "08490901499",
+    "ean_cdi": "084909014993",
+    "itf": "2008490901499",
+    "itf_cdi": "20084909014997",
+    "codigo_auchan": "3857608",
+    "caixa_default": 24
+  },
+  {
+    "id": "374",
+    "name": "FOLHAS SECAS DE CARIL 30G MEHEK",
+    "ean": "872066343390",
+    "ean_cdi": "8720663433909",
+    "itf": "1872066343390",
+    "itf_cdi": "18720663433906",
+    "codigo_auchan": "3857610",
+    "caixa_default": 10
+  },
+  {
+    "id": "375",
+    "name": "NOODLES  SHIN KIMCHI 120G NONGSHIM",
+    "ean": "880104315774",
+    "ean_cdi": "8801043157742",
+    "itf": "0880104395296",
+    "itf_cdi": "08801043952965",
+    "codigo_auchan": "3857661",
+    "caixa_default": 20
+  },
+  {
+    "id": "376",
+    "name": "NOODLES SPICY SHIN RAMYUN 120G NONGSHIM",
+    "ean": "880104315062",
+    "ean_cdi": "8801043150620",
+    "itf": "0880104395168",
+    "itf_cdi": "08801043951685",
+    "codigo_auchan": "3857668",
+    "caixa_default": 20
+  },
+  {
+    "id": "377",
+    "name": "MOCHI MAPLE PANQUECA 120G ROYAL FAMILY",
+    "ean": "471193103676",
+    "ean_cdi": "4711931036766",
+    "itf": "1471193103676",
+    "itf_cdi": "14711931036763",
+    "codigo_auchan": "3860709",
+    "caixa_default": 12
+  },
+  {
+    "id": "378",
+    "name": "MOLHO MAIONESE SRIRACHA CHILI 200MLFLYING GOOSE",
+    "ean": "885366205665",
+    "ean_cdi": "8853662056654",
+    "itf": "0885366205865",
+    "itf_cdi": "08853662058658",
+    "codigo_auchan": "3870429",
+    "caixa_default": 12
+  },
+  {
+    "id": "379",
+    "name": "MOLHO SRIRACHA  ORIGINAL 200ML FLYING GOOSE",
+    "ean": "885366205600",
+    "ean_cdi": "8853662056005",
+    "itf": "0885366205800",
+    "itf_cdi": "08853662058009",
+    "codigo_auchan": "3870436",
+    "caixa_default": 12
+  },
+  {
+    "id": "380",
+    "name": "MOLHO SRIRACHA CHILLI EXTRA PICANTE 200ML FLYING GOOSE",
+    "ean": "885366205605",
+    "ean_cdi": "8853662056050",
+    "itf": "0885366205805",
+    "itf_cdi": "08853662058054",
+    "codigo_auchan": "3870442",
+    "caixa_default": 12
+  },
+  {
+    "id": "381",
+    "name": "MOLHO SRIRACHA CHILLI ALHO 200ML FLYING GOOSE",
+    "ean": "885366205608",
+    "ean_cdi": "8853662056081",
+    "itf": "0885366205808",
+    "itf_cdi": "08853662058085",
+    "codigo_auchan": "3870443",
+    "caixa_default": 12
+  },
+  {
+    "id": "382",
+    "name": "PÃO LIBANÊS BRANCO 320G 5 UNI LIKA BAKERY",
+    "ean": "872124628000",
+    "ean_cdi": "8721246280002",
+    "itf": "0872038733486",
+    "itf_cdi": "08720387334865",
+    "codigo_auchan": "3877237",
+    "caixa_default": 20
+  },
+  {
+    "id": "383",
+    "name": "PÃO LIBANÊS INTEGRAL 320G 5UNI LIKA BAKERY",
+    "ean": "872124628009",
+    "ean_cdi": "8721246280095",
+    "itf": "0872124628010",
+    "itf_cdi": "08721246280101",
+    "codigo_auchan": "3877252",
+    "caixa_default": 20
+  },
+  {
+    "id": "384",
+    "name": "CARNE SECA JALAPENO 25G WILD WEST",
+    "ean": "506003054209",
+    "ean_cdi": "5060030542098",
+    "itf": "0506003054343",
+    "itf_cdi": "05060030543439",
+    "codigo_auchan": "3877284",
+    "caixa_default": 16
+  },
+  {
+    "id": "385",
+    "name": "NOODLES PICANTE E CREMOSO 137G NONGSHIM",
+    "ean": "880104301847",
+    "ean_cdi": "8801043018470",
+    "itf": "0880104301887",
+    "itf_cdi": "08801043018876",
+    "codigo_auchan": "3889041",
+    "caixa_default": 20
+  },
+  {
+    "id": "386",
+    "name": "DOCE EJIAO HONEY JUJUBE  235G",
+    "ean": "692201709818",
+    "ean_cdi": "6922017098181",
+    "itf": "0692201702079",
+    "itf_cdi": "06922017020793",
+    "codigo_auchan": "3902949",
+    "caixa_default": 20
+  },
+  {
+    "id": "387",
+    "name": "MOCHI CARAMELO SALGADO 120G ROYAL FAMILY",
+    "ean": "471193103699",
+    "ean_cdi": "4711931036995",
+    "itf": "3471193103699",
+    "itf_cdi": "34711931036996",
+    "codigo_auchan": "3905051",
+    "caixa_default": 12
+  },
+  {
+    "id": "388",
+    "name": "MOCHI MANTEIGA DE AMENDOIM 120G ROYAL FAMILY",
+    "ean": "471193103698",
+    "ean_cdi": "4711931036988",
+    "itf": "3471193103698",
+    "itf_cdi": "34711931036989",
+    "codigo_auchan": "3905053",
+    "caixa_default": 12
+  },
+  {
+    "id": "389",
+    "name": "MOLHO CHIMICHURRI ORIGINAL 150G DON GAUCHO",
+    "ean": "560393602683",
+    "ean_cdi": "5603936026837",
+    "itf": "1560393602683",
+    "itf_cdi": "15603936026834",
+    "codigo_auchan": "3911407",
+    "caixa_default": 12
+  },
+  {
+    "id": "390",
+    "name": "PUDIM DE LICHIA  480G (6 UN)  COCON",
+    "ean": "955643700145",
+    "ean_cdi": "9556437001451",
+    "itf": "0955643700616",
+    "itf_cdi": "09556437006166",
+    "codigo_auchan": "3913671",
+    "caixa_default": 16
+  },
+  {
+    "id": "391",
+    "name": "SOPA VEGETARIANA PICANTE AGRIDOCE 300G SOUP HEAD",
+    "ean": "501680500060",
+    "ean_cdi": "5016805000607",
+    "itf": "1501680501159",
+    "itf_cdi": "15016805011594",
+    "codigo_auchan": "3913672",
+    "caixa_default": 6
+  },
+  {
+    "id": "392",
+    "name": "SOPA TOM YUM 300G SOUP HEAD",
+    "ean": "501680500058",
+    "ean_cdi": "5016805000584",
+    "itf": "1501680501165",
+    "itf_cdi": "15016805011655",
+    "codigo_auchan": "3913673",
+    "caixa_default": 6
+  },
+  {
+    "id": "393",
+    "name": "SOPA TOM KHA GAI 300G SOUP HEAD",
+    "ean": "501680500059",
+    "ean_cdi": "5016805000591",
+    "itf": "1501680501161",
+    "itf_cdi": "15016805011617",
+    "codigo_auchan": "3913674",
+    "caixa_default": 6
+  },
+  {
+    "id": "394",
+    "name": "RAMEN MISO 450G RAMEN HEAD",
+    "ean": "501680501153",
+    "ean_cdi": "5016805011535",
+    "itf": "1501680501153",
+    "itf_cdi": "15016805011532",
+    "codigo_auchan": "3913675",
+    "caixa_default": 4
+  },
+  {
+    "id": "395",
+    "name": "RAMEN COGUMELOS E ALHO 450G RAMEN HEAD",
+    "ean": "501680501152",
+    "ean_cdi": "5016805011528",
+    "itf": "1501680501152",
+    "itf_cdi": "15016805011525",
+    "codigo_auchan": "3913676",
+    "caixa_default": 4
+  },
+  {
+    "id": "396",
+    "name": "MACARRÃO SRIRACHA 200G MAC 'N' CHEESE HEAD",
+    "ean": "501680501180",
+    "ean_cdi": "5016805011801",
+    "itf": "1501680501180",
+    "itf_cdi": "15016805011808",
+    "codigo_auchan": "3913677",
+    "caixa_default": 6
+  },
+  {
+    "id": "397",
+    "name": "MACARRÃO 3 QUEIJOS 200G MAC 'N' CHEESE HEAD",
+    "ean": "501680501179",
+    "ean_cdi": "5016805011795",
+    "itf": "1501680501179",
+    "itf_cdi": "15016805011792",
+    "codigo_auchan": "3913679",
+    "caixa_default": 6
+  },
+  {
+    "id": "398",
+    "name": "GRÃO CHANA DAL 500G TRS",
+    "ean": "501768900016",
+    "ean_cdi": "5017689000165",
+    "itf": "0501768938990",
+    "itf_cdi": "05017689389901",
+    "codigo_auchan": "3913817",
+    "caixa_default": 20
+  },
+  {
+    "id": "399",
+    "name": "PUDIM COCON SABORES SORTIDOS 480G (6UN)  COCON",
+    "ean": "955643700240",
+    "ean_cdi": "9556437002403",
+    "itf": "0955643700614",
+    "itf_cdi": "09556437006142",
+    "codigo_auchan": "3913871",
+    "caixa_default": 16
+  },
+  {
+    "id": "400",
+    "name": "NOODLES HOT CHICKEN CARBONARA 130G SAMYANG BULDAK",
+    "ean": "880107311646",
+    "ean_cdi": "8801073116467",
+    "itf": "0880107312734",
+    "itf_cdi": "08801073127340",
+    "codigo_auchan": "3920140",
+    "caixa_default": 40
+  },
+  {
+    "id": "401",
+    "name": "NOODLES HOT CHICKEN CHEESE 140G SAMYANG BULDAK",
+    "ean": "880107311647",
+    "ean_cdi": "8801073116474",
+    "itf": "0880107312735",
+    "itf_cdi": "08801073127357",
+    "codigo_auchan": "3920141",
+    "caixa_default": 40
+  },
+  {
+    "id": "402",
+    "name": "NOODLES EXTRA HOT CHICKEN 140G SAMYANG BULDAK",
+    "ean": "880107311342",
+    "ean_cdi": "8801073113428",
+    "itf": "0880107312300",
+    "itf_cdi": "08801073123007",
+    "codigo_auchan": "3920142",
+    "caixa_default": 40
+  },
+  {
+    "id": "403",
+    "name": "NOODLES HOT CHICKEN 140G SAMYANG BULDAK",
+    "ean": "880107311050",
+    "ean_cdi": "8801073110502",
+    "itf": "1880107312133",
+    "itf_cdi": "18801073121338",
+    "codigo_auchan": "3920143",
+    "caixa_default": 40
+  },
+  {
+    "id": "404",
+    "name": "FUMO LIQUIDO HICKORY 118ML COLGIN",
+    "ean": "007105300001",
+    "ean_cdi": "0071053000019",
+    "itf": "0007105300001",
+    "itf_cdi": "00071053000019",
+    "codigo_auchan": "3928492",
+    "caixa_default": 12
+  },
+  {
+    "id": "405",
+    "name": "FUMO LIQUIDO MESQUITE 118ML COLGIN",
+    "ean": "007105300777",
+    "ean_cdi": "0071053007773",
+    "itf": "0007105300777",
+    "itf_cdi": "00071053007773",
+    "codigo_auchan": "3928496",
+    "caixa_default": 12
+  },
+  {
+    "id": "406",
+    "name": "FUMO LIQUIDO JALAPENO 118ML COLGIN",
+    "ean": "007105300500",
+    "ean_cdi": "0071053005007",
+    "itf": "0007105300500",
+    "itf_cdi": "00071053005007",
+    "codigo_auchan": "3928497",
+    "caixa_default": 12
+  },
+  {
+    "id": "407",
+    "name": "SOJA FERMENTADA EM ÓLEO DE CHILLI 280G LAOGANMA",
+    "ean": "692180470075",
+    "ean_cdi": "6921804700757",
+    "itf": "1692180470075",
+    "itf_cdi": "16921804700754",
+    "codigo_auchan": "3930651",
+    "caixa_default": 24
+  },
+  {
+    "id": "408",
+    "name": "CHILLI CROCANTE  EM OLÉO 210G LAOGANMA",
+    "ean": "692180470026",
+    "ean_cdi": "6921804700269",
+    "itf": "1692180470026",
+    "itf_cdi": "16921804700266",
+    "codigo_auchan": "3930652",
+    "caixa_default": 24
+  },
+  {
+    "id": "409",
+    "name": "AMENDOIM EM ÓLEO DE CHILLI 275G LAOGANMA",
+    "ean": "880104301847",
+    "ean_cdi": "8801043018470",
+    "itf": "1692180470076",
+    "itf_cdi": "16921804700761",
+    "codigo_auchan": "3930655",
+    "caixa_default": 24
+  },
+  {
+    "id": "410",
+    "name": "BOLACHA 79,9G PARLE-G",
+    "ean": "890171910104",
+    "ean_cdi": "8901719101045",
+    "itf": "0890171910411",
+    "itf_cdi": "08901719104114",
+    "codigo_auchan": "3939925",
+    "caixa_default": 20
+  },
+  {
+    "id": "411",
+    "name": "AÇUCAR DE PALMA 454G ROYAL ORIENT",
+    "ean": "871949739284",
+    "ean_cdi": "8719497392841",
+    "itf": "0871949739285",
+    "itf_cdi": "08719497392858",
+    "codigo_auchan": "3939975",
+    "caixa_default": 24
+  },
+  {
+    "id": "412",
+    "name": "BEBIDA ALOE VERA SABOR MANGA 500ML OKF",
+    "ean": "880904142594",
+    "ean_cdi": "8809041425948",
+    "itf": "0880904142596",
+    "itf_cdi": "08809041425962",
+    "codigo_auchan": "3942349",
+    "caixa_default": 20
+  },
+  {
+    "id": "413",
+    "name": "BEBIDA ALOE VERA SABOR ORIGINAL 500ML OKF",
+    "ean": "880904142092",
+    "ean_cdi": "8809041420929",
+    "itf": "0880904142145",
+    "itf_cdi": "08809041421452",
+    "codigo_auchan": "3942352",
+    "caixa_default": 20
+  },
+  {
+    "id": "414",
+    "name": "BEBIDA ALOE VERA SABOR ROMÃ 500ML OKF",
+    "ean": "880904142627",
+    "ean_cdi": "8809041426273",
+    "itf": "0880904142665",
+    "itf_cdi": "08809041426655",
+    "codigo_auchan": "3942353",
+    "caixa_default": 20
+  },
+  {
+    "id": "415",
+    "name": "BEBIDA ALOE VERA SABOR MORANGO 500ML OKF",
+    "ean": "880904142591",
+    "ean_cdi": "8809041425917",
+    "itf": "0880904142593",
+    "itf_cdi": "08809041425931",
+    "codigo_auchan": "3942354",
+    "caixa_default": 20
+  },
+  {
+    "id": "416",
+    "name": "BEBIDA ALOE VERA SABOR LICHIA 500ML OKF",
+    "ean": "872066343363",
+    "ean_cdi": "8720663433633",
+    "itf": "0880904142658",
+    "itf_cdi": "08809041426587",
+    "codigo_auchan": "3942355",
+    "caixa_default": 20
+  },
+  {
+    "id": "417",
+    "name": "CHUTNEY  MANGA 350G SWAD",
+    "ean": "060817105049",
+    "ean_cdi": "0608171050499",
+    "itf": "0060817105109",
+    "itf_cdi": "00608171051090",
+    "codigo_auchan": "3942360",
+    "caixa_default": 6
+  },
+  {
+    "id": "418",
+    "name": "PICKLES MANGA & LIMA 300G SWAD",
+    "ean": "060817103172",
+    "ean_cdi": "0608171031726",
+    "itf": "0060817103091",
+    "itf_cdi": "00608171030910",
+    "codigo_auchan": "3942364",
+    "caixa_default": 6
+  },
+  {
+    "id": "419",
+    "name": "GARAM MASALA 100G TRS",
+    "ean": "501768900328",
+    "ean_cdi": "5017689003289",
+    "itf": "0501768910608",
+    "itf_cdi": "05017689106089",
+    "codigo_auchan": "3942365",
+    "caixa_default": 20
+  },
+  {
+    "id": "420",
+    "name": "CHUTNEY  MANGA SUAVE 350G SWAD",
+    "ean": "060817105061",
+    "ean_cdi": "0608171050611",
+    "itf": "0060817105105",
+    "itf_cdi": "00608171051052",
+    "codigo_auchan": "3942366",
+    "caixa_default": 6
+  },
+  {
+    "id": "421",
+    "name": "PICKLES LIMA 300G SWAD",
+    "ean": "060817103124",
+    "ean_cdi": "0608171031245",
+    "itf": "0060817103087",
+    "itf_cdi": "00608171030873",
+    "codigo_auchan": "3942368",
+    "caixa_default": 6
+  },
+  {
+    "id": "422",
+    "name": "MOLHO DE MAYONAISE PERI-PERI 265G NANDO'S",
+    "ean": "600377000913",
+    "ean_cdi": "6003770009130",
+    "itf": "1600377000913",
+    "itf_cdi": "16003770009137",
+    "codigo_auchan": "3946318",
+    "caixa_default": 6
+  },
+  {
+    "id": "423",
+    "name": "BEBIDA SOJU LIMÃO 13% VOL 350ML JINRO",
+    "ean": "880104818148",
+    "ean_cdi": "8801048181483",
+    "itf": "0880104818149",
+    "itf_cdi": "08801048181490",
+    "codigo_auchan": "3946320",
+    "caixa_default": 20
+  },
+  {
+    "id": "424",
+    "name": "SNACK DE ALGA WASABI 4G KWANGCHEON",
+    "ean": "880927340315",
+    "ean_cdi": "8809273403158",
+    "itf": "1880927350173",
+    "itf_cdi": "18809273501738",
+    "codigo_auchan": "3946327",
+    "caixa_default": 8
+  },
+  {
+    "id": "425",
+    "name": "SNACK DE ALGA TEMPERADA 5G KWANGCHEON",
+    "ean": "880927340311",
+    "ean_cdi": "8809273403110",
+    "itf": "1880219390241",
+    "itf_cdi": "18802193902418",
+    "codigo_auchan": "3946331",
+    "caixa_default": 8
+  },
+  {
+    "id": "426",
+    "name": "MOLHO DE MAYONAISE PERI-PERI HOT 265G NANDO'S",
+    "ean": "600377000915",
+    "ean_cdi": "6003770009154",
+    "itf": "1600377000915",
+    "itf_cdi": "16003770009151",
+    "codigo_auchan": "3946403",
+    "caixa_default": 6
+  },
+  {
+    "id": "427",
+    "name": "BEBIDA MORANGO  E MANJERICÃO 290ML THAI TIK",
+    "ean": "871805359082",
+    "ean_cdi": "8718053590820",
+    "itf": "0871805359145",
+    "itf_cdi": "08718053591452",
+    "codigo_auchan": "3955491",
+    "caixa_default": 24
+  },
+  {
+    "id": "428",
+    "name": "BEBIDA LICHIA E MANJERICÃO 290ML THAI TIKI",
+    "ean": "871805359080",
+    "ean_cdi": "8718053590806",
+    "itf": "0871805359143",
+    "itf_cdi": "08718053591438",
+    "codigo_auchan": "3955493",
+    "caixa_default": 24
+  },
+  {
+    "id": "429",
+    "name": "BEBIDA MANGA E MANJERICÃO  290ML THAI TIKI",
+    "ean": "871805359081",
+    "ean_cdi": "8718053590813",
+    "itf": "0871805359144",
+    "itf_cdi": "08718053591445",
+    "codigo_auchan": "3955495",
+    "caixa_default": 24
+  },
+  {
+    "id": "430",
+    "name": "BEBIDA TROPICAL E MANJERICÃO 290ML THAI TIKI",
+    "ean": "871805359078",
+    "ean_cdi": "8718053590783",
+    "itf": "0871805359141",
+    "itf_cdi": "08718053591414",
+    "codigo_auchan": "3955497",
+    "caixa_default": 24
+  },
+  {
+    "id": "431",
+    "name": "PIPOCAS CARAMELO 65G DARDA",
+    "ean": "880902755512",
+    "ean_cdi": "8809027555126",
+    "itf": "1880902755512",
+    "itf_cdi": "18809027555123",
+    "codigo_auchan": "3955498",
+    "caixa_default": 30
+  },
+  {
+    "id": "432",
+    "name": "PIPOCAS SUPERMIX 55G DARDA",
+    "ean": "880902755527",
+    "ean_cdi": "8809027555270",
+    "itf": "2880902755527",
+    "itf_cdi": "28809027555274",
+    "codigo_auchan": "3955501",
+    "caixa_default": 24
+  },
+  {
+    "id": "433",
+    "name": "PIPOCAS CARAMELO & MANTEIGA 43G DARDA",
+    "ean": "880902755679",
+    "ean_cdi": "8809027556796",
+    "itf": "1880902755679",
+    "itf_cdi": "18809027556793",
+    "codigo_auchan": "3955504",
+    "caixa_default": 30
+  },
+  {
+    "id": "434",
+    "name": "REBUÇADO SODA 15G POPPING STRIKING",
+    "ean": "489513831078",
+    "ean_cdi": "4895138310789",
+    "itf": "1489513831078",
+    "itf_cdi": "14895138310786",
+    "codigo_auchan": "3955750",
+    "caixa_default": 48
+  },
+  {
+    "id": "435",
+    "name": "REBUÇADO CHÁ LIMÃO 15G POPPING STRIKING",
+    "ean": "489513831031",
+    "ean_cdi": "4895138310314",
+    "itf": "1489513831031",
+    "itf_cdi": "14895138310311",
+    "codigo_auchan": "3955751",
+    "caixa_default": 48
+  },
+  {
+    "id": "436",
+    "name": "REBUÇADO LIMÃO E COLA 15G POPPING STRIKING",
+    "ean": "489513831002",
+    "ean_cdi": "4895138310024",
+    "itf": "1489513831002",
+    "itf_cdi": "14895138310021",
+    "codigo_auchan": "3955752",
+    "caixa_default": 48
+  },
+  {
+    "id": "437",
+    "name": "COGUMELOS SECOS SHIITAKE 85G CITY AROMA",
+    "ean": "692216369822",
+    "ean_cdi": "6922163698228",
+    "itf": "0692216361604",
+    "itf_cdi": "06922163616048",
+    "codigo_auchan": "3960354",
+    "caixa_default": 30
+  },
+  {
+    "id": "438",
+    "name": "BEBIDA BUBBLE TEA LICHIA MARACUJA 320ML ULTRAPOP NARUTO",
+    "ean": "377003323441",
+    "ean_cdi": "3770033234419",
+    "itf": "0377003323440",
+    "itf_cdi": "03770033234402",
+    "codigo_auchan": "3963290",
+    "caixa_default": 24
+  },
+  {
+    "id": "439",
+    "name": "BEBIDA BUBBLE TEA MORANGO PÊSSEGO 320ML ULTRAPOP",
+    "ean": "377003323444",
+    "ean_cdi": "3770033234440",
+    "itf": "0377003323443",
+    "itf_cdi": "03770033234433",
+    "codigo_auchan": "3963292",
+    "caixa_default": 24
+  },
+  {
+    "id": "440",
+    "name": "BEBIDA BUBBLE TEA PERA E MELÃO 320ML ULTRAPOP DRAGONBALL",
+    "ean": "377003323438",
+    "ean_cdi": "3770033234389",
+    "itf": "0377003204918",
+    "itf_cdi": "03770032049182",
+    "codigo_auchan": "3963293",
+    "caixa_default": 24
+  },
+  {
+    "id": "441",
+    "name": "MOCHI EM ROLO 150G TAIWAN DESSERT",
+    "ean": "471193103442",
+    "ean_cdi": "4711931034427",
+    "itf": "5471193103442",
+    "itf_cdi": "54711931034422",
+    "codigo_auchan": "3963486",
+    "caixa_default": 24
+  },
+  {
+    "id": "442",
+    "name": "GENGIBRE ROSA 240G GOLDEN TURTLE",
+    "ean": "872030110166",
+    "ean_cdi": "8720301101665",
+    "itf": "0872030110167",
+    "itf_cdi": "08720301101672",
+    "codigo_auchan": "3963490",
+    "caixa_default": 25
+  },
+  {
+    "id": "443",
+    "name": "BEBIDA NATA DE COCO  E LICHIA 320ML MOGU MOGU",
+    "ean": "885038910315",
+    "ean_cdi": "8850389103159",
+    "itf": "1885038910818",
+    "itf_cdi": "18850389108182",
+    "codigo_auchan": "3963494",
+    "caixa_default": 24
+  },
+  {
+    "id": "444",
+    "name": "BEBIDA NATA DE COCO E UVA 320ML MOGU MOGU",
+    "ean": "885038910318",
+    "ean_cdi": "8850389103180",
+    "itf": "1885038910845",
+    "itf_cdi": "18850389108458",
+    "codigo_auchan": "3963497",
+    "caixa_default": 24
+  },
+  {
+    "id": "445",
+    "name": "BEBIDA NATA DE COCO  E GROSELHA 320ML MOGU MOGU",
+    "ean": "885038911536",
+    "ean_cdi": "8850389115367",
+    "itf": "1885038911739",
+    "itf_cdi": "18850389117399",
+    "codigo_auchan": "3963501",
+    "caixa_default": 24
+  },
+  {
+    "id": "446",
+    "name": "ICE TEA PÊSSEGO 330ML ULTRAPOP",
+    "ean": "377002719492",
+    "ean_cdi": "3770027194927",
+    "itf": "0377002719491",
+    "itf_cdi": "03770027194910",
+    "codigo_auchan": "3963674",
+    "caixa_default": 24
+  },
+  {
+    "id": "447",
+    "name": "ICE TEA Z PÊSSEGO 330ML ULTRAPOP DRAGONBALL",
+    "ean": "377002719496",
+    "ean_cdi": "3770027194965",
+    "itf": "0377002719495",
+    "itf_cdi": "03770027194958",
+    "codigo_auchan": "3963675",
+    "caixa_default": 24
+  },
+  {
+    "id": "448",
+    "name": "JELLY BEANS HARRY POTTER:(SAQUETAS) 28G",
+    "ean": "007157001639",
+    "ean_cdi": "0071570016395",
+    "itf": "0007157079012",
+    "itf_cdi": "00071570790127",
+    "codigo_auchan": "3966399",
+    "caixa_default": 24
+  },
+  {
+    "id": "449",
+    "name": "JELLY BEANS HARRY POTTER:FIGURAS MÁGICAS 59G",
+    "ean": "007157001167",
+    "ean_cdi": "0071570011673",
+    "itf": "0007157073321",
+    "itf_cdi": "00071570733216",
+    "codigo_auchan": "3966401",
+    "caixa_default": 24
+  },
+  {
+    "id": "450",
+    "name": "CHOCOLATE LEITE HARRY POTTER:RÃ 15G",
+    "ean": "007157000182",
+    "ean_cdi": "0071570001827",
+    "itf": "0007157066265",
+    "itf_cdi": "00071570662653",
+    "codigo_auchan": "3966403",
+    "caixa_default": 24
+  },
+  {
+    "id": "451",
+    "name": "JELLY BEANS HARRY POTTER: 54G",
+    "ean": "007157000061",
+    "ean_cdi": "0071570000615",
+    "itf": "0007157042500",
+    "itf_cdi": "00071570425005",
+    "codigo_auchan": "3966404",
+    "caixa_default": 24
+  },
+  {
+    "id": "452",
+    "name": "SUMO TROPICAL 330ML ULTRAPOP NARUTO",
+    "ean": "377003312594",
+    "ean_cdi": "3770033125946",
+    "itf": "0377003312593",
+    "itf_cdi": "03770033125939",
+    "codigo_auchan": "3966962",
+    "caixa_default": 12
+  },
+  {
+    "id": "453",
+    "name": "SUMO MORANGO ULTRAPOP DRAGONBALL 330ML",
+    "ean": "377003312582",
+    "ean_cdi": "3770033125823",
+    "itf": "0377003312581",
+    "itf_cdi": "03770033125816",
+    "codigo_auchan": "3966964",
+    "caixa_default": 12
+  },
+  {
+    "id": "454",
+    "name": "SUMO CEREJA 330ML ONE PIECE",
+    "ean": "377003323403",
+    "ean_cdi": "3770033234037",
+    "itf": "0377003323402",
+    "itf_cdi": "03770033234020",
+    "codigo_auchan": "3966965",
+    "caixa_default": 12
+  },
+  {
+    "id": "455",
+    "name": "BEBIDA COM GÁS LARANJA 330ML ULTRAPOP NARUTO",
+    "ean": "376041258378",
+    "ean_cdi": "3760412583788",
+    "itf": "0376041258377",
+    "itf_cdi": "03760412583771",
+    "codigo_auchan": "3966966",
+    "caixa_default": 24
+  },
+  {
+    "id": "456",
+    "name": "BEBIDA COM GÁS MORANGO BANANA 330ML ULTRAPOP DRAGONBALL",
+    "ean": "376041258387",
+    "ean_cdi": "3760412583870",
+    "itf": "0376041258386",
+    "itf_cdi": "03760412583863",
+    "codigo_auchan": "3966969",
+    "caixa_default": 24
+  },
+  {
+    "id": "457",
+    "name": "BEBIDA COREANA MELANCIA ADE 230ML ICE TALK",
+    "ean": "880934466879",
+    "ean_cdi": "8809344668790",
+    "itf": "2880934466879",
+    "itf_cdi": "28809344668794",
+    "codigo_auchan": "3969587",
+    "caixa_default": 50
+  },
+  {
+    "id": "458",
+    "name": "BEBIDA COREANA PESSEGO ADE 230ML ICE TALK",
+    "ean": "880934466886",
+    "ean_cdi": "8809344668868",
+    "itf": "2880934466886",
+    "itf_cdi": "28809344668862",
+    "codigo_auchan": "3969649",
+    "caixa_default": 50
+  },
+  {
+    "id": "459",
+    "name": "BEBIDA COREANA MIRTILO ADE 230ML ICE TALK",
+    "ean": "880934466880",
+    "ean_cdi": "8809344668806",
+    "itf": "2880934466880",
+    "itf_cdi": "28809344668800",
+    "codigo_auchan": "3969756",
+    "caixa_default": 50
+  },
+  {
+    "id": "460",
+    "name": "BEBIDA COREANA LIMONADA AZUL ADE 230ML ICE TALK",
+    "ean": "880934466887",
+    "ean_cdi": "8809344668875",
+    "itf": "2880934466887",
+    "itf_cdi": "28809344668879",
+    "codigo_auchan": "3969776",
+    "caixa_default": 50
+  },
+  {
+    "id": "461",
+    "name": "MOLHO DE MAÇÃ 155G COLMAN´S",
+    "ean": "871410053551",
+    "ean_cdi": "8714100535516",
+    "itf": "0871410061081",
+    "itf_cdi": "08714100610817",
+    "codigo_auchan": "3969849",
+    "caixa_default": 8
+  },
+  {
+    "id": "462",
+    "name": "CHOCOLATE  DISPLAY BOX 5 SABORES LABUCHOC",
+    "ean": "868475991097",
+    "ean_cdi": "8684759910975",
+    "itf": "0868475991097",
+    "itf_cdi": "08684759910975",
+    "codigo_auchan": "3977433",
+    "caixa_default": 40
+  },
+  {
+    "id": "463",
+    "name": "MOLHO ORIGINAL 255G HP",
+    "ean": "500011100100",
+    "ean_cdi": "5000111001007",
+    "itf": "0500011159252",
+    "itf_cdi": "05000111592529",
+    "codigo_auchan": "3979013",
+    "caixa_default": 12
+  },
+  {
+    "id": "464",
+    "name": "MACARRÃO HEAD TEXAS SMOKEHOUSE 200G MAC 'N' CHEESE HEAD",
+    "ean": "501680500051",
+    "ean_cdi": "5016805000515",
+    "itf": "1501680500051",
+    "itf_cdi": "15016805000512",
+    "codigo_auchan": "3984166",
+    "caixa_default": 6
+  },
+  {
+    "id": "465",
+    "name": "MOLHO JAMAICAN JERK 142ML ENCONA",
+    "ean": "000005076116",
+    "ean_cdi": "0000050761167",
+    "itf": "0501238952202",
+    "itf_cdi": "05012389522023",
+    "codigo_auchan": "3984218",
+    "caixa_default": 6
+  },
+  {
+    "id": "466",
+    "name": "MOLHO CORALINA REAPER CHILLI 142ML ENCONA",
+    "ean": "501238967196",
+    "ean_cdi": "5012389671967",
+    "itf": "0501238910248",
+    "itf_cdi": "05012389102485",
+    "codigo_auchan": "3984219",
+    "caixa_default": 6
+  },
+  {
+    "id": "467",
+    "name": "CREME DE COCO 200G DUNN'S RIVER",
+    "ean": "501238900160",
+    "ean_cdi": "5012389001603",
+    "itf": "0501238959600",
+    "itf_cdi": "05012389596000",
+    "codigo_auchan": "3984240",
+    "caixa_default": 12
+  },
+  {
+    "id": "468",
+    "name": "LEITE DE COCO 400ML DUNN'S RIVER",
+    "ean": "501238900501",
+    "ean_cdi": "5012389005014",
+    "itf": "0501238980021",
+    "itf_cdi": "05012389800213",
+    "codigo_auchan": "3984434",
+    "caixa_default": 12
+  },
+  {
+    "id": "469",
+    "name": "BEBIDA COREANA DE LEITE MILKIS ORIGINAL 250ML",
+    "ean": "872066343113",
+    "ean_cdi": "8720663431134",
+    "itf": "1872066343113",
+    "itf_cdi": "18720663431131",
+    "codigo_auchan": "3993414",
+    "caixa_default": 30
+  },
+  {
+    "id": "470",
+    "name": "BEBIDA COREANA DE LEITE MILKIS MORANGO 250ML",
+    "ean": "872066343131",
+    "ean_cdi": "8720663431318",
+    "itf": "1872066343131",
+    "itf_cdi": "18720663431315",
+    "codigo_auchan": "3993416",
+    "caixa_default": 30
+  },
+  {
+    "id": "471",
+    "name": "BOLO DE ARROZ  KIMCHI 115G TOPOKKI  YOPOKKI",
+    "ean": "880905440349",
+    "ean_cdi": "8809054403490",
+    "itf": "1880905440349",
+    "itf_cdi": "18809054403497",
+    "codigo_auchan": "3993419",
+    "caixa_default": 12
+  },
+  {
+    "id": "472",
+    "name": "NOODLES PICANTE E CREMOSO TOOMBA 113G BIG BOWL NONGSHIM",
+    "ean": "880104302829",
+    "ean_cdi": "8801043028295",
+    "itf": "0880104302830",
+    "itf_cdi": "08801043028301",
+    "codigo_auchan": "3994126",
+    "caixa_default": 12
+  },
+  {
+    "id": "473",
+    "name": "NOODLES KIMCHI 112G BIG BOWL NONGSHIM",
+    "ean": "880104303228",
+    "ean_cdi": "8801043032285",
+    "itf": "0880104303229",
+    "itf_cdi": "08801043032292",
+    "codigo_auchan": "3994130",
+    "caixa_default": 16
+  },
+  {
+    "id": "474",
+    "name": "NOODLES RED CUP MUITO PICANTE 68G NONGSHIM",
+    "ean": "880104304956",
+    "ean_cdi": "8801043049566",
+    "itf": "0880104304958",
+    "itf_cdi": "08801043049580",
+    "codigo_auchan": "3994132",
+    "caixa_default": 12
+  },
+  {
+    "id": "475",
+    "name": "CARIL EM PÓ PICANTE 100G HEERA",
+    "ean": "503141622031",
+    "ean_cdi": "5031416220312",
+    "itf": "0503141622031",
+    "itf_cdi": "05031416220312",
+    "codigo_auchan": "4003179",
+    "caixa_default": 20
+  },
+  {
+    "id": "476",
+    "name": "XAROPE DE MILHO 700G CHUNG JUNG ONE",
+    "ean": "880105245101",
+    "ean_cdi": "8801052451015",
+    "itf": "3880105245101",
+    "itf_cdi": "38801052451016",
+    "codigo_auchan": "4003180",
+    "caixa_default": 20
+  },
+  {
+    "id": "477",
+    "name": "BEBIDA COM GÁS MORANGO 330ML ULTRAPOP ONE PIECE",
+    "ean": "376041258384",
+    "ean_cdi": "3760412583849",
+    "itf": "0376041258383",
+    "itf_cdi": "03760412583832",
+    "codigo_auchan": "4004018",
+    "caixa_default": 24
+  },
+  {
+    "id": "478",
+    "name": "ÁGUA DE COCO  PURO 1L THAI COCO",
+    "ean": "885022702114",
+    "ean_cdi": "8850227021140",
+    "itf": "1885022702114",
+    "itf_cdi": "18850227021147",
+    "codigo_auchan": "4012713",
+    "caixa_default": 12
+  },
+  {
+    "id": "479",
+    "name": "BISCOITOS SÉSAMO 250G SWAD",
+    "ean": "890430450117",
+    "ean_cdi": "8904304501176",
+    "itf": "1890430450117",
+    "itf_cdi": "18904304501173",
+    "codigo_auchan": "4029392",
+    "caixa_default": 20
+  },
+  {
+    "id": "480",
+    "name": "BISCOITOS COCONUT 250G SWAD",
+    "ean": "890430450109",
+    "ean_cdi": "8904304501091",
+    "itf": "1890430450109",
+    "itf_cdi": "18904304501098",
+    "codigo_auchan": "4029393",
+    "caixa_default": 20
+  },
+  {
+    "id": "481",
+    "name": "CHUPA COM MÚSICA MIRTILO 12G AMOS",
+    "ean": "693675627560",
+    "ean_cdi": "6936756275604",
+    "itf": "1693675627560",
+    "itf_cdi": "16936756275601",
+    "codigo_auchan": "4037546",
+    "caixa_default": 24
+  },
+  {
+    "id": "482",
+    "name": "MOCHI MINIS CREAMY MATCHA LATTE 40G (4UN) ROYAL FAMILY",
+    "ean": "471193103742",
+    "ean_cdi": "4711931037428",
+    "itf": "7471193103773",
+    "itf_cdi": "74711931037731",
+    "codigo_auchan": "4037550",
+    "caixa_default": 24
+  },
+  {
+    "id": "483",
+    "name": "MOCHI MINIS BAUNILHA 40G (4UN) ROYAL FAMILY",
+    "ean": "471193103741",
+    "ean_cdi": "4711931037411",
+    "itf": "7471193103772",
+    "itf_cdi": "74711931037724",
+    "codigo_auchan": "4037552",
+    "caixa_default": 24
+  },
+  {
+    "id": "484",
+    "name": "MOCHI MINIS TIRAMISU 40G(4UN) ROYAL FAMILY",
+    "ean": "471193103739",
+    "ean_cdi": "4711931037398",
+    "itf": "7471193103770",
+    "itf_cdi": "74711931037700",
+    "codigo_auchan": "4037554",
+    "caixa_default": 24
+  },
+  {
+    "id": "485",
+    "name": "MOCHI MINIS CHEESECAKE MORANGO 40G(4UN)  ROYAL FAMILY",
+    "ean": "471193103738",
+    "ean_cdi": "4711931037381",
+    "itf": "7471193103769",
+    "itf_cdi": "74711931037694",
+    "codigo_auchan": "4037555",
+    "caixa_default": 24
+  },
+  {
+    "id": "486",
+    "name": "CHOCOLATE MILK CRUNCH 60G FEASTABLES MR. BEAST",
+    "ean": "123000016800",
+    "ean_cdi": "1230000168007",
+    "itf": "1123000016800",
+    "itf_cdi": "11230000168004",
+    "codigo_auchan": "3917051",
+    "caixa_default": 10
+  },
+  {
+    "id": "487",
+    "name": "CHOCOLATE PEANUT BUTTER 60G FEASTABLES MR. BEAST",
+    "ean": "123000016802",
+    "ean_cdi": "1230000168021",
+    "itf": "1123000016802",
+    "itf_cdi": "11230000168028",
+    "codigo_auchan": "3917056",
+    "caixa_default": 10
+  },
+  {
+    "id": "488",
+    "name": "CHOCOLATE MILK CHOCOLATE 60G FEASTABLES MR. BEAST",
+    "ean": "123000016804",
+    "ean_cdi": "1230000168045",
+    "itf": "1123000016804",
+    "itf_cdi": "11230000168042",
+    "codigo_auchan": "3917062",
+    "caixa_default": 10
+  },
+  {
+    "id": "489",
+    "name": "CHOCOLATE ALMOND 60G FEASTABLES MR. BEAST",
+    "ean": "123000016846",
+    "ean_cdi": "1230000168465",
+    "itf": "1123000016846",
+    "itf_cdi": "11230000168462",
+    "codigo_auchan": "3917064",
+    "caixa_default": 10
+  },
+  {
+    "id": "490",
+    "name": "CHOCOLATE CREAMY PEANUT BUTTER CUPS 40G FEASTABLES",
+    "ean": "123000016888",
+    "ean_cdi": "1230000168885",
+    "itf": "0123000016889",
+    "itf_cdi": "01230000168892",
+    "codigo_auchan": "3996482",
+    "caixa_default": 24
+  },
+  {
+    "id": "491",
+    "name": "CHOCOLATE CREAMY CHOCO HAZELNUT CUPS 40G FEASTABLES",
+    "ean": "123000016886",
+    "ean_cdi": "1230000168861",
+    "itf": "0123000016887",
+    "itf_cdi": "01230000168878",
+    "codigo_auchan": "3996481",
+    "caixa_default": 24
+  },
+  {
+    "id": "492",
+    "name": "CHOCOLATE COOKIES & CREAM 60G FEASTABLES MR. BEAST",
+    "ean": "123000016884",
+    "ean_cdi": "1230000168847",
+    "itf": "0123000016885",
+    "itf_cdi": "01230000168854",
+    "codigo_auchan": "3996480",
+    "caixa_default": 10
+  },
+  {
+    "id": "493",
+    "name": "TESTE MACARRÃO HEAD TEXAS SMOKEHOUSE 200G MAC 'N' CHEESE HEAD",
+    "ean": "501680500051",
+    "ean_cdi": "5016805000515",
+    "itf": "1501680500051",
+    "itf_cdi": "15016805000512",
+    "codigo_auchan": "3984166",
+    "caixa_default": 6
+  },
+  {
+    "id": "494",
+    "name": "CERVEJA JAPONESA SAPPORO 300ML",
+    "ean": "872016510850",
+    "ean_cdi": "8720165108503",
+    "itf": "1872016510850",
+    "itf_cdi": "18720165108500",
+    "codigo_auchan": "",
+    "caixa_default": 24
+  },
+  {
+    "id": "495",
+    "name": "MOLHO DE MAYONAISE PERI-PERI 265G NANDO'S",
+    "ean": "600377000913",
+    "ean_cdi": "6003770009130",
+    "itf": "1600377000913",
+    "itf_cdi": "16003770009137",
+    "codigo_auchan": "3946318",
+    "caixa_default": 6
   }
 ]

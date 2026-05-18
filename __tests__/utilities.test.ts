@@ -25,13 +25,13 @@ describe("date utilities", () => {
 
 describe("product utilities", () => {
   it("finds products by EAN and retailer code", () => {
-    expect(findProductByCode("560393602421")?.name).toBe("SALSA EM FOLHAS 1 KG");
-    expect(findProductByCode("3458194")?.name).toBe("CHA FOLHAS HORTELA PIMENTA KG");
+    expect(findProductByCode("893527080574")?.name).toBe("AGUA COCO C/ ANANAS LATA 320ML COCONAUT");
+    expect(findProductByCode("3385713")?.name).toBe("AGUA COCO C/MELANCIA LATA 320ML COCONAUT");
   });
 
   it("normalizes product GTIN values to a valid GTIN-14", () => {
-    const product = findProductByCode("560393602421");
-    expect(product ? getProductGtin(product) : null).toBe("15603936024212");
+    const product = findProductByCode("893527080574");
+    expect(product ? getProductGtin(product) : null).toBe("18935270805743");
   });
 
   it("returns no products only when an explicitly provided product list is empty", () => {
