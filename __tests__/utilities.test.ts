@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { dateToYYMMDD } from "../lib/date";
 import { getProductGtin } from "../lib/barcode";
-import { findProductByCode, getSeedProducts, groupProductsByCategory, searchProducts, sortProducts } from "../lib/products";
+import { findProductByCode, getSeedProducts, groupProductsByCategory, searchProducts, sortProducts, syncProductsWithSeed } from "../lib/products";
 import { calculateGS1CheckDigit, formatHumanSSCC, generateSSCC } from "../lib/sscc";
 import { validateLabelForm } from "../lib/validation";
 
@@ -70,6 +70,23 @@ describe("product utilities", () => {
     const sorted = sortProducts(products, "auchan-desc");
 
     expect(sorted.map((product) => product.codigo_auchan)).toEqual(["100", "10", "9", ""]);
+  });
+
+  it("merges newly imported seed products into an older saved product list", () => {
+    const seedProducts = [
+      { id: "1", category: "BEBIDAS", name: "AGUA", ean: "111", caixa_default: 6 },
+      { id: "2", category: "MERCEARIA", name: "MASSA", ean: "222", caixa_default: 12 },
+      { id: "3", category: "DOCES", name: "BOLACHA", ean: "333", caixa_default: 24 },
+    ];
+    const savedProducts = [
+      { id: "1", name: "AGUA", ean: "111", caixa_default: 6 },
+      { id: "custom", name: "PRODUTO MANUAL", ean: "999", caixa_default: 1 },
+    ];
+    const synced = syncProductsWithSeed(savedProducts, seedProducts);
+
+    expect(synced.changed).toBe(true);
+    expect(synced.products.map((product) => product.name)).toEqual(["AGUA", "PRODUTO MANUAL", "MASSA", "BOLACHA"]);
+    expect(synced.products[0].category).toBe("BEBIDAS");
   });
 
   it("returns no products only when an explicitly provided product list is empty", () => {

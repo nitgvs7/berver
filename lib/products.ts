@@ -94,16 +94,79 @@ function isProduct(value: unknown): value is Product {
   return typeof candidate.id === "string" && typeof candidate.name === "string";
 }
 
-function withSeedCategories(products: Product[], seedProducts: Product[]): { products: Product[]; changed: boolean } {
+type ProductIdentity = {
+  codes: Set<string>;
+  ids: Set<string>;
+  names: Set<string>;
+};
+
+function productCodes(product: Product): string[] {
+  return [product.ean, product.ean_cdi, product.itf, product.itf_cdi, product.codigo_auchan].map((code) => normalizeCode(code)).filter(Boolean);
+}
+
+function createProductIdentity(products: Product[]): ProductIdentity {
+  const identity: ProductIdentity = {
+    codes: new Set(),
+    ids: new Set(),
+    names: new Set(),
+  };
+
+  products.forEach((product) => addProductToIdentity(identity, product));
+
+  return identity;
+}
+
+function addProductToIdentity(identity: ProductIdentity, product: Product): void {
+  const id = product.id.trim();
+
+  if (id) {
+    identity.ids.add(id);
+  }
+
+  productCodes(product).forEach((code) => identity.codes.add(code));
+
+  const name = normalizeSearchValue(product.name);
+
+  if (name) {
+    identity.names.add(name);
+  }
+}
+
+function hasProductIdentityMatch(product: Product, identity: ProductIdentity): boolean {
+  const id = product.id.trim();
+
+  if (id && identity.ids.has(id)) {
+    return true;
+  }
+
+  const codes = productCodes(product);
+
+  if (codes.some((code) => identity.codes.has(code))) {
+    return true;
+  }
+
+  const name = normalizeSearchValue(product.name);
+
+  return codes.length === 0 && Boolean(name && identity.names.has(name));
+}
+
+type SeedIndexes = ReturnType<typeof createSeedIndexes>;
+
+function createSeedIndexes(seedProducts: Product[]) {
   const seedByCode = new Map<string, Product>();
+  const seedById = new Map<string, Product>();
   const seedByName = new Map<string, Product>();
 
   seedProducts.forEach((product) => {
-    [product.ean, product.ean_cdi, product.itf, product.itf_cdi].forEach((code) => {
-      const normalizedCode = normalizeCode(code);
+    const id = product.id.trim();
 
-      if (normalizedCode && !seedByCode.has(normalizedCode)) {
-        seedByCode.set(normalizedCode, product);
+    if (id && !seedById.has(id)) {
+      seedById.set(id, product);
+    }
+
+    productCodes(product).forEach((code) => {
+      if (!seedByCode.has(code)) {
+        seedByCode.set(code, product);
       }
     });
 
@@ -114,23 +177,48 @@ function withSeedCategories(products: Product[], seedProducts: Product[]): { pro
     }
   });
 
+  return { seedByCode, seedById, seedByName };
+}
+
+function findMatchingSeedProduct(product: Product, seedIndexes: SeedIndexes) {
+  const { seedByCode, seedById, seedByName } = seedIndexes;
+  const id = product.id.trim();
+
+  if (id && seedById.has(id)) {
+    return seedById.get(id);
+  }
+
+  const seedByMatchingCode = productCodes(product)
+    .map((code) => seedByCode.get(code))
+    .find(Boolean);
+
+  return seedByMatchingCode ?? seedByName.get(normalizeSearchValue(product.name));
+}
+
+export function syncProductsWithSeed(products: Product[], seedProducts: Product[] = getSeedProducts()): { products: Product[]; changed: boolean } {
   let changed = false;
+  const seedIndexes = createSeedIndexes(seedProducts);
   const upgradedProducts = products.map((product) => {
-    if (product.category?.trim()) {
+    const seedProduct = findMatchingSeedProduct(product, seedIndexes);
+
+    if (product.category?.trim() || !seedProduct?.category) {
       return product;
     }
 
-    const seedByMatchingCode = [product.ean, product.ean_cdi, product.itf, product.itf_cdi]
-      .map((code) => seedByCode.get(normalizeCode(code)))
-      .find(Boolean);
-    const seedProduct = seedByMatchingCode ?? seedByName.get(normalizeSearchValue(product.name));
+    changed = true;
+    return { ...product, category: seedProduct.category };
+  });
+  const identity = createProductIdentity(upgradedProducts);
 
-    if (seedProduct?.category) {
-      changed = true;
-      return { ...product, category: seedProduct.category };
+  seedProducts.forEach((seedProduct) => {
+    if (hasProductIdentityMatch(seedProduct, identity)) {
+      return;
     }
 
-    return product;
+    const product = { ...seedProduct };
+    upgradedProducts.push(product);
+    addProductToIdentity(identity, product);
+    changed = true;
   });
 
   return { products: upgradedProducts, changed };
@@ -154,7 +242,7 @@ export function loadProducts(): Product[] {
     const parsed = JSON.parse(stored) as unknown;
 
     if (Array.isArray(parsed) && parsed.length > 0 && parsed.every(isProduct)) {
-      const upgraded = withSeedCategories(parsed, seedProducts);
+      const upgraded = syncProductsWithSeed(parsed, seedProducts);
 
       if (upgraded.changed) {
         window.localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(upgraded.products));
