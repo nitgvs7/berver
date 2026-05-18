@@ -7,9 +7,10 @@ type ProductCardProps = {
   product: Product;
   onSelect?: (product: Product) => void;
   actionLabel?: string;
+  showCategory?: boolean;
 };
 
-export function ProductCard({ product, onSelect, actionLabel = "Criar Etiqueta" }: ProductCardProps) {
+export function ProductCard({ product, onSelect, actionLabel = "Criar Etiqueta", showCategory = false }: ProductCardProps) {
   return (
     <article className="rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm">
       <div className="flex items-start gap-3">
@@ -17,6 +18,7 @@ export function ProductCard({ product, onSelect, actionLabel = "Criar Etiqueta" 
           <PackageCheck aria-hidden="true" className="h-6 w-6" />
         </div>
         <div className="min-w-0 flex-1">
+          {showCategory && product.category ? <p className="mb-1 text-xs font-black uppercase text-[#2f4fb3]">{product.category}</p> : null}
           <h3 className="text-lg font-black uppercase leading-snug text-[#1f3679]">{product.name}</h3>
           <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2 text-sm text-[#1f3679]">
             <div>

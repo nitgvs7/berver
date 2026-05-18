@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { dateToYYMMDD } from "../lib/date";
 import { getProductGtin } from "../lib/barcode";
-import { findProductByCode, searchProducts } from "../lib/products";
+import { findProductByCode, getSeedProducts, groupProductsByCategory, searchProducts, sortProducts } from "../lib/products";
 import { calculateGS1CheckDigit, formatHumanSSCC, generateSSCC } from "../lib/sscc";
 import { validateLabelForm } from "../lib/validation";
 
@@ -32,6 +32,44 @@ describe("product utilities", () => {
   it("normalizes product GTIN values to a valid GTIN-14", () => {
     const product = findProductByCode("893527080574");
     expect(product ? getProductGtin(product) : null).toBe("18935270805743");
+  });
+
+  it("keeps products grouped by spreadsheet categories", () => {
+    const groups = groupProductsByCategory(getSeedProducts());
+
+    expect(findProductByCode("893527080574")?.category).toBe("BEBIDAS SEM ALCOOL");
+    expect(groups.map((group) => group.category)).toEqual([
+      "BEBIDAS SEM ALCOOL",
+      "CERVEJAS",
+      "MERCEARIA SALGADA",
+      "AVULSO",
+      "SABORES DO MUNDO",
+      "MERCEARIA DOCE",
+    ]);
+  });
+
+  it("sorts product results without mutating the source list", () => {
+    const products = getSeedProducts().slice(0, 3);
+    const sorted = sortProducts(products, "name-asc");
+
+    expect(sorted.map((product) => product.name)).toEqual([
+      "AGUA COCO C/ ANANAS LATA 320ML COCONAUT",
+      "AGUA COCO C/MELANCIA LATA 320ML COCONAUT",
+      "AGUA COCO LATA 320ML COCONAUT",
+    ]);
+    expect(products[0].name).toBe("AGUA COCO LATA 320ML COCONAUT");
+  });
+
+  it("sorts products by Código Auchan", () => {
+    const products = [
+      { id: "1", name: "A", codigo_auchan: "9" },
+      { id: "2", name: "B", codigo_auchan: "100" },
+      { id: "3", name: "C", codigo_auchan: "10" },
+      { id: "4", name: "D", codigo_auchan: "" },
+    ];
+    const sorted = sortProducts(products, "auchan-desc");
+
+    expect(sorted.map((product) => product.codigo_auchan)).toEqual(["100", "10", "9", ""]);
   });
 
   it("returns no products only when an explicitly provided product list is empty", () => {

@@ -15,8 +15,8 @@ export default function ProductsPage() {
 
   return (
     <div className="space-y-5">
-      <h1 className="text-2xl font-black text-[#1f3679]">Procurar Produto</h1>
-      <ProductSearch onSelect={selectProduct} actionLabel="Criar Etiqueta" />
+      <h1 className="text-2xl font-black text-[#1f3679]">Produtos</h1>
+      <ProductSearch onSelect={selectProduct} actionLabel="Criar Etiqueta" showAll enableSort tableView />
     </div>
   );
 }
