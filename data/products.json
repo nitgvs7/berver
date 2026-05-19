@@ -8,7 +8,8 @@
     "itf": "0893602005602",
     "itf_cdi": "8936020056029",
     "codigo_auchan": "3373239",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 120
   },
   {
     "id": "2",
@@ -19,7 +20,8 @@
     "itf": "1893527080574",
     "itf_cdi": "18935270805743",
     "codigo_auchan": "3385712",
-    "caixa_default": 20
+    "caixa_default": 20,
+    "validade_minima_dias": 120
   },
   {
     "id": "3",
@@ -30,7 +32,8 @@
     "itf": "1893527080575",
     "itf_cdi": "18935270805750",
     "codigo_auchan": "3385713",
-    "caixa_default": 20
+    "caixa_default": 20,
+    "validade_minima_dias": 120
   },
   {
     "id": "4",
@@ -41,7 +44,8 @@
     "itf": "0471039411901",
     "itf_cdi": "4710394119016",
     "codigo_auchan": "3621696",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 120
   },
   {
     "id": "5",
@@ -52,7 +56,8 @@
     "itf": "0471039402600",
     "itf_cdi": "4710394026000",
     "codigo_auchan": "3621835",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 120
   },
   {
     "id": "6",
@@ -63,7 +68,8 @@
     "itf": "0893602005603",
     "itf_cdi": "8936020056036",
     "codigo_auchan": "3644895",
-    "caixa_default": 20
+    "caixa_default": 20,
+    "validade_minima_dias": 120
   },
   {
     "id": "7",
@@ -74,7 +80,8 @@
     "itf": "0471111502016",
     "itf_cdi": "4711115020161",
     "codigo_auchan": "3644899",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 120
   },
   {
     "id": "8",
@@ -85,7 +92,8 @@
     "itf": "0471111502017",
     "itf_cdi": "4711115020178",
     "codigo_auchan": "3644900",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 120
   },
   {
     "id": "9",
@@ -96,7 +104,8 @@
     "itf": "0599988358016",
     "itf_cdi": "5999883580165",
     "codigo_auchan": "3687489",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 80
   },
   {
     "id": "10",
@@ -107,7 +116,8 @@
     "itf": "0599988358010",
     "itf_cdi": "5999883580103",
     "codigo_auchan": "3687490",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 80
   },
   {
     "id": "11",
@@ -118,7 +128,8 @@
     "itf": "0081011612049",
     "itf_cdi": "810116120499",
     "codigo_auchan": "",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 60
   },
   {
     "id": "12",
@@ -129,7 +140,8 @@
     "itf": "0081011612052",
     "itf_cdi": "00810116120529",
     "codigo_auchan": "",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 60
   },
   {
     "id": "13",
@@ -140,7 +152,8 @@
     "itf": "0081011612050",
     "itf_cdi": "00810116120505",
     "codigo_auchan": "",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 60
   },
   {
     "id": "14",
@@ -151,7 +164,8 @@
     "itf": "0872108287570",
     "itf_cdi": "08721082875707",
     "codigo_auchan": "3856933",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 133
   },
   {
     "id": "15",
@@ -162,7 +176,8 @@
     "itf": "0872108287569",
     "itf_cdi": "08721082875691",
     "codigo_auchan": "3856938",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 133
   },
   {
     "id": "16",
@@ -173,7 +188,8 @@
     "itf": "1308021605430",
     "itf_cdi": "13080216054305",
     "codigo_auchan": "3792447",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 80
   },
   {
     "id": "17",
@@ -184,7 +200,8 @@
     "itf": "0690103560690",
     "itf_cdi": "6901035606905",
     "codigo_auchan": "3795915",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 60
   },
   {
     "id": "18",
@@ -195,7 +212,8 @@
     "itf": "0800844014922",
     "itf_cdi": "8008440149220",
     "codigo_auchan": "3795916",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 60
   },
   {
     "id": "19",
@@ -206,7 +224,8 @@
     "itf": "1884885812003",
     "itf_cdi": "18848858120032",
     "codigo_auchan": "3795920",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 80
   },
   {
     "id": "20",
@@ -217,7 +236,8 @@
     "itf": "0885099911211",
     "itf_cdi": "08850999112114",
     "codigo_auchan": "3795919",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 60
   },
   {
     "id": "21",
@@ -228,7 +248,8 @@
     "itf": "1501003846242",
     "itf_cdi": "15010038462420",
     "codigo_auchan": "",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": null
   },
   {
     "id": "22",
@@ -239,7 +260,8 @@
     "itf": "1880111977011",
     "itf_cdi": "18801119770117",
     "codigo_auchan": "3879444",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 60
   },
   {
     "id": "23",
@@ -250,7 +272,8 @@
     "itf": "1541067300446",
     "itf_cdi": "15410673004465",
     "codigo_auchan": "42457",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 240
   },
   {
     "id": "24",
@@ -261,7 +284,8 @@
     "itf": "1000096116838",
     "itf_cdi": "10000961168389",
     "codigo_auchan": "653724",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 120
   },
   {
     "id": "25",
@@ -272,7 +296,8 @@
     "itf": "0871060474237",
     "itf_cdi": "08710604742375",
     "codigo_auchan": "653787",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 120
   },
   {
     "id": "26",
@@ -283,7 +308,8 @@
     "itf": "0400143101930",
     "itf_cdi": "4001431019308",
     "codigo_auchan": "825685",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 180
   },
   {
     "id": "27",
@@ -294,7 +320,8 @@
     "itf": "0400020620031",
     "itf_cdi": "04000206200316",
     "codigo_auchan": "825693",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": 240
   },
   {
     "id": "28",
@@ -305,7 +332,8 @@
     "itf": "0501680500154",
     "itf_cdi": "5016805001543",
     "codigo_auchan": "956077",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 120
   },
   {
     "id": "29",
@@ -316,7 +344,8 @@
     "itf": "1890600498749",
     "itf_cdi": "18906004987493",
     "codigo_auchan": "1145315",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 240
   },
   {
     "id": "30",
@@ -327,7 +356,8 @@
     "itf": "1560436020437",
     "itf_cdi": "15604360204379",
     "codigo_auchan": "1163716",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 240
   },
   {
     "id": "31",
@@ -338,7 +368,8 @@
     "itf": "1560436000701",
     "itf_cdi": "15604360007017",
     "codigo_auchan": "1168255",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 480
   },
   {
     "id": "32",
@@ -349,7 +380,8 @@
     "itf": "1560436003006",
     "itf_cdi": "15604360030060",
     "codigo_auchan": "1168259",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 240
   },
   {
     "id": "33",
@@ -360,7 +392,8 @@
     "itf": "1560436001010",
     "itf_cdi": "15604360010109",
     "codigo_auchan": "1168261",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 480
   },
   {
     "id": "34",
@@ -371,7 +404,8 @@
     "itf": "1560436004120",
     "itf_cdi": "15604360041202",
     "codigo_auchan": "1168275",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 480
   },
   {
     "id": "35",
@@ -382,7 +416,8 @@
     "itf": "1560436000108",
     "itf_cdi": "15604360001084",
     "codigo_auchan": "1168276",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 480
   },
   {
     "id": "36",
@@ -393,7 +428,8 @@
     "itf": "1560436020300",
     "itf_cdi": "15604360203006",
     "codigo_auchan": "1168277",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 480
   },
   {
     "id": "37",
@@ -404,7 +440,8 @@
     "itf": "1560436020112",
     "itf_cdi": "15604360201125",
     "codigo_auchan": "1168280",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 480
   },
   {
     "id": "38",
@@ -415,7 +452,8 @@
     "itf": "1560436002020",
     "itf_cdi": "15604360020207",
     "codigo_auchan": "1168281",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 480
   },
   {
     "id": "39",
@@ -426,7 +464,8 @@
     "itf": "1560436020671",
     "itf_cdi": "15604360206717",
     "codigo_auchan": "2170544",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 240
   },
   {
     "id": "40",
@@ -437,7 +476,8 @@
     "itf": "1560436020670",
     "itf_cdi": "15604360206700",
     "codigo_auchan": "2170546",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 240
   },
   {
     "id": "41",
@@ -448,7 +488,8 @@
     "itf": "0202251234588",
     "itf_cdi": "2022512345880",
     "codigo_auchan": "3075201",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 80
   },
   {
     "id": "42",
@@ -459,7 +500,8 @@
     "itf": "1560393602452",
     "itf_cdi": "15603936024526",
     "codigo_auchan": "3356228",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 180
   },
   {
     "id": "43",
@@ -470,7 +512,8 @@
     "itf": "1560436021525",
     "itf_cdi": "15604360215252",
     "codigo_auchan": "3357435",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 120
   },
   {
     "id": "44",
@@ -481,7 +524,8 @@
     "itf": "2841149511372",
     "itf_cdi": "28411495113728",
     "codigo_auchan": "3492859",
-    "caixa_default": 10
+    "caixa_default": 10,
+    "validade_minima_dias": null
   },
   {
     "id": "45",
@@ -492,7 +536,8 @@
     "itf": "0506055142735",
     "itf_cdi": "5060551427355",
     "codigo_auchan": "3633027",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 80
   },
   {
     "id": "46",
@@ -503,7 +548,8 @@
     "itf": "0506055142163",
     "itf_cdi": "5060551421636",
     "codigo_auchan": "3633037",
-    "caixa_default": 16
+    "caixa_default": 16,
+    "validade_minima_dias": 80
   },
   {
     "id": "47",
@@ -514,7 +560,8 @@
     "itf": "0506055142738",
     "itf_cdi": "5060551427386",
     "codigo_auchan": "3633041",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 80
   },
   {
     "id": "48",
@@ -525,7 +572,8 @@
     "itf": "0506055142736",
     "itf_cdi": "5060551427362",
     "codigo_auchan": "3633047",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 80
   },
   {
     "id": "49",
@@ -536,7 +584,8 @@
     "itf": "0872820040867",
     "itf_cdi": "8728200408670",
     "codigo_auchan": "3656924",
-    "caixa_default": 20
+    "caixa_default": 20,
+    "validade_minima_dias": 80
   },
   {
     "id": "50",
@@ -547,7 +596,8 @@
     "itf": "1842775401802",
     "itf_cdi": "18427754018027",
     "codigo_auchan": "3739129",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 60
   },
   {
     "id": "51",
@@ -558,7 +608,8 @@
     "itf": "0506055142162",
     "itf_cdi": "05060551421629",
     "codigo_auchan": "3815959",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 60
   },
   {
     "id": "52",
@@ -569,7 +620,8 @@
     "itf": "2123000003710",
     "itf_cdi": "21230000037109",
     "codigo_auchan": "3815962",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 100
   },
   {
     "id": "53",
@@ -580,7 +632,8 @@
     "itf": "2123000003711",
     "itf_cdi": "21230000037116",
     "codigo_auchan": "3815963",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 100
   },
   {
     "id": "54",
@@ -591,7 +644,8 @@
     "itf": "2841105500056",
     "itf_cdi": "28411055000567",
     "codigo_auchan": "3825085",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 80
   },
   {
     "id": "55",
@@ -602,7 +656,8 @@
     "itf": "1501680501177",
     "itf_cdi": "15016805011778",
     "codigo_auchan": "3926004",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 140
   },
   {
     "id": "56",
@@ -613,7 +668,8 @@
     "itf": "1501680501174",
     "itf_cdi": "15016805011747",
     "codigo_auchan": "3926005",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 140
   },
   {
     "id": "57",
@@ -624,7 +680,8 @@
     "itf": "3501680501140",
     "itf_cdi": "35016805011406",
     "codigo_auchan": "3926007",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 140
   },
   {
     "id": "58",
@@ -635,7 +692,8 @@
     "itf": "1560072473314",
     "itf_cdi": "15600724733141",
     "codigo_auchan": "3959785",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 244
   },
   {
     "id": "59",
@@ -646,7 +704,8 @@
     "itf": "1560072473311",
     "itf_cdi": "15600724733110",
     "codigo_auchan": "3959790",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 244
   },
   {
     "id": "60",
@@ -657,7 +716,8 @@
     "itf": "1560072473309",
     "itf_cdi": "15600724733097",
     "codigo_auchan": "3959792",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 244
   },
   {
     "id": "61",
@@ -668,7 +728,8 @@
     "itf": "1560072473302",
     "itf_cdi": "15600724733028",
     "codigo_auchan": "3959794",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 244
   },
   {
     "id": "62",
@@ -679,7 +740,8 @@
     "itf": "0506055142207",
     "itf_cdi": "05060551422077",
     "codigo_auchan": "4015901",
-    "caixa_default": 8
+    "caixa_default": 8,
+    "validade_minima_dias": 80
   },
   {
     "id": "63",
@@ -690,7 +752,8 @@
     "itf": "0506055142206",
     "itf_cdi": "05060551422060",
     "codigo_auchan": "4015919",
-    "caixa_default": 8
+    "caixa_default": 8,
+    "validade_minima_dias": 80
   },
   {
     "id": "64",
@@ -701,7 +764,8 @@
     "itf": "1560393602234",
     "itf_cdi": "15603936022348",
     "codigo_auchan": "2525255",
-    "caixa_default": 8
+    "caixa_default": 8,
+    "validade_minima_dias": 240
   },
   {
     "id": "65",
@@ -712,7 +776,8 @@
     "itf": "1560393602233",
     "itf_cdi": "15603936022331",
     "codigo_auchan": "2525256",
-    "caixa_default": 8
+    "caixa_default": 8,
+    "validade_minima_dias": 240
   },
   {
     "id": "66",
@@ -723,7 +788,8 @@
     "itf": "1560393602235",
     "itf_cdi": "15603936022355",
     "codigo_auchan": "2525257",
-    "caixa_default": 5
+    "caixa_default": 5,
+    "validade_minima_dias": 240
   },
   {
     "id": "67",
@@ -734,7 +800,8 @@
     "itf": "1502888106423",
     "itf_cdi": "15028881064234",
     "codigo_auchan": "2607849",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 100
   },
   {
     "id": "68",
@@ -745,7 +812,8 @@
     "itf": "1502888101089",
     "itf_cdi": "15028881010897",
     "codigo_auchan": "2607850",
-    "caixa_default": 8
+    "caixa_default": 8,
+    "validade_minima_dias": 240
   },
   {
     "id": "69",
@@ -756,7 +824,8 @@
     "itf": "1502888106422",
     "itf_cdi": "15028881064227",
     "codigo_auchan": "2607854",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 240
   },
   {
     "id": "70",
@@ -767,7 +836,8 @@
     "itf": "1502888106424",
     "itf_cdi": "15028881064241",
     "codigo_auchan": "2607861",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": 240
   },
   {
     "id": "71",
@@ -778,7 +848,8 @@
     "itf": "1502888106425",
     "itf_cdi": "15028881064258",
     "codigo_auchan": "2608383",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 240
   },
   {
     "id": "72",
@@ -789,7 +860,8 @@
     "itf": "1502888106421",
     "itf_cdi": "15028881064210",
     "codigo_auchan": "2608389",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": 240
   },
   {
     "id": "73",
@@ -800,7 +872,8 @@
     "itf": "1502888101101",
     "itf_cdi": "15028881011016",
     "codigo_auchan": "2608398",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 240
   },
   {
     "id": "74",
@@ -811,7 +884,8 @@
     "itf": "1502888106426",
     "itf_cdi": "15028881064265",
     "codigo_auchan": "2608404",
-    "caixa_default": 12
+    "caixa_default": 12,
+    "validade_minima_dias": 240
   },
   {
     "id": "75",
@@ -822,7 +896,8 @@
     "itf": "1560393602263",
     "itf_cdi": "15603936022638",
     "codigo_auchan": "2647141",
-    "caixa_default": 5
+    "caixa_default": 5,
+    "validade_minima_dias": 240
   },
   {
     "id": "76",
@@ -833,7 +908,8 @@
     "itf": "1560393602264",
     "itf_cdi": "15603936022645",
     "codigo_auchan": "2648098",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": 240
   },
   {
     "id": "77",
@@ -844,7 +920,8 @@
     "itf": "1560393602262",
     "itf_cdi": "15603936022621",
     "codigo_auchan": "2648101",
-    "caixa_default": 5
+    "caixa_default": 5,
+    "validade_minima_dias": 240
   },
   {
     "id": "78",
@@ -855,7 +932,8 @@
     "itf": "0502888106452",
     "itf_cdi": "5028881064527",
     "codigo_auchan": "2676451",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 240
   },
   {
     "id": "79",
@@ -866,7 +944,8 @@
     "itf": "1611125003078",
     "itf_cdi": "16111250030783",
     "codigo_auchan": "2705903",
-    "caixa_default": 10
+    "caixa_default": 10,
+    "validade_minima_dias": 240
   },
   {
     "id": "80",
@@ -877,7 +956,8 @@
     "itf": "1502888106457",
     "itf_cdi": "15028881064579",
     "codigo_auchan": "2739456",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 240
   },
   {
     "id": "81",
@@ -888,7 +968,8 @@
     "itf": "1842006301061",
     "itf_cdi": "18420063010614",
     "codigo_auchan": "2883131",
-    "caixa_default": 10
+    "caixa_default": 10,
+    "validade_minima_dias": 180
   },
   {
     "id": "82",
@@ -899,7 +980,8 @@
     "itf": "1240002883185",
     "itf_cdi": "12400028831856",
     "codigo_auchan": "2883185",
-    "caixa_default": 1
+    "caixa_default": 1,
+    "validade_minima_dias": 180
   },
   {
     "id": "83",
@@ -910,7 +992,8 @@
     "itf": "1560305394000",
     "itf_cdi": "15603053940006",
     "codigo_auchan": "2883187",
-    "caixa_default": 1
+    "caixa_default": 1,
+    "validade_minima_dias": 180
   },
   {
     "id": "84",
@@ -921,7 +1004,8 @@
     "itf": "1842006301379",
     "itf_cdi": "18420063013790",
     "codigo_auchan": "2883214",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 120
   },
   {
     "id": "85",
@@ -932,7 +1016,8 @@
     "itf": "1560393602336",
     "itf_cdi": "15603936023369",
     "codigo_auchan": "2986137",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": 120
   },
   {
     "id": "86",
@@ -943,7 +1028,8 @@
     "itf": "1560393602335",
     "itf_cdi": "15603936023352",
     "codigo_auchan": "2986141",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": 120
   },
   {
     "id": "87",
@@ -954,7 +1040,8 @@
     "itf": "1560393602337",
     "itf_cdi": "15603936023376",
     "codigo_auchan": "2986146",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": 120
   },
   {
     "id": "88",
@@ -965,7 +1052,8 @@
     "itf": "1869144010100",
     "itf_cdi": "18691440101007",
     "codigo_auchan": "3013036",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 240
   },
   {
     "id": "89",
@@ -976,7 +1064,8 @@
     "itf": "1503141622118",
     "itf_cdi": "15031416221187",
     "codigo_auchan": "3013037",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 240
   },
   {
     "id": "90",
@@ -987,7 +1076,8 @@
     "itf": "1560393602410",
     "itf_cdi": "15603936024106",
     "codigo_auchan": "3239535",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 180
   },
   {
     "id": "91",
@@ -998,7 +1088,8 @@
     "itf": "1560393602405",
     "itf_cdi": "15603936024052",
     "codigo_auchan": "3241460",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 180
   },
   {
     "id": "92",
@@ -1009,7 +1100,8 @@
     "itf": "1560393602404",
     "itf_cdi": "15603936024045",
     "codigo_auchan": "3241487",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 180
   },
   {
     "id": "93",
@@ -1020,7 +1112,8 @@
     "itf": "1560393602406",
     "itf_cdi": "15603936024069",
     "codigo_auchan": "3241496",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 180
   },
   {
     "id": "94",
@@ -1031,7 +1124,8 @@
     "itf": "1560393602408",
     "itf_cdi": "15603936024083",
     "codigo_auchan": "3246725",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 180
   },
   {
     "id": "95",
@@ -1042,7 +1136,8 @@
     "itf": "1560393602409",
     "itf_cdi": "15603936024090",
     "codigo_auchan": "3246731",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": null
   },
   {
     "id": "96",
@@ -1053,7 +1148,8 @@
     "itf": "1560393602407",
     "itf_cdi": "15603936024076",
     "codigo_auchan": "3246737",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": null
   },
   {
     "id": "97",
@@ -1064,7 +1160,8 @@
     "itf": "1560393602442",
     "itf_cdi": "15603936024427",
     "codigo_auchan": "3304530",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": 120
   },
   {
     "id": "98",
@@ -1075,7 +1172,8 @@
     "itf": "1560393602449",
     "itf_cdi": "15603936024496",
     "codigo_auchan": "3336345",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": null
   },
   {
     "id": "99",
@@ -1086,7 +1184,8 @@
     "itf": "1560393602450",
     "itf_cdi": "15603936024502",
     "codigo_auchan": "3336349",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": 240
   },
   {
     "id": "100",
@@ -1097,7 +1196,8 @@
     "itf": "1560393602451",
     "itf_cdi": "15603936024519",
     "codigo_auchan": "3336352",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": 240
   },
   {
     "id": "101",
@@ -1108,7 +1208,8 @@
     "itf": "1560393602454",
     "itf_cdi": "15603936024540",
     "codigo_auchan": "3347997",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": 240
   },
   {
     "id": "102",
@@ -1119,7 +1220,8 @@
     "itf": "1560393602455",
     "itf_cdi": "15603936024557",
     "codigo_auchan": "3348033",
-    "caixa_default": 1
+    "caixa_default": 1,
+    "validade_minima_dias": 120
   },
   {
     "id": "103",
@@ -1130,7 +1232,8 @@
     "itf": "1560393602456",
     "itf_cdi": "15603936024564",
     "codigo_auchan": "3348149",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": null
   },
   {
     "id": "104",
@@ -1141,7 +1244,8 @@
     "itf": "1560393602487",
     "itf_cdi": "15603936024878",
     "codigo_auchan": "3452107",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": null
   },
   {
     "id": "105",
@@ -1152,7 +1256,8 @@
     "itf": "1560393602496",
     "itf_cdi": "15603936024960",
     "codigo_auchan": "3458057",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "106",
@@ -1163,7 +1268,8 @@
     "itf": "1560393602483",
     "itf_cdi": "15603936024830",
     "codigo_auchan": "3458166",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "107",
@@ -1174,7 +1280,8 @@
     "itf": "1560393602484",
     "itf_cdi": "15603936024847",
     "codigo_auchan": "3458169",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "108",
@@ -1185,7 +1292,8 @@
     "itf": "1560393602485",
     "itf_cdi": "15603936024854",
     "codigo_auchan": "3458175",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "109",
@@ -1196,7 +1304,8 @@
     "itf": "1560393602486",
     "itf_cdi": "15603936024861",
     "codigo_auchan": "3458181",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "110",
@@ -1207,7 +1316,8 @@
     "itf": "1560393602488",
     "itf_cdi": "15603936024885",
     "codigo_auchan": "3458186",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "111",
@@ -1218,7 +1328,8 @@
     "itf": "1560393602489",
     "itf_cdi": "15603936024892",
     "codigo_auchan": "3458190",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "112",
@@ -1229,7 +1340,8 @@
     "itf": "1560393602490",
     "itf_cdi": "15603936024908",
     "codigo_auchan": "3458194",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "113",
@@ -1240,7 +1352,8 @@
     "itf": "1560393602491",
     "itf_cdi": "15603936024915",
     "codigo_auchan": "3458195",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": null
   },
   {
     "id": "114",
@@ -1251,7 +1364,8 @@
     "itf": "1560393602492",
     "itf_cdi": "15603936024922",
     "codigo_auchan": "3458198",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "115",
@@ -1262,7 +1376,8 @@
     "itf": "1560393602493",
     "itf_cdi": "15603936024939",
     "codigo_auchan": "3458200",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "116",
@@ -1273,7 +1388,8 @@
     "itf": "1560393602494",
     "itf_cdi": "15603936024946",
     "codigo_auchan": "3458203",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "117",
@@ -1284,7 +1400,8 @@
     "itf": "1560393602495",
     "itf_cdi": "15603936024953",
     "codigo_auchan": "3458205",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "118",
@@ -1295,7 +1412,8 @@
     "itf": "1560393602523",
     "itf_cdi": "15603936025233",
     "codigo_auchan": "3494507",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "119",
@@ -1306,7 +1424,8 @@
     "itf": "1560393602522",
     "itf_cdi": "15603936025226",
     "codigo_auchan": "3494509",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "120",
@@ -1317,7 +1436,8 @@
     "itf": "1560393602520",
     "itf_cdi": "15603936025202",
     "codigo_auchan": "3494512",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "121",
@@ -1328,7 +1448,8 @@
     "itf": "1560393602521",
     "itf_cdi": "15603936025219",
     "codigo_auchan": "3494515",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "122",
@@ -1339,7 +1460,8 @@
     "itf": "1560393602519",
     "itf_cdi": "15603936025196",
     "codigo_auchan": "3495343",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "123",
@@ -1350,7 +1472,8 @@
     "itf": "1560393602518",
     "itf_cdi": "15603936025189",
     "codigo_auchan": "3495347",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 120
   },
   {
     "id": "124",
@@ -1361,7 +1484,8 @@
     "itf": "1560393602665",
     "itf_cdi": "15603936026650",
     "codigo_auchan": "3876939",
-    "caixa_default": 1
+    "caixa_default": 1,
+    "validade_minima_dias": 80
   },
   {
     "id": "125",
@@ -1372,7 +1496,8 @@
     "itf": "1560393602666",
     "itf_cdi": "15603936026667",
     "codigo_auchan": "3876942",
-    "caixa_default": 1
+    "caixa_default": 1,
+    "validade_minima_dias": 80
   },
   {
     "id": "126",
@@ -1383,7 +1508,8 @@
     "itf": "1560393602659",
     "itf_cdi": "15603936026599",
     "codigo_auchan": "3876946",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 80
   },
   {
     "id": "127",
@@ -1394,7 +1520,8 @@
     "itf": "1560393602661",
     "itf_cdi": "15603936026612",
     "codigo_auchan": "3877046",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 80
   },
   {
     "id": "128",
@@ -1405,7 +1532,8 @@
     "itf": "1560393602664",
     "itf_cdi": "15603936026643",
     "codigo_auchan": "3877061",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 79
   },
   {
     "id": "129",
@@ -1416,7 +1544,8 @@
     "itf": "1560393602663",
     "itf_cdi": "15603936026636",
     "codigo_auchan": "3877072",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 80
   },
   {
     "id": "130",
@@ -1427,7 +1556,8 @@
     "itf": "1560393602662",
     "itf_cdi": "15603936026629",
     "codigo_auchan": "3901891",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": null
   },
   {
     "id": "131",
@@ -1438,7 +1568,8 @@
     "itf": "1560393602660",
     "itf_cdi": "15603936026605",
     "codigo_auchan": "3901925",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": null
   },
   {
     "id": "132",
@@ -1449,7 +1580,8 @@
     "itf": "1560393602652",
     "itf_cdi": "15603936026520",
     "codigo_auchan": "3901942",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": null
   },
   {
     "id": "133",
@@ -1460,7 +1592,8 @@
     "itf": "1560393602679",
     "itf_cdi": "15603936026797",
     "codigo_auchan": "3908813",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": null
   },
   {
     "id": "134",
@@ -1471,7 +1604,8 @@
     "itf": "1560393602680",
     "itf_cdi": "15603936026803",
     "codigo_auchan": "3912255",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": null
   },
   {
     "id": "135",
@@ -1482,7 +1616,8 @@
     "itf": "1560393602681",
     "itf_cdi": "15603936026810",
     "codigo_auchan": "3912258",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": null
   },
   {
     "id": "136",
@@ -1493,7 +1628,8 @@
     "itf": "1560393602712",
     "itf_cdi": "15603936027121",
     "codigo_auchan": "4000066",
-    "caixa_default": 2
+    "caixa_default": 2,
+    "validade_minima_dias": 244
   },
   {
     "id": "137",
@@ -1504,7 +1640,8 @@
     "itf": "1560393602710",
     "itf_cdi": "15603936027107",
     "codigo_auchan": "4000070",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 244
   },
   {
     "id": "138",
@@ -1515,7 +1652,8 @@
     "itf": "1560393602709",
     "itf_cdi": "15603936027091",
     "codigo_auchan": "4000073",
-    "caixa_default": 3
+    "caixa_default": 3,
+    "validade_minima_dias": 160
   },
   {
     "id": "139",
@@ -1526,7 +1664,8 @@
     "itf": "1560393602684",
     "itf_cdi": "15603936026841",
     "codigo_auchan": "4000268",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 245
   },
   {
     "id": "140",
@@ -1537,7 +1676,8 @@
     "itf": "1560393602693",
     "itf_cdi": "15603936026933",
     "codigo_auchan": "4000269",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 244
   },
   {
     "id": "141",
@@ -1548,7 +1688,8 @@
     "itf": "1560393602692",
     "itf_cdi": "15603936026926",
     "codigo_auchan": "4000272",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 244
   },
   {
     "id": "142",
@@ -1559,7 +1700,8 @@
     "itf": "1560393602691",
     "itf_cdi": "15603936026919",
     "codigo_auchan": "4000280",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 245
   },
   {
     "id": "143",
@@ -1570,7 +1712,8 @@
     "itf": "1560393602690",
     "itf_cdi": "15603936026902",
     "codigo_auchan": "4000282",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 245
   },
   {
     "id": "144",
@@ -1581,7 +1724,8 @@
     "itf": "1560393602688",
     "itf_cdi": "15603936026889",
     "codigo_auchan": "4000289",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 245
   },
   {
     "id": "145",
@@ -1592,7 +1736,8 @@
     "itf": "1560393602687",
     "itf_cdi": "15603936026872",
     "codigo_auchan": "4000290",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 245
   },
   {
     "id": "146",
@@ -1603,7 +1748,8 @@
     "itf": "1560393602686",
     "itf_cdi": "15603936026865",
     "codigo_auchan": "4000295",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 245
   },
   {
     "id": "147",
@@ -1614,7 +1760,8 @@
     "itf": "1560393602685",
     "itf_cdi": "15603936026858",
     "codigo_auchan": "4000302",
-    "caixa_default": 4
+    "caixa_default": 4,
+    "validade_minima_dias": 245
   },
   {
     "id": "148",
@@ -1625,7 +1772,8 @@
     "itf": "1560393602713",
     "itf_cdi": "15603936027138",
     "codigo_auchan": "4008013",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 244
   },
   {
     "id": "149",
@@ -1636,7 +1784,8 @@
     "itf": "1560393602714",
     "itf_cdi": "15603936027145",
     "codigo_auchan": "4008014",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": 244
   },
   {
     "id": "150",
@@ -5679,7 +5828,8 @@
     "itf": "1123000016800",
     "itf_cdi": "11230000168004",
     "codigo_auchan": "3917051",
-    "caixa_default": 10
+    "caixa_default": 10,
+    "validade_minima_dias": null
   },
   {
     "id": "487",
@@ -5690,7 +5840,8 @@
     "itf": "1123000016802",
     "itf_cdi": "11230000168028",
     "codigo_auchan": "3917056",
-    "caixa_default": 10
+    "caixa_default": 10,
+    "validade_minima_dias": null
   },
   {
     "id": "488",
@@ -5701,7 +5852,8 @@
     "itf": "1123000016804",
     "itf_cdi": "11230000168042",
     "codigo_auchan": "3917062",
-    "caixa_default": 10
+    "caixa_default": 10,
+    "validade_minima_dias": null
   },
   {
     "id": "489",
@@ -5712,7 +5864,8 @@
     "itf": "1123000016846",
     "itf_cdi": "11230000168462",
     "codigo_auchan": "3917064",
-    "caixa_default": 10
+    "caixa_default": 10,
+    "validade_minima_dias": null
   },
   {
     "id": "490",
@@ -5723,7 +5876,8 @@
     "itf": "0123000016889",
     "itf_cdi": "01230000168892",
     "codigo_auchan": "3996482",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": null
   },
   {
     "id": "491",
@@ -5734,7 +5888,8 @@
     "itf": "0123000016887",
     "itf_cdi": "01230000168878",
     "codigo_auchan": "3996481",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": null
   },
   {
     "id": "492",
@@ -5745,7 +5900,8 @@
     "itf": "0123000016885",
     "itf_cdi": "01230000168854",
     "codigo_auchan": "3996480",
-    "caixa_default": 10
+    "caixa_default": 10,
+    "validade_minima_dias": null
   },
   {
     "id": "493",
@@ -5756,7 +5912,8 @@
     "itf": "1501680500051",
     "itf_cdi": "15016805000512",
     "codigo_auchan": "3984166",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": null
   },
   {
     "id": "494",
@@ -5767,7 +5924,8 @@
     "itf": "1872016510850",
     "itf_cdi": "18720165108500",
     "codigo_auchan": "",
-    "caixa_default": 24
+    "caixa_default": 24,
+    "validade_minima_dias": null
   },
   {
     "id": "495",
@@ -5778,6 +5936,7 @@
     "itf": "1600377000913",
     "itf_cdi": "16003770009137",
     "codigo_auchan": "3946318",
-    "caixa_default": 6
+    "caixa_default": 6,
+    "validade_minima_dias": null
   }
 ]

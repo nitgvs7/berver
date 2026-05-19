@@ -9,7 +9,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "lint": "eslint . --max-warnings=0",
-    "supabase:import:sabores": "node scripts/import-sabores-do-mundo.mjs"
+    "supabase:import:sabores": "node scripts/import-sabores-do-mundo.mjs",
+    "supabase:import:validity": "node scripts/import-validity.mjs",
+    "validity:update-json": "node scripts/import-validity.mjs --write-json --skip-supabase"
   },
   "dependencies": {
     "@bwip-js/browser": "^4.10.1",
