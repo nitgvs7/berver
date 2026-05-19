@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Label100x150 } from "../../components/Label100x150";
 import { PrintControls } from "../../components/PrintControls";
-import { getDraftLabel, recordPrintHistory } from "../../lib/label-storage";
+import { getDraftLabel, recordPrintHistoryToSource } from "../../lib/label-storage";
 import type { LabelData } from "../../types/label";
 
 export default function PrintPage() {
@@ -19,7 +19,7 @@ export default function PrintPage() {
       return;
     }
 
-    recordPrintHistory(label);
+    void recordPrintHistoryToSource(label);
     recordedRef.current = true;
   }
 

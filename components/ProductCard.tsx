@@ -34,8 +34,12 @@ export function ProductCard({ product, onSelect, actionLabel = "Criar Etiqueta",
               <dd className="font-mono">{product.codigo_auchan || "-"}</dd>
             </div>
             <div>
-              <dt className="font-bold">Caixa</dt>
+              <dt className="font-bold">Unidades por caixa</dt>
               <dd className="font-mono">{product.caixa_default ?? "-"}</dd>
+            </div>
+            <div>
+              <dt className="font-bold">Validade mínima</dt>
+              <dd className="font-mono">{product.validade_minima_dias ? `${product.validade_minima_dias} dias` : "-"}</dd>
             </div>
           </dl>
         </div>

@@ -45,6 +45,16 @@ export default function PreviewPage() {
         </Link>
       </div>
 
+      <div className="no-print rounded-lg border border-[#b9d8f6] bg-white p-4 text-sm font-bold text-[#1f3679] shadow-sm">
+        <p>Data de entrega: <span className="font-mono">{label.data_entrega}</span></p>
+        <p>
+          Validade Auchan:{" "}
+          <span className={label.auchan_validity_status === "rejected" ? "text-red-700" : label.auchan_validity_status === "accepted" ? "text-emerald-700" : "text-amber-700"}>
+            {label.auchan_validity_status === "accepted" ? "Aceite" : label.auchan_validity_status === "rejected" ? "Não aceite" : "Sem regra definida"}
+          </span>
+        </p>
+      </div>
+
       <div className="preview-stage overflow-x-auto rounded-lg border border-[#b9d8f6] bg-[#dcecff] p-4">
         <Label100x150 data={label} />
       </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { ArrowUpDown, Search } from "lucide-react";
-import { filterProducts, groupProductsByCategory, loadProducts, resetProducts, searchProducts, sortProducts, type ProductSort } from "../lib/products";
+import { filterProducts, groupProductsByCategory, loadProductsForApp, resetProducts, searchProducts, sortProducts, type ProductSort } from "../lib/products";
 import type { Product } from "../types/product";
 import { ProductCard } from "./ProductCard";
 
@@ -29,8 +29,8 @@ const sortOptions: Array<{ label: string; value: ProductSort }> = [
   { label: "ITF Z-A", value: "itf-desc" },
   { label: "Código Auchan A-Z", value: "auchan-asc" },
   { label: "Código Auchan Z-A", value: "auchan-desc" },
-  { label: "Caixa menor", value: "box-asc" },
-  { label: "Caixa maior", value: "box-desc" },
+  { label: "Unidades menor", value: "box-asc" },
+  { label: "Unidades maior", value: "box-desc" },
 ];
 
 const allCategories = "TODOS";
@@ -58,6 +58,16 @@ function sortDirection(sort: ProductSort, column: TableSortColumn): "asc" | "des
   return null;
 }
 
+function toSentenceCase(value: string): string {
+  const normalized = value.trim().toLocaleLowerCase("pt-PT");
+
+  if (!normalized) {
+    return value;
+  }
+
+  return normalized.charAt(0).toLocaleUpperCase("pt-PT") + normalized.slice(1);
+}
+
 export function ProductSearch({
   onSelect,
   actionLabel,
@@ -69,13 +79,29 @@ export function ProductSearch({
   tableView = false,
 }: ProductSearchProps) {
   const [products, setProducts] = useState<Product[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
   const [query, setQuery] = useState(initialQuery);
   const [sort, setSort] = useState<ProductSort>(defaultSort);
   const [category, setCategory] = useState(allCategories);
   const showSortSelect = enableSort && !tableView;
 
   useEffect(() => {
-    setProducts(loadProducts());
+    let cancelled = false;
+
+    async function loadInitialProducts() {
+      const nextProducts = await loadProductsForApp();
+
+      if (!cancelled) {
+        setProducts(nextProducts);
+        setLoadingProducts(false);
+      }
+    }
+
+    loadInitialProducts();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const categoryGroups = useMemo(() => groupProductsByCategory(products), [products]);
@@ -158,7 +184,9 @@ export function ProductSearch({
         ) : null}
       </div>
 
-      {products.length === 0 ? (
+      {loadingProducts ? <div className="rounded-lg border border-[#b9d8f6] bg-white p-4 font-bold text-[#1f3679]">A carregar produtos...</div> : null}
+
+      {!loadingProducts && products.length === 0 ? (
         <div className="rounded-lg border border-amber-300 bg-amber-50 p-4 font-bold text-amber-900">
           <p>Base de produtos vazia.</p>
           <button type="button" onClick={handleResetProducts} className="mt-3 min-h-12 w-full rounded-md bg-[#1f3679] px-4 py-3 font-black text-white">
@@ -172,7 +200,7 @@ export function ProductSearch({
       ) : null}
 
       {tableView && products.length > 0 ? (
-        <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
+        <div className="flex flex-wrap gap-1.5">
           {categoryTabs.map((group) => {
             const active = category === group.category;
 
@@ -181,12 +209,12 @@ export function ProductSearch({
                 key={group.category}
                 type="button"
                 onClick={() => setCategory(group.category)}
-                className={`inline-flex min-h-12 shrink-0 items-center gap-2 rounded-t-md border border-b-0 px-4 text-sm font-black uppercase shadow-sm ${
+                className={`inline-flex min-h-8 max-w-full items-center gap-1 rounded-md border px-2 text-xs font-black leading-none shadow-sm ${
                   active ? "bg-white text-[#1f3679]" : "border-[#d9e9fb] bg-[#e8f3ff] text-[#2f4fb3]"
                 }`}
               >
-                {group.category === allCategories ? "Todos" : group.category}
-                <span className={`rounded px-2 py-0.5 text-xs ${active ? "bg-[#dceeff]" : "bg-white"}`}>{group.products.length}</span>
+                <span className="truncate">{group.category === allCategories ? "Todos" : toSentenceCase(group.category)}</span>
+                <span className={`rounded px-1.5 py-0.5 text-[10px] ${active ? "bg-[#dceeff]" : "bg-white"}`}>{group.products.length}</span>
               </button>
             );
           })}
@@ -199,19 +227,18 @@ export function ProductSearch({
         </p>
       ) : null}
 
-      {tableView ? (
+      {!loadingProducts && tableView ? (
         <div className="overflow-hidden rounded-b-lg rounded-tr-lg border border-[#d9e9fb] bg-white shadow-sm">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[920px] border-collapse text-left text-sm text-[#1f3679]">
+            <table className="w-full min-w-[860px] border-collapse text-left text-sm text-[#1f3679]">
               <thead className="bg-[#f7fbff] text-xs font-black uppercase text-[#2f4fb3]">
                 <tr className="border-b border-[#d9e9fb]">
                   <th className="w-14 px-4 py-3">#</th>
-                  {renderSortHeader("Produto", "name", "min-w-[260px] px-4 py-3")}
+                  {renderSortHeader("Produto", "name", "min-w-[390px] px-4 py-3")}
                   {renderSortHeader("Categoria", "category", "min-w-[180px] px-4 py-3")}
-                  {renderSortHeader("EAN", "ean", "min-w-[130px] px-4 py-3")}
-                  {renderSortHeader("ITF", "itf", "min-w-[140px] px-4 py-3")}
                   {renderSortHeader("Código Auchan", "auchan", "min-w-[120px] px-4 py-3")}
-                  {renderSortHeader("Caixa", "box", "w-20 px-4 py-3")}
+                  {renderSortHeader("Unidades por caixa", "box", "w-32 px-4 py-3")}
+                  <th className="w-28 px-4 py-3">Validade</th>
                   <th className="w-40 px-4 py-3 text-right">Ação</th>
                 </tr>
               </thead>
@@ -220,15 +247,14 @@ export function ProductSearch({
                   <tr key={product.id} className="group border-b border-[#eef4fb] last:border-b-0 hover:bg-[#f7fbff]">
                     <td className="px-4 py-3 font-mono text-[#2f4fb3]">{index + 1}</td>
                     <td className="px-4 py-3">
-                      <p className="max-w-[38ch] truncate font-black uppercase text-[#1f3679]" title={product.name}>
+                      <p className="max-w-[62ch] truncate font-black uppercase text-[#1f3679]" title={product.name}>
                         {product.name}
                       </p>
                     </td>
                     <td className="px-4 py-3 font-bold uppercase text-[#2f4fb3]">{product.category ?? "-"}</td>
-                    <td className="px-4 py-3 font-mono">{product.ean_cdi || product.ean || "-"}</td>
-                    <td className="px-4 py-3 font-mono">{product.itf_cdi || product.itf || "-"}</td>
                     <td className="px-4 py-3 font-mono">{product.codigo_auchan || "-"}</td>
                     <td className="px-4 py-3 font-mono">{product.caixa_default ?? "-"}</td>
+                    <td className="px-4 py-3 font-mono">{product.validade_minima_dias ? `${product.validade_minima_dias}d` : "-"}</td>
                     <td className="px-4 py-3 text-right">
                       {onSelect ? (
                         <button
@@ -246,7 +272,7 @@ export function ProductSearch({
             </table>
           </div>
         </div>
-      ) : groupByCategory ? (
+      ) : !loadingProducts && groupByCategory ? (
         <div className="space-y-6">
           {groupedResults.map((group) => (
             <section key={group.category} className="space-y-3">
@@ -262,13 +288,13 @@ export function ProductSearch({
             </section>
           ))}
         </div>
-      ) : (
+      ) : !loadingProducts ? (
         <div className="grid gap-3 xl:grid-cols-2">
           {results.map((product) => (
             <ProductCard key={product.id} product={product} onSelect={onSelect} actionLabel={actionLabel} showCategory={showAll} />
           ))}
         </div>
-      )}
+      ) : null}
     </section>
   );
 }

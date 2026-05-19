@@ -37,7 +37,7 @@ export function Label100x150({ data }: { data: LabelData }) {
           <strong>{barcode.gtin}</strong>
         </div>
         <div>
-          <span>Nº. de Caixas:</span>
+          <span>Unid. por caixa:</span>
           <strong>{data.caixas}</strong>
         </div>
         <div className="label-data-wide">

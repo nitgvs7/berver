@@ -2,11 +2,12 @@
 
 import { CalendarDays, ClipboardCheck, RotateCcw } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { dateToYYMMDD, formatDateInput } from "../lib/date";
+import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from "react";
+import { calculateAuchanValidity } from "../lib/auchan-validity";
+import { dateToYYMMDD, formatDateInput, todayPtDate } from "../lib/date";
 import { generateSSCC } from "../lib/sscc";
-import { getNextSSCCSerial, getSelectedProduct, saveDraftLabel, setSelectedProduct } from "../lib/label-storage";
-import { findProductByCode, findProductById, loadProducts } from "../lib/products";
+import { getSelectedProduct, loadLabelDefaults, reserveNextSSCCSerial, saveDraftLabel, saveLabelDefaults, setSelectedProduct } from "../lib/label-storage";
+import { findProductByCode, findProductById, loadProductsForApp } from "../lib/products";
 import { validateLabelForm, type LabelValidationErrors } from "../lib/validation";
 import type { LabelFormValues } from "../types/label";
 import type { Product } from "../types/product";
@@ -17,9 +18,10 @@ const emptyForm: LabelFormValues = {
   product: null,
   ordem_compra: "",
   lote: "",
+  data_entrega: "",
   validade_texto: "",
   validade_barras: "",
-  caixas: 1,
+  caixas: 0,
   quantidade_etiquetas: 1,
 };
 
@@ -57,24 +59,43 @@ export function LabelForm() {
   const [values, setValues] = useState<LabelFormValues>(emptyForm);
   const [errors, setErrors] = useState<LabelValidationErrors>({});
   const [manualBarcodeDate, setManualBarcodeDate] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    const products = loadProducts();
-    const productId = searchParams.get("productId");
-    const code = searchParams.get("code");
-    const selected =
-      (productId ? findProductById(productId, products) : undefined) ??
-      (code ? findProductByCode(code, products) : undefined) ??
-      getSelectedProduct();
+    let cancelled = false;
 
-    if (selected) {
+    async function loadInitialData() {
+      const [products, defaults] = await Promise.all([loadProductsForApp(), loadLabelDefaults()]);
+      const productId = searchParams.get("productId");
+      const code = searchParams.get("code");
+      const selected =
+        (productId ? findProductById(productId, products) : undefined) ??
+        (code ? findProductByCode(code, products) : undefined) ??
+        getSelectedProduct();
+
+      if (cancelled) {
+        return;
+      }
+
       setValues((current) => ({
         ...current,
-        product: selected,
-        caixas: selected.caixa_default ?? current.caixas,
+        data_entrega: current.data_entrega || defaults.data_entrega || todayPtDate(),
+        ordem_compra: current.ordem_compra || defaults.ordem_compra || "",
+        product: selected ?? current.product,
       }));
     }
+
+    loadInitialData();
+
+    return () => {
+      cancelled = true;
+    };
   }, [searchParams]);
+
+  const auchanValidity = useMemo(
+    () => calculateAuchanValidity(values.product, values.data_entrega, values.validade_texto),
+    [values.data_entrega, values.product, values.validade_texto],
+  );
 
   function updateField(field: keyof LabelFormValues, value: string) {
     setValues((current) => ({ ...current, [field]: value }));
@@ -94,6 +115,18 @@ export function LabelForm() {
     }
   }
 
+  function handleDeliveryDateTextChange(event: ChangeEvent<HTMLInputElement>) {
+    updateField("data_entrega", formatDateInput(event.target.value));
+  }
+
+  function handleDeliveryDateCalendarChange(event: ChangeEvent<HTMLInputElement> | FormEvent<HTMLInputElement>) {
+    const formatted = nativeDateToPtDate(event.currentTarget.value);
+
+    if (formatted) {
+      updateField("data_entrega", formatted);
+    }
+  }
+
   function applyValidityDate(formatted: string) {
     const generated = dateToYYMMDD(formatted);
 
@@ -110,7 +143,6 @@ export function LabelForm() {
     setValues((current) => ({
       ...current,
       product,
-      caixas: product.caixa_default ?? current.caixas,
     }));
     setErrors((current) => ({ ...current, product: undefined }));
   }
@@ -124,7 +156,7 @@ export function LabelForm() {
     }
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextErrors = validateLabelForm(values);
     setErrors(nextErrors);
@@ -133,23 +165,43 @@ export function LabelForm() {
       return;
     }
 
-    const serial = getNextSSCCSerial();
+    setSubmitting(true);
+    const serial = await reserveNextSSCCSerial();
+    const daysMargin =
+      auchanValidity.status === "accepted" ? auchanValidity.daysMargin : auchanValidity.status === "rejected" ? -auchanValidity.daysMissing : null;
     const label = {
       id: createLabelId(),
       product: values.product,
       ordem_compra: values.ordem_compra.trim(),
       lote: values.lote.trim(),
+      data_entrega: values.data_entrega.trim(),
       validade_texto: values.validade_texto.trim(),
       validade_barras: values.validade_barras.trim(),
       caixas: Number(values.caixas),
       quantidade_etiquetas: Number(values.quantidade_etiquetas),
       sscc: generateSSCC(serial),
+      auchan_validity_status: auchanValidity.status,
+      auchan_days_available: "daysAvailable" in auchanValidity ? auchanValidity.daysAvailable : null,
+      auchan_days_margin: daysMargin,
+      auchan_minimum_days: "minimumDays" in auchanValidity ? auchanValidity.minimumDays : null,
       created_at: new Date().toISOString(),
     };
 
+    await saveLabelDefaults({
+      data_entrega: values.data_entrega.trim(),
+      ordem_compra: values.ordem_compra.trim(),
+    });
     saveDraftLabel(label);
     router.push("/label/preview");
+    setSubmitting(false);
   }
+
+  const validityClassName =
+    auchanValidity.status === "accepted"
+      ? "border-emerald-300 bg-emerald-50 text-emerald-900"
+      : auchanValidity.status === "rejected"
+        ? "border-red-300 bg-red-50 text-red-900"
+        : "border-amber-300 bg-amber-50 text-amber-900";
 
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_390px]">
@@ -176,33 +228,64 @@ export function LabelForm() {
             placeholder="1075383683"
           />
           <Field label="Lote" error={errors.lote} value={values.lote} onChange={(event) => updateField("lote", event.target.value)} placeholder="060426" />
-          <label className="block">
-            <span className="mb-2 block text-sm font-black uppercase text-[#1f3679]">Data de Validade</span>
+          <label className="block rounded-lg border border-emerald-200 bg-emerald-50/70 p-3">
+            <span className="mb-2 block text-sm font-black uppercase text-emerald-900">Data de Entrega</span>
+            <div className="grid gap-2 sm:grid-cols-[1fr_11rem]">
+              <input
+                value={values.data_entrega}
+                onChange={handleDeliveryDateTextChange}
+                inputMode="numeric"
+                className="min-h-14 w-full rounded-md border-2 border-emerald-500 bg-white px-3 text-lg font-black text-emerald-950 outline-none focus:border-emerald-800"
+                placeholder="19-05-2026"
+              />
+              <label className="grid gap-1">
+                <span className="sr-only">Calendário entrega</span>
+                <span className="flex min-h-14 items-center gap-2 rounded-md border-2 border-emerald-700 bg-white px-3 text-emerald-900 focus-within:border-emerald-950">
+                  <CalendarDays aria-hidden="true" className="h-5 w-5 shrink-0" />
+                  <input
+                    aria-label="Escolher data de entrega"
+                    type="date"
+                    value={ptDateToNativeDate(values.data_entrega)}
+                    onInput={handleDeliveryDateCalendarChange}
+                    onChange={handleDeliveryDateCalendarChange}
+                    className="min-w-0 flex-1 bg-transparent text-sm font-black outline-none"
+                  />
+                </span>
+              </label>
+            </div>
+            {errors.data_entrega ? <span className="mt-1 block text-sm font-bold text-red-700">{errors.data_entrega}</span> : null}
+          </label>
+          <label className="block rounded-lg border border-amber-200 bg-amber-50/80 p-3">
+            <span className="mb-2 block text-sm font-black uppercase text-amber-900">Data de Validade</span>
             <div className="grid gap-2 sm:grid-cols-[1fr_11rem]">
               <input
                 value={values.validade_texto}
                 onChange={handleValidityTextChange}
                 inputMode="numeric"
-                className="min-h-14 w-full rounded-md border-2 border-[#5ab2e8] px-3 text-lg font-black outline-none focus:border-[#1f3679]"
+                className="min-h-14 w-full rounded-md border-2 border-amber-500 bg-white px-3 text-lg font-black text-amber-950 outline-none focus:border-amber-800"
                 placeholder="30-06-2027"
               />
               <label className="grid gap-1">
                 <span className="sr-only">Calendário</span>
-                <span className="flex min-h-14 items-center gap-2 rounded-md border-2 border-[#2f4fb3] bg-white px-3 text-[#1f3679] focus-within:border-[#1f3679]">
+                <span className="flex min-h-14 items-center gap-2 rounded-md border-2 border-amber-700 bg-white px-3 text-amber-900 focus-within:border-amber-950">
                   <CalendarDays aria-hidden="true" className="h-5 w-5 shrink-0" />
                   <input
                     aria-label="Escolher data de validade"
-                  type="date"
-                  value={ptDateToNativeDate(values.validade_texto)}
-                  onInput={handleValidityCalendarChange}
-                  onChange={handleValidityCalendarChange}
-                  className="min-w-0 flex-1 bg-transparent text-sm font-black outline-none"
-                />
+                    type="date"
+                    value={ptDateToNativeDate(values.validade_texto)}
+                    onInput={handleValidityCalendarChange}
+                    onChange={handleValidityCalendarChange}
+                    className="min-w-0 flex-1 bg-transparent text-sm font-black outline-none"
+                  />
                 </span>
               </label>
             </div>
             {errors.validade_texto ? <span className="mt-1 block text-sm font-bold text-red-700">{errors.validade_texto}</span> : null}
           </label>
+          <div className={`rounded-lg border p-4 text-sm font-black md:col-span-2 ${validityClassName}`} aria-live="polite">
+            <p>Validade Auchan</p>
+            <p className="mt-1 font-bold">{auchanValidity.message}</p>
+          </div>
           <label className="block">
             <span className="mb-2 block text-sm font-black uppercase text-[#1f3679]">Validade Barras</span>
             <div className="flex gap-2">
@@ -228,12 +311,12 @@ export function LabelForm() {
             {errors.validade_barras ? <span className="mt-1 block text-sm font-bold text-red-700">{errors.validade_barras}</span> : null}
           </label>
           <Field
-            label="Nº de Caixas"
+            label="Unidades por caixa"
             error={errors.caixas}
             inputMode="numeric"
             value={String(values.caixas)}
             onChange={(event) => updateField("caixas", event.target.value.replace(/\D/g, ""))}
-            placeholder="2"
+            placeholder="0"
           />
           <Field
             label="Quantidade de Etiquetas"
@@ -245,9 +328,13 @@ export function LabelForm() {
           />
         </div>
 
-        <button type="submit" className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-md bg-[#1f3679] px-5 py-3 text-lg font-black text-white">
+        <button
+          type="submit"
+          disabled={submitting}
+          className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-md bg-[#1f3679] px-5 py-3 text-lg font-black text-white disabled:opacity-60"
+        >
           <ClipboardCheck aria-hidden="true" className="h-6 w-6" />
-          Pré-visualizar
+          {submitting ? "A preparar..." : "Pré-visualizar"}
         </button>
       </form>
 

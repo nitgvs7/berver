@@ -31,7 +31,9 @@ export function HistoryTable() {
             <tr>
               <th className="px-3 py-3 font-black">Produto</th>
               <th className="px-3 py-3 font-black">Lote</th>
+              <th className="px-3 py-3 font-black">Entrega</th>
               <th className="px-3 py-3 font-black">Validade</th>
+              <th className="px-3 py-3 font-black">Auchan</th>
               <th className="px-3 py-3 font-black">Ordem</th>
               <th className="px-3 py-3 font-black">SSCC</th>
               <th className="px-3 py-3 font-black">Ação</th>
@@ -42,7 +44,15 @@ export function HistoryTable() {
               <tr key={label.id} className="border-t border-[#d8e9fb]">
                 <td className="max-w-72 px-3 py-3 font-bold">{label.product.name}</td>
                 <td className="px-3 py-3 font-mono">{label.lote}</td>
+                <td className="px-3 py-3 font-mono">{label.data_entrega ?? "-"}</td>
                 <td className="px-3 py-3 font-mono">{label.validade_texto}</td>
+                <td className="px-3 py-3 font-bold">
+                  {label.auchan_validity_status === "accepted"
+                    ? "Aceite"
+                    : label.auchan_validity_status === "rejected"
+                      ? "Não aceite"
+                      : "Sem regra"}
+                </td>
                 <td className="px-3 py-3 font-mono">{label.ordem_compra}</td>
                 <td className="px-3 py-3 font-mono">{label.sscc}</td>
                 <td className="px-3 py-3">

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { dateToYYMMDD } from "../lib/date";
 import { getProductGtin } from "../lib/barcode";
+import { calculateAuchanValidity } from "../lib/auchan-validity";
 import { findProductByCode, getSeedProducts, groupProductsByCategory, searchProducts, sortProducts, syncProductsWithSeed } from "../lib/products";
 import { calculateGS1CheckDigit, formatHumanSSCC, generateSSCC } from "../lib/sscc";
 import { validateLabelForm } from "../lib/validation";
@@ -74,7 +75,7 @@ describe("product utilities", () => {
 
   it("merges newly imported seed products into an older saved product list", () => {
     const seedProducts = [
-      { id: "1", category: "BEBIDAS", name: "AGUA", ean: "111", caixa_default: 6 },
+      { id: "1", category: "BEBIDAS", name: "AGUA", ean: "111", caixa_default: 6, validade_minima_dias: 80 },
       { id: "2", category: "MERCEARIA", name: "MASSA", ean: "222", caixa_default: 12 },
       { id: "3", category: "DOCES", name: "BOLACHA", ean: "333", caixa_default: 24 },
     ];
@@ -87,10 +88,36 @@ describe("product utilities", () => {
     expect(synced.changed).toBe(true);
     expect(synced.products.map((product) => product.name)).toEqual(["AGUA", "PRODUTO MANUAL", "MASSA", "BOLACHA"]);
     expect(synced.products[0].category).toBe("BEBIDAS");
+    expect(synced.products[0].validade_minima_dias).toBe(80);
   });
 
   it("returns no products only when an explicitly provided product list is empty", () => {
     expect(searchProducts("", [])).toEqual([]);
+  });
+});
+
+describe("Auchan validity utilities", () => {
+  it("shows whether a product meets the minimum days from delivery", () => {
+    const product = { id: "1", name: "Produto", validade_minima_dias: 90 };
+
+    expect(calculateAuchanValidity(product, "19-05-2026", "20-08-2026")).toMatchObject({
+      status: "accepted",
+      daysAvailable: 93,
+      daysMargin: 3,
+      minimumDays: 90,
+    });
+    expect(calculateAuchanValidity(product, "19-05-2026", "01-08-2026")).toMatchObject({
+      status: "rejected",
+      daysAvailable: 74,
+      daysMissing: 16,
+      minimumDays: 90,
+    });
+  });
+
+  it("allows printing when no minimum validity rule exists", () => {
+    expect(calculateAuchanValidity({ id: "1", name: "Produto" }, "19-05-2026", "01-08-2026")).toMatchObject({
+      status: "no-rule",
+    });
   });
 });
 
@@ -100,6 +127,7 @@ describe("label validation", () => {
       product: null,
       ordem_compra: "",
       lote: "",
+      data_entrega: "",
       validade_texto: "31-02-2027",
       validade_barras: "27063",
       caixas: 0,
@@ -107,8 +135,9 @@ describe("label validation", () => {
     });
 
     expect(errors.product).toBe("Selecione um produto.");
+    expect(errors.data_entrega).toBe("Indique a data de entrega.");
     expect(errors.validade_texto).toBe("Use uma data válida no formato DD-MM-YYYY.");
     expect(errors.validade_barras).toBe("A validade de barras deve ter 6 dígitos YYMMDD.");
-    expect(errors.caixas).toBe("O número de caixas deve ser maior que zero.");
+    expect(errors.caixas).toBe("As unidades por caixa devem ser maiores que zero.");
   });
 });

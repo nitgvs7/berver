@@ -23,7 +23,7 @@ Para testar a câmara num telemóvel, o browser normalmente exige HTTPS ou uma o
 1. Abra **Digitalizar EAN**.
 2. Digitalize com a câmara ou introduza EAN/ITF/Código Auchan manualmente.
 3. Confirme o produto.
-4. Preencha ordem de compra, lote, validade, caixas e quantidade de etiquetas.
+4. Preencha ordem de compra, lote, validade, unidades por caixa e quantidade de etiquetas.
 5. Veja a pré-visualização.
 6. Abra **Imprimir** e use as definições da impressora.
 
@@ -31,14 +31,41 @@ Para testar a câmara num telemóvel, o browser normalmente exige HTTPS ou uma o
 
 Produtos iniciais estão em `data/products.json`.
 
-No MVP, a página **Admin Produtos** permite:
+Com Supabase configurado, a aplicação carrega primeiro a tabela `products`. Sem Supabase, continua a usar `data/products.json`/`localStorage`.
+
+Para preparar a base Supabase:
+
+1. Execute o SQL em `supabase/schema.sql` no SQL Editor do Supabase.
+2. Crie `.env.local` com:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=https://ghxyakafkwxbowynafkh.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=...
+SUPABASE_SERVICE_ROLE_KEY=...
+```
+
+3. Importe Sabores do Mundo:
+
+```bash
+npm run supabase:import:sabores
+```
+
+O importador usa por defeito:
+
+```bash
+/Users/nit/Documents/VALIDADES PARA AUCHAN/VALIDADES ATUALIZADAS/MAPA VALIDADES - AUCHAN SABORES MUNDO.xlsx
+```
+
+A coluna I desse ficheiro alimenta `validade_minima_dias`.
+
+A página **Admin Produtos** permite:
 
 - adicionar, editar e apagar produtos;
 - importar JSON;
 - exportar JSON;
 - repor a base inicial.
 
-As alterações feitas no admin ficam em `localStorage`. A aplicação carrega primeiro os produtos de `localStorage`; se não existirem, usa `data/products.json`.
+As alterações feitas no admin ficam em `localStorage` quando Supabase não está a ser usado.
 
 ## Impressão correta
 
@@ -80,58 +107,23 @@ Aviso de produção: **localStorage só é seguro para um dispositivo**. Em prod
 
 ## Histórico
 
-A página `/history` guarda localmente:
+A página `/history` guarda:
 
 - produto;
 - GTIN;
 - ordem de compra;
 - lote;
+- data de entrega;
 - validade;
-- caixas;
+- estado de validade Auchan;
+- unidades por caixa;
 - quantidade;
 - SSCC;
 - data de criação.
 
+Com Supabase configurado, as etiquetas impressas também são gravadas na tabela `labels`.
+
 O botão **Reimprimir** volta a carregar a etiqueta para `/print`.
-
-## Futuro Supabase
-
-Uma integração futura pode trocar `localStorage` por tabelas Supabase:
-
-```sql
-create table products (
-  id uuid primary key,
-  name text not null,
-  ean text,
-  ean_cdi text,
-  itf text,
-  itf_cdi text,
-  codigo_auchan text,
-  caixa_default integer,
-  active boolean default true
-);
-
-create table labels (
-  id uuid primary key,
-  product_id uuid,
-  ordem_compra text,
-  lote text,
-  validade_texto text,
-  validade_barras text,
-  caixas integer,
-  quantidade_etiquetas integer,
-  sscc text unique,
-  created_at timestamp,
-  printed_by text
-);
-
-create table sscc_counter (
-  id text primary key,
-  current_serial bigint
-);
-```
-
-O ponto crítico é o `sscc_counter`: a reserva do próximo serial deve ser atómica.
 
 ## Verificação
 

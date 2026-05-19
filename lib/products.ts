@@ -1,5 +1,6 @@
 import seedProducts from "../data/products.json";
 import type { Product } from "../types/product";
+import { getSupabaseBrowserClient } from "./supabase";
 
 export const PRODUCTS_STORAGE_KEY = "warehouse-label-printer:products";
 export const UNCATEGORIZED_PRODUCT_CATEGORY = "SEM CATEGORIA";
@@ -24,6 +25,19 @@ export type ProductGroup = {
   products: Product[];
 };
 
+type SupabaseProductRow = {
+  id: string | number;
+  category: string | null;
+  name: string;
+  ean: string | null;
+  ean_cdi: string | null;
+  itf: string | null;
+  itf_cdi: string | null;
+  codigo_auchan: string | null;
+  caixa_default: number | null;
+  validade_minima_dias: number | null;
+};
+
 const productCollator = new Intl.Collator("pt-PT", {
   numeric: true,
   sensitivity: "base",
@@ -31,6 +45,21 @@ const productCollator = new Intl.Collator("pt-PT", {
 
 export function getSeedProducts(): Product[] {
   return seedProducts.map((product) => ({ ...product }));
+}
+
+function fromSupabaseProduct(row: SupabaseProductRow): Product {
+  return {
+    id: String(row.id),
+    category: row.category ?? undefined,
+    name: row.name,
+    ean: row.ean ?? undefined,
+    ean_cdi: row.ean_cdi ?? undefined,
+    itf: row.itf ?? undefined,
+    itf_cdi: row.itf_cdi ?? undefined,
+    codigo_auchan: row.codigo_auchan ?? undefined,
+    caixa_default: row.caixa_default ?? undefined,
+    validade_minima_dias: row.validade_minima_dias,
+  };
 }
 
 export function normalizeSearchValue(value: string | number | undefined): string {
@@ -201,12 +230,23 @@ export function syncProductsWithSeed(products: Product[], seedProducts: Product[
   const upgradedProducts = products.map((product) => {
     const seedProduct = findMatchingSeedProduct(product, seedIndexes);
 
-    if (product.category?.trim() || !seedProduct?.category) {
+    if (!seedProduct) {
       return product;
     }
 
-    changed = true;
-    return { ...product, category: seedProduct.category };
+    const nextProduct = { ...product };
+
+    if (!nextProduct.category?.trim() && seedProduct.category) {
+      nextProduct.category = seedProduct.category;
+      changed = true;
+    }
+
+    if (nextProduct.validade_minima_dias == null && seedProduct.validade_minima_dias != null) {
+      nextProduct.validade_minima_dias = seedProduct.validade_minima_dias;
+      changed = true;
+    }
+
+    return nextProduct;
   });
   const identity = createProductIdentity(upgradedProducts);
 
@@ -257,6 +297,34 @@ export function loadProducts(): Product[] {
     window.localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(seedProducts));
     return seedProducts;
   }
+}
+
+export async function loadSupabaseProducts(): Promise<Product[] | null> {
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase) {
+    return null;
+  }
+
+  const { data, error } = await supabase
+    .from("products")
+    .select("id, category, name, ean, ean_cdi, itf, itf_cdi, codigo_auchan, caixa_default, validade_minima_dias")
+    .eq("active", true)
+    .order("sort_order", { ascending: true })
+    .order("name", { ascending: true });
+
+  if (error || !data) {
+    console.warn("Could not load Supabase products, using local product data.", error);
+    return null;
+  }
+
+  return (data as SupabaseProductRow[]).map(fromSupabaseProduct);
+}
+
+export async function loadProductsForApp(): Promise<Product[]> {
+  const supabaseProducts = await loadSupabaseProducts();
+
+  return supabaseProducts?.length ? supabaseProducts : loadProducts();
 }
 
 export function saveProducts(products: Product[]): void {

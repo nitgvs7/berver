@@ -1,11 +1,19 @@
 import type { LabelData } from "../types/label";
 import type { Product } from "../types/product";
+import { ptDateToIsoDate } from "./date";
 import { DEFAULT_SERIAL_START } from "./sscc";
+import { getSupabaseBrowserClient } from "./supabase";
 
 const DRAFT_LABEL_KEY = "warehouse-label-printer:draft-label";
 const SELECTED_PRODUCT_KEY = "warehouse-label-printer:selected-product";
 const PRINT_HISTORY_KEY = "warehouse-label-printer:print-history";
 const SSCC_SERIAL_KEY = "warehouse-label-printer:sscc-serial";
+const LABEL_DEFAULTS_KEY = "warehouse-label-printer:label-defaults";
+
+export type LabelDefaults = {
+  data_entrega?: string;
+  ordem_compra?: string;
+};
 
 function canUseStorage(): boolean {
   return typeof window !== "undefined" && Boolean(window.localStorage);
@@ -79,6 +87,24 @@ export function getNextSSCCSerial(): number {
   return serial;
 }
 
+export async function reserveNextSSCCSerial(): Promise<number> {
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase) {
+    return getNextSSCCSerial();
+  }
+
+  const { data, error } = await supabase.rpc("reserve_next_sscc_serial");
+  const serial = Number(data);
+
+  if (error || !Number.isInteger(serial) || serial < DEFAULT_SERIAL_START) {
+    console.warn("Could not reserve Supabase SSCC serial, using local counter.", error);
+    return getNextSSCCSerial();
+  }
+
+  return serial;
+}
+
 export function getPrintHistory(): LabelData[] {
   return readJson<LabelData[]>(PRINT_HISTORY_KEY, []);
 }
@@ -87,4 +113,106 @@ export function recordPrintHistory(label: LabelData): void {
   const history = getPrintHistory();
   const deduped = history.filter((item) => item.id !== label.id);
   writeJson(PRINT_HISTORY_KEY, [label, ...deduped].slice(0, 100));
+}
+
+export function getLocalLabelDefaults(): LabelDefaults {
+  return readJson<LabelDefaults>(LABEL_DEFAULTS_KEY, {});
+}
+
+export function saveLocalLabelDefaults(defaults: LabelDefaults): void {
+  writeJson(LABEL_DEFAULTS_KEY, { ...getLocalLabelDefaults(), ...defaults });
+}
+
+export async function loadLabelDefaults(): Promise<LabelDefaults> {
+  const localDefaults = getLocalLabelDefaults();
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase) {
+    return localDefaults;
+  }
+
+  const { data, error } = await supabase.from("app_defaults").select("key, value").in("key", ["data_entrega", "ordem_compra"]);
+
+  if (error || !data) {
+    console.warn("Could not load Supabase defaults, using local defaults.", error);
+    return localDefaults;
+  }
+
+  const remoteDefaults = data.reduce<LabelDefaults>((defaults, item) => {
+    const key = String(item.key);
+
+    if (key === "data_entrega" || key === "ordem_compra") {
+      defaults[key] = String(item.value ?? "");
+    }
+
+    return defaults;
+  }, {});
+
+  return { ...localDefaults, ...remoteDefaults };
+}
+
+export async function saveLabelDefaults(defaults: LabelDefaults): Promise<void> {
+  saveLocalLabelDefaults(defaults);
+
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase) {
+    return;
+  }
+
+  const rows = Object.entries(defaults)
+    .filter(([, value]) => value)
+    .map(([key, value]) => ({
+      key,
+      value,
+      updated_at: new Date().toISOString(),
+    }));
+
+  if (rows.length === 0) {
+    return;
+  }
+
+  const { error } = await supabase.from("app_defaults").upsert(rows, { onConflict: "key" });
+
+  if (error) {
+    console.warn("Could not save Supabase defaults.", error);
+  }
+}
+
+export async function recordPrintHistoryToSource(label: LabelData): Promise<void> {
+  recordPrintHistory(label);
+
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase) {
+    return;
+  }
+
+  const { error } = await supabase.from("labels").upsert(
+    {
+      id: label.id,
+      product_id: label.product.id,
+      product_snapshot: label.product,
+      ordem_compra: label.ordem_compra,
+      lote: label.lote,
+      data_entrega: ptDateToIsoDate(label.data_entrega),
+      data_validade: ptDateToIsoDate(label.validade_texto),
+      validade_texto: label.validade_texto,
+      validade_barras: label.validade_barras,
+      caixas: label.caixas,
+      quantidade_etiquetas: label.quantidade_etiquetas,
+      sscc: label.sscc,
+      auchan_validity_status: label.auchan_validity_status ?? null,
+      auchan_days_available: label.auchan_days_available ?? null,
+      auchan_days_margin: label.auchan_days_margin ?? null,
+      auchan_minimum_days: label.auchan_minimum_days ?? null,
+      printed_at: new Date().toISOString(),
+      created_at: label.created_at,
+    },
+    { onConflict: "id" },
+  );
+
+  if (error) {
+    console.warn("Could not save Supabase label history.", error);
+  }
 }

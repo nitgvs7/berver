@@ -4,7 +4,7 @@ import { BrowserMultiFormatReader } from "@zxing/browser";
 import { Camera, Keyboard, Search, XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { findProductByCode, loadProducts } from "../lib/products";
+import { findProductByCode, loadProductsForApp } from "../lib/products";
 import { setSelectedProduct } from "../lib/label-storage";
 import type { Product } from "../types/product";
 import { ProductCard } from "./ProductCard";
@@ -20,15 +20,36 @@ export function BarcodeScanner() {
   const [error, setError] = useState<string | null>(null);
   const [foundProduct, setFoundProduct] = useState<Product | null>(null);
   const [scanning, setScanning] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
 
   useEffect(() => {
+    let cancelled = false;
+
+    async function loadInitialProducts() {
+      const nextProducts = await loadProductsForApp();
+
+      if (!cancelled) {
+        setProducts(nextProducts);
+        setLoadingProducts(false);
+      }
+    }
+
+    loadInitialProducts();
+
     return () => {
+      cancelled = true;
       controlsRef.current?.stop();
     };
   }, []);
 
   function handleDetectedCode(code: string) {
-    const product = findProductByCode(code, loadProducts());
+    if (loadingProducts) {
+      setError("A base de produtos ainda está a carregar.");
+      return;
+    }
+
+    const product = findProductByCode(code, products);
 
     controlsRef.current?.stop();
     controlsRef.current = null;
@@ -103,6 +124,11 @@ export function BarcodeScanner() {
       return;
     }
 
+    if (loadingProducts) {
+      setError("A base de produtos ainda está a carregar.");
+      return;
+    }
+
     handleDetectedCode(manualCode);
   }
 
@@ -134,6 +160,7 @@ export function BarcodeScanner() {
 
         <p className="rounded-lg border border-[#b9d8f6] bg-white p-3 text-sm font-bold text-[#1f3679]" aria-live="polite">
           {scanning ? "Câmara ativa. " : ""}
+          {loadingProducts ? "A carregar produtos. " : ""}
           {status}
         </p>
 

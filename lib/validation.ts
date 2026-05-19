@@ -29,6 +29,12 @@ export function validateLabelForm(values: LabelFormValues): LabelValidationError
     errors.lote = "Indique o lote.";
   }
 
+  if (!values.data_entrega.trim()) {
+    errors.data_entrega = "Indique a data de entrega.";
+  } else if (!isValidPtDate(values.data_entrega)) {
+    errors.data_entrega = "Use uma data válida no formato DD-MM-YYYY.";
+  }
+
   if (!values.validade_texto.trim()) {
     errors.validade_texto = "Indique a data de validade.";
   } else if (!isValidPtDate(values.validade_texto)) {
@@ -48,7 +54,7 @@ export function validateLabelForm(values: LabelFormValues): LabelValidationError
   }
 
   if (!isPositiveInteger(values.caixas)) {
-    errors.caixas = "O número de caixas deve ser maior que zero.";
+    errors.caixas = "As unidades por caixa devem ser maiores que zero.";
   }
 
   if (!isPositiveInteger(values.quantidade_etiquetas)) {

@@ -8,10 +8,12 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "lint": "eslint . --max-warnings=0"
+    "lint": "eslint . --max-warnings=0",
+    "supabase:import:sabores": "node scripts/import-sabores-do-mundo.mjs"
   },
   "dependencies": {
     "@bwip-js/browser": "^4.10.1",
+    "@supabase/supabase-js": "^2.106.0",
     "@zxing/browser": "^0.2.0",
     "lucide-react": "^1.14.0",
     "next": "^16.2.5",
@@ -27,7 +29,8 @@
     "eslint-config-next": "^16.2.5",
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.5",
+    "xlsx": "^0.18.5"
   },
   "overrides": {
     "postcss": "8.5.14"

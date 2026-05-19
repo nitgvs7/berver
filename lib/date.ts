@@ -34,6 +34,46 @@ export function isValidPtDate(value: string): boolean {
   return parsePtDate(value) !== null;
 }
 
+export function formatPtDate(date: Date): string {
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const year = String(date.getUTCFullYear());
+
+  return `${day}-${month}-${year}`;
+}
+
+export function todayPtDate(): string {
+  const now = new Date();
+  return formatPtDate(new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())));
+}
+
+export function ptDateToIsoDate(value: string): string | null {
+  const date = parsePtDate(value);
+
+  if (!date) {
+    return null;
+  }
+
+  const year = String(date.getUTCFullYear());
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+export function differenceInCalendarDays(laterDateValue: string, earlierDateValue: string): number | null {
+  const laterDate = parsePtDate(laterDateValue);
+  const earlierDate = parsePtDate(earlierDateValue);
+
+  if (!laterDate || !earlierDate) {
+    return null;
+  }
+
+  const millisecondsPerDay = 24 * 60 * 60 * 1000;
+
+  return Math.round((laterDate.getTime() - earlierDate.getTime()) / millisecondsPerDay);
+}
+
 export function dateToYYMMDD(value: string): string | null {
   const date = parsePtDate(value);
 

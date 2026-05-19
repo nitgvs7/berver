@@ -14,6 +14,7 @@ const emptyProduct: Product = {
   itf_cdi: "",
   codigo_auchan: "",
   caixa_default: 1,
+  validade_minima_dias: null,
 };
 
 function createProductId(): string {
@@ -49,7 +50,7 @@ export default function AdminProductsPage() {
   function updateEditing(field: keyof Product, value: string) {
     setEditing((current) => ({
       ...current,
-      [field]: field === "caixa_default" ? Number(value.replace(/\D/g, "") || 0) : value,
+      [field]: field === "caixa_default" || field === "validade_minima_dias" ? Number(value.replace(/\D/g, "") || 0) : value,
     }));
   }
 
@@ -71,6 +72,7 @@ export default function AdminProductsPage() {
       itf_cdi: editing.itf_cdi?.trim(),
       codigo_auchan: editing.codigo_auchan?.trim(),
       caixa_default: Number(editing.caixa_default) > 0 ? Number(editing.caixa_default) : 1,
+      validade_minima_dias: Number(editing.validade_minima_dias) > 0 ? Number(editing.validade_minima_dias) : null,
     };
 
     const nextProducts = isEditingExisting ? products.map((item) => (item.id === product.id ? product : item)) : [product, ...products];
@@ -124,6 +126,7 @@ export default function AdminProductsPage() {
           id: candidate.id || createProductId(),
           name: String(candidate.name).trim().toUpperCase(),
           caixa_default: Number(candidate.caixa_default) > 0 ? Number(candidate.caixa_default) : 1,
+          validade_minima_dias: Number(candidate.validade_minima_dias) > 0 ? Number(candidate.validade_minima_dias) : null,
         };
       });
 
@@ -166,9 +169,15 @@ export default function AdminProductsPage() {
               inputMode="numeric"
             />
             <AdminField
-              label="Caixa"
+              label="Unidades por caixa"
               value={String(editing.caixa_default ?? "")}
               onChange={(event) => updateEditing("caixa_default", event.target.value)}
+              inputMode="numeric"
+            />
+            <AdminField
+              label="Validade mínima dias"
+              value={String(editing.validade_minima_dias ?? "")}
+              onChange={(event) => updateEditing("validade_minima_dias", event.target.value)}
               inputMode="numeric"
             />
           </div>
@@ -242,8 +251,12 @@ export default function AdminProductsPage() {
                       <dd className="font-mono">{product.codigo_auchan || "-"}</dd>
                     </div>
                     <div>
-                      <dt className="font-black text-[#2f4fb3]">Caixa</dt>
+                      <dt className="font-black text-[#2f4fb3]">Unidades por caixa</dt>
                       <dd className="font-mono">{product.caixa_default ?? "-"}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-black text-[#2f4fb3]">Validade</dt>
+                      <dd className="font-mono">{product.validade_minima_dias ? `${product.validade_minima_dias}d` : "-"}</dd>
                     </div>
                   </dl>
                   <div className="mt-3 grid grid-cols-[1fr_3rem] gap-2">
@@ -277,7 +290,8 @@ export default function AdminProductsPage() {
                     <th className="px-3 py-3 font-black">EAN</th>
                     <th className="px-3 py-3 font-black">ITF</th>
                     <th className="px-3 py-3 font-black">Auchan</th>
-                    <th className="px-3 py-3 font-black">Caixa</th>
+                    <th className="px-3 py-3 font-black">Unidades por caixa</th>
+                    <th className="px-3 py-3 font-black">Validade</th>
                     <th className="px-3 py-3 font-black">Ações</th>
                   </tr>
                 </thead>
@@ -289,6 +303,7 @@ export default function AdminProductsPage() {
                       <td className="px-3 py-3 font-mono">{product.itf_cdi || product.itf}</td>
                       <td className="px-3 py-3 font-mono">{product.codigo_auchan}</td>
                       <td className="px-3 py-3 font-mono">{product.caixa_default}</td>
+                      <td className="px-3 py-3 font-mono">{product.validade_minima_dias ? `${product.validade_minima_dias}d` : "-"}</td>
                       <td className="px-3 py-3">
                         <div className="flex gap-2">
                           <button

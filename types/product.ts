@@ -8,4 +8,5 @@ export type Product = {
   itf_cdi?: string;
   codigo_auchan?: string;
   caixa_default?: number;
+  validade_minima_dias?: number | null;
 };
