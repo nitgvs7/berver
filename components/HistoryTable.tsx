@@ -3,20 +3,43 @@
 import { RefreshCw } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getPrintHistory, saveDraftLabel } from "../lib/label-storage";
+import { getPrintHistory, loadPrintHistoryFromSource, saveDraftLabel } from "../lib/label-storage";
 import type { LabelData } from "../types/label";
 
 export function HistoryTable() {
   const router = useRouter();
   const [history, setHistory] = useState<LabelData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
+
     setHistory(getPrintHistory());
+
+    loadPrintHistoryFromSource()
+      .then((loadedHistory) => {
+        if (isMounted) {
+          setHistory(loadedHistory);
+        }
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   function reprint(label: LabelData) {
     saveDraftLabel(label);
     router.push("/print");
+  }
+
+  if (history.length === 0 && isLoading) {
+    return <div className="rounded-lg border border-[#b9d8f6] bg-white p-5 text-base font-bold text-[#1f3679]">A carregar histórico...</div>;
   }
 
   if (history.length === 0) {

@@ -1,6 +1,6 @@
 import type { LabelData } from "../types/label";
 import type { Product } from "../types/product";
-import { ptDateToIsoDate } from "./date";
+import { formatPtDate, parsePtDate, ptDateToIsoDate } from "./date";
 import { DEFAULT_SERIAL_START } from "./sscc";
 import { getSupabaseBrowserClient } from "./supabase";
 
@@ -13,6 +13,27 @@ const LABEL_DEFAULTS_KEY = "warehouse-label-printer:label-defaults";
 export type LabelDefaults = {
   data_entrega?: string;
   ordem_compra?: string;
+};
+
+type SupabaseLabelRow = {
+  id: string;
+  product_id: string | null;
+  product_snapshot: Product;
+  ordem_compra: string;
+  lote: string;
+  data_entrega: string | null;
+  data_validade: string | null;
+  validade_texto: string;
+  validade_barras: string;
+  caixas: number;
+  quantidade_etiquetas: number;
+  sscc: string;
+  auchan_validity_status: LabelData["auchan_validity_status"] | null;
+  auchan_days_available: number | null;
+  auchan_days_margin: number | null;
+  auchan_minimum_days: number | null;
+  printed_at: string | null;
+  created_at: string;
 };
 
 function canUseStorage(): boolean {
@@ -115,6 +136,103 @@ export function recordPrintHistory(label: LabelData): void {
   writeJson(PRINT_HISTORY_KEY, [label, ...deduped].slice(0, 100));
 }
 
+function formatStoredDate(value: string | null): string {
+  if (!value) {
+    return "";
+  }
+
+  const date = parsePtDate(value);
+
+  return date ? formatPtDate(date) : value;
+}
+
+function labelToSupabaseRow(label: LabelData) {
+  return {
+    id: label.id,
+    product_id: label.product.id,
+    product_snapshot: label.product,
+    ordem_compra: label.ordem_compra,
+    lote: label.lote,
+    data_entrega: ptDateToIsoDate(label.data_entrega),
+    data_validade: ptDateToIsoDate(label.validade_texto),
+    validade_texto: label.validade_texto,
+    validade_barras: label.validade_barras,
+    caixas: label.caixas,
+    quantidade_etiquetas: label.quantidade_etiquetas,
+    sscc: label.sscc,
+    auchan_validity_status: label.auchan_validity_status ?? null,
+    auchan_days_available: label.auchan_days_available ?? null,
+    auchan_days_margin: label.auchan_days_margin ?? null,
+    auchan_minimum_days: label.auchan_minimum_days ?? null,
+    printed_at: new Date().toISOString(),
+    created_at: label.created_at,
+  };
+}
+
+function labelFromSupabaseRow(row: SupabaseLabelRow): LabelData {
+  return {
+    id: row.id,
+    product: row.product_snapshot,
+    ordem_compra: row.ordem_compra,
+    lote: row.lote,
+    data_entrega: formatStoredDate(row.data_entrega),
+    validade_texto: row.validade_texto || formatStoredDate(row.data_validade),
+    validade_barras: row.validade_barras,
+    caixas: row.caixas,
+    quantidade_etiquetas: row.quantidade_etiquetas,
+    sscc: row.sscc,
+    auchan_validity_status: row.auchan_validity_status ?? undefined,
+    auchan_days_available: row.auchan_days_available,
+    auchan_days_margin: row.auchan_days_margin,
+    auchan_minimum_days: row.auchan_minimum_days,
+    created_at: row.created_at,
+  };
+}
+
+async function uploadLocalPrintHistory(labels: LabelData[]): Promise<void> {
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase || labels.length === 0) {
+    return;
+  }
+
+  const { error } = await supabase.from("labels").upsert(labels.map(labelToSupabaseRow), { onConflict: "id" });
+
+  if (error) {
+    console.warn("Could not sync local label history to Supabase.", error);
+  }
+}
+
+export async function loadPrintHistoryFromSource(): Promise<LabelData[]> {
+  const localHistory = getPrintHistory();
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase) {
+    return localHistory;
+  }
+
+  await uploadLocalPrintHistory(localHistory);
+
+  const { data, error } = await supabase
+    .from("labels")
+    .select(
+      "id, product_id, product_snapshot, ordem_compra, lote, data_entrega, data_validade, validade_texto, validade_barras, caixas, quantidade_etiquetas, sscc, auchan_validity_status, auchan_days_available, auchan_days_margin, auchan_minimum_days, printed_at, created_at",
+    )
+    .order("printed_at", { ascending: false, nullsFirst: false })
+    .order("created_at", { ascending: false })
+    .limit(100);
+
+  if (error || !data) {
+    console.warn("Could not load Supabase label history, using local history.", error);
+    return localHistory;
+  }
+
+  const remoteHistory = (data as SupabaseLabelRow[]).map(labelFromSupabaseRow);
+  writeJson(PRINT_HISTORY_KEY, remoteHistory);
+
+  return remoteHistory;
+}
+
 export function getLocalLabelDefaults(): LabelDefaults {
   return readJson<LabelDefaults>(LABEL_DEFAULTS_KEY, {});
 }
@@ -188,29 +306,7 @@ export async function recordPrintHistoryToSource(label: LabelData): Promise<void
     return;
   }
 
-  const { error } = await supabase.from("labels").upsert(
-    {
-      id: label.id,
-      product_id: label.product.id,
-      product_snapshot: label.product,
-      ordem_compra: label.ordem_compra,
-      lote: label.lote,
-      data_entrega: ptDateToIsoDate(label.data_entrega),
-      data_validade: ptDateToIsoDate(label.validade_texto),
-      validade_texto: label.validade_texto,
-      validade_barras: label.validade_barras,
-      caixas: label.caixas,
-      quantidade_etiquetas: label.quantidade_etiquetas,
-      sscc: label.sscc,
-      auchan_validity_status: label.auchan_validity_status ?? null,
-      auchan_days_available: label.auchan_days_available ?? null,
-      auchan_days_margin: label.auchan_days_margin ?? null,
-      auchan_minimum_days: label.auchan_minimum_days ?? null,
-      printed_at: new Date().toISOString(),
-      created_at: label.created_at,
-    },
-    { onConflict: "id" },
-  );
+  const { error } = await supabase.from("labels").upsert(labelToSupabaseRow(label), { onConflict: "id" });
 
   if (error) {
     console.warn("Could not save Supabase label history.", error);
