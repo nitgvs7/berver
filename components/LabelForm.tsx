@@ -5,8 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from "react";
 import { calculateAuchanValidity } from "../lib/auchan-validity";
 import { dateToYYMMDD, formatDateInput, todayPtDate } from "../lib/date";
-import { generateSSCC } from "../lib/sscc";
-import { getSelectedProduct, loadLabelDefaults, reserveNextSSCCSerial, saveDraftLabel, saveLabelDefaults, setSelectedProduct } from "../lib/label-storage";
+import { generateSSCCFromCounter } from "../lib/sscc";
+import { getSelectedProduct, loadLabelDefaults, saveDraftLabel, saveLabelDefaults, setSelectedProduct } from "../lib/label-storage";
 import { findProductByCode, findProductById, loadProductsForApp } from "../lib/products";
 import { validateLabelForm, type LabelValidationErrors } from "../lib/validation";
 import type { LabelFormValues } from "../types/label";
@@ -21,6 +21,7 @@ const emptyForm: LabelFormValues = {
   data_entrega: "",
   validade_texto: "",
   validade_barras: "",
+  contador: "",
   caixas: 0,
   quantidade_etiquetas: 1,
 };
@@ -166,7 +167,6 @@ export function LabelForm() {
     }
 
     setSubmitting(true);
-    const serial = await reserveNextSSCCSerial();
     const daysMargin =
       auchanValidity.status === "accepted" ? auchanValidity.daysMargin : auchanValidity.status === "rejected" ? -auchanValidity.daysMissing : null;
     const label = {
@@ -179,7 +179,7 @@ export function LabelForm() {
       validade_barras: values.validade_barras.trim(),
       caixas: Number(values.caixas),
       quantidade_etiquetas: Number(values.quantidade_etiquetas),
-      sscc: generateSSCC(serial),
+      sscc: generateSSCCFromCounter(values.contador),
       auchan_validity_status: auchanValidity.status,
       auchan_days_available: "daysAvailable" in auchanValidity ? auchanValidity.daysAvailable : null,
       auchan_days_margin: daysMargin,
@@ -219,6 +219,14 @@ export function LabelForm() {
         {errors.product ? <p className="text-sm font-bold text-red-700">{errors.product}</p> : null}
 
         <div className="grid gap-4 md:grid-cols-2">
+          <Field
+            label="Contador"
+            error={errors.contador}
+            inputMode="numeric"
+            value={values.contador}
+            onChange={(event) => updateField("contador", event.target.value.replace(/\D/g, "").slice(0, 4))}
+            placeholder="0003"
+          />
           <Field
             label="Ordem de Compra"
             error={errors.ordem_compra}

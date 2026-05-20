@@ -37,7 +37,7 @@ export function Label100x150({ data }: { data: LabelData }) {
           <strong>{barcode.gtin}</strong>
         </div>
         <div>
-          <span>Unid. por caixa:</span>
+          <span>Caixa:</span>
           <strong>{data.caixas}</strong>
         </div>
         <div className="label-data-wide">
@@ -56,18 +56,18 @@ export function Label100x150({ data }: { data: LabelData }) {
       </section>
 
       <section className="label-gs1-block">
-        <p>{barcode.gtinBoxesOrderHuman}</p>
         <Barcode value={barcode.gtinBoxesOrderEncoded} type="gs1-128" height={27} scale={2} />
+        <p>{barcode.gtinBoxesOrderHuman}</p>
       </section>
 
       <section className="label-gs1-block label-gs1-small">
-        <p>{barcode.validityLotHuman}</p>
         <Barcode value={barcode.validityLotEncoded} type="gs1-128" height={26} scale={2} />
+        <p>{barcode.validityLotHuman}</p>
       </section>
 
       <section className="label-bottom-barcode">
+        <Barcode value={barcode.ssccEncoded} type="gs1-128" height={27} scale={2} />
         <p>{barcode.ssccHuman}</p>
-        <Barcode value={barcode.ssccEncoded} type="gs1-128" height={24} scale={2} />
       </section>
     </div>
   );

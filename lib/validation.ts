@@ -53,6 +53,12 @@ export function validateLabelForm(values: LabelFormValues): LabelValidationError
     errors.validade_barras = `Use ${expectedBarcodeDate}.`;
   }
 
+  if (!values.contador.trim()) {
+    errors.contador = "Indique o contador.";
+  } else if (!/^\d{4}$/.test(values.contador.trim())) {
+    errors.contador = "O contador deve ter 4 dígitos.";
+  }
+
   if (!isPositiveInteger(values.caixas)) {
     errors.caixas = "A caixa deve ser maior que zero.";
   }

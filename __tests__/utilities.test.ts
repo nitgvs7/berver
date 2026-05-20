@@ -3,7 +3,7 @@ import { dateToYYMMDD } from "../lib/date";
 import { getProductGtin } from "../lib/barcode";
 import { calculateAuchanValidity } from "../lib/auchan-validity";
 import { findProductByCode, getSeedProducts, groupProductsByCategory, searchProducts, sortProducts, syncProductsWithSeed } from "../lib/products";
-import { calculateGS1CheckDigit, formatHumanSSCC, generateSSCC } from "../lib/sscc";
+import { calculateGS1CheckDigit, formatHumanSSCC, generateSSCC, generateSSCCFromCounter } from "../lib/sscc";
 import { validateLabelForm } from "../lib/validation";
 
 describe("GS1 and SSCC utilities", () => {
@@ -14,6 +14,11 @@ describe("GS1 and SSCC utilities", () => {
   it("generates an 18 digit SSCC with the default config", () => {
     expect(generateSSCC(500000)).toBe("356039360005000000");
     expect(formatHumanSSCC("356039360005000000")).toBe("3 5603936 000500000 0");
+  });
+
+  it("generates SSCC from the 4 digit label counter", () => {
+    expect(generateSSCCFromCounter("0003")).toBe("356039360005000031");
+    expect(formatHumanSSCC("356039360005000031")).toBe("3 5603936 000500003 1");
   });
 });
 
@@ -130,6 +135,7 @@ describe("label validation", () => {
       data_entrega: "",
       validade_texto: "31-02-2027",
       validade_barras: "27063",
+      contador: "12",
       caixas: 0,
       quantidade_etiquetas: "",
     });
@@ -138,6 +144,7 @@ describe("label validation", () => {
     expect(errors.data_entrega).toBe("Indique a data de entrega.");
     expect(errors.validade_texto).toBe("Use uma data válida no formato DD-MM-YYYY.");
     expect(errors.validade_barras).toBe("A validade de barras deve ter 6 dígitos YYMMDD.");
+    expect(errors.contador).toBe("O contador deve ter 4 dígitos.");
     expect(errors.caixas).toBe("A caixa deve ser maior que zero.");
   });
 });

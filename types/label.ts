@@ -25,6 +25,7 @@ export type LabelFormValues = {
   data_entrega: string;
   validade_texto: string;
   validade_barras: string;
+  contador: string;
   caixas: number | string;
   quantidade_etiquetas: number | string;
 };
