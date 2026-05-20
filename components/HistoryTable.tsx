@@ -3,23 +3,27 @@
 import { RefreshCw } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getPrintHistory, loadPrintHistoryFromSource, saveDraftLabel } from "../lib/label-storage";
+import { loadPrintHistoryFromSource, saveDraftLabel } from "../lib/label-storage";
 import type { LabelData } from "../types/label";
 
 export function HistoryTable() {
   const router = useRouter();
   const [history, setHistory] = useState<LabelData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let isMounted = true;
-
-    setHistory(getPrintHistory());
 
     loadPrintHistoryFromSource()
       .then((loadedHistory) => {
         if (isMounted) {
           setHistory(loadedHistory);
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setError("Não foi possível carregar o histórico partilhado.");
         }
       })
       .finally(() => {
@@ -40,6 +44,10 @@ export function HistoryTable() {
 
   if (history.length === 0 && isLoading) {
     return <div className="rounded-lg border border-[#b9d8f6] bg-white p-5 text-base font-bold text-[#1f3679]">A carregar histórico...</div>;
+  }
+
+  if (history.length === 0 && error) {
+    return <div className="rounded-lg border border-red-300 bg-red-50 p-5 text-base font-bold text-red-900">{error}</div>;
   }
 
   if (history.length === 0) {

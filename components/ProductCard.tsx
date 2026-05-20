@@ -34,7 +34,7 @@ export function ProductCard({ product, onSelect, actionLabel = "Criar Etiqueta",
               <dd className="font-mono">{product.codigo_auchan || "-"}</dd>
             </div>
             <div>
-              <dt className="font-bold">Unidades por caixa</dt>
+              <dt className="font-bold">Caixa</dt>
               <dd className="font-mono">{product.caixa_default ?? "-"}</dd>
             </div>
             <div>

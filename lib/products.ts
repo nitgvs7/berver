@@ -38,6 +38,21 @@ type SupabaseProductRow = {
   validade_minima_dias: number | null;
 };
 
+type SupabaseProductWriteRow = {
+  id: string;
+  category: string;
+  name: string;
+  ean: string | null;
+  ean_cdi: string | null;
+  itf: string | null;
+  itf_cdi: string | null;
+  codigo_auchan: string | null;
+  caixa_default: number | null;
+  validade_minima_dias: number | null;
+  active: boolean;
+  updated_at: string;
+};
+
 const productCollator = new Intl.Collator("pt-PT", {
   numeric: true,
   sensitivity: "base",
@@ -59,6 +74,29 @@ function fromSupabaseProduct(row: SupabaseProductRow): Product {
     codigo_auchan: row.codigo_auchan ?? undefined,
     caixa_default: row.caixa_default ?? undefined,
     validade_minima_dias: row.validade_minima_dias,
+  };
+}
+
+function emptyToNull(value: string | undefined): string | null {
+  const trimmed = value?.trim();
+
+  return trimmed ? trimmed : null;
+}
+
+function productToSupabaseRow(product: Product): SupabaseProductWriteRow {
+  return {
+    id: product.id,
+    category: product.category?.trim() || UNCATEGORIZED_PRODUCT_CATEGORY,
+    name: product.name.trim(),
+    ean: emptyToNull(product.ean),
+    ean_cdi: emptyToNull(product.ean_cdi),
+    itf: emptyToNull(product.itf),
+    itf_cdi: emptyToNull(product.itf_cdi),
+    codigo_auchan: emptyToNull(product.codigo_auchan),
+    caixa_default: Number(product.caixa_default) > 0 ? Number(product.caixa_default) : null,
+    validade_minima_dias: Number(product.validade_minima_dias) > 0 ? Number(product.validade_minima_dias) : null,
+    active: true,
+    updated_at: new Date().toISOString(),
   };
 }
 
@@ -333,6 +371,84 @@ export function saveProducts(products: Product[]): void {
   }
 
   window.localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(products));
+}
+
+export async function saveProductToSource(product: Product): Promise<void> {
+  const currentProducts = loadProducts();
+  const nextProducts = currentProducts.some((item) => item.id === product.id)
+    ? currentProducts.map((item) => (item.id === product.id ? product : item))
+    : [product, ...currentProducts];
+
+  saveProducts(nextProducts);
+
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase) {
+    return;
+  }
+
+  const { error } = await supabase.from("products").upsert(productToSupabaseRow(product), { onConflict: "id" });
+
+  if (error) {
+    throw error;
+  }
+}
+
+export async function deleteProductFromSource(productId: string): Promise<void> {
+  const nextProducts = loadProducts().filter((item) => item.id !== productId);
+  saveProducts(nextProducts);
+
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase) {
+    return;
+  }
+
+  const { error } = await supabase
+    .from("products")
+    .update({
+      active: false,
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", productId);
+
+  if (error) {
+    throw error;
+  }
+}
+
+export async function replaceProductsInSource(products: Product[]): Promise<void> {
+  saveProducts(products);
+
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase) {
+    return;
+  }
+
+  const activeIds = products.map((product) => product.id);
+
+  if (products.length > 0) {
+    const { error } = await supabase.from("products").upsert(products.map(productToSupabaseRow), { onConflict: "id" });
+
+    if (error) {
+      throw error;
+    }
+  }
+
+  const inactiveUpdate = {
+    active: false,
+    updated_at: new Date().toISOString(),
+  };
+  const inactiveRequest =
+    activeIds.length > 0
+      ? supabase.from("products").update(inactiveUpdate).not("id", "in", `(${activeIds.map((id) => `"${id.replace(/"/g, '\\"')}"`).join(",")})`)
+      : supabase.from("products").update(inactiveUpdate).neq("id", "");
+  const { error } = await inactiveRequest.neq("category", "__APP_STATE__");
+
+  if (error) {
+    throw error;
+  }
 }
 
 export function resetProducts(): Product[] {

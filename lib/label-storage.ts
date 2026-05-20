@@ -1,3 +1,4 @@
+import type { SupabaseClient } from "@supabase/supabase-js";
 import type { LabelData } from "../types/label";
 import type { Product } from "../types/product";
 import { formatPtDate, parsePtDate, ptDateToIsoDate } from "./date";
@@ -9,6 +10,7 @@ const SELECTED_PRODUCT_KEY = "warehouse-label-printer:selected-product";
 const PRINT_HISTORY_KEY = "warehouse-label-printer:print-history";
 const SSCC_SERIAL_KEY = "warehouse-label-printer:sscc-serial";
 const LABEL_DEFAULTS_KEY = "warehouse-label-printer:label-defaults";
+const PRINT_HISTORY_LIMIT = 500;
 
 export type LabelDefaults = {
   data_entrega?: string;
@@ -127,13 +129,13 @@ export async function reserveNextSSCCSerial(): Promise<number> {
 }
 
 export function getPrintHistory(): LabelData[] {
-  return readJson<LabelData[]>(PRINT_HISTORY_KEY, []);
+  return readJson<LabelData[]>(PRINT_HISTORY_KEY, []).filter(isStoredLabel);
 }
 
 export function recordPrintHistory(label: LabelData): void {
   const history = getPrintHistory();
   const deduped = history.filter((item) => item.id !== label.id);
-  writeJson(PRINT_HISTORY_KEY, [label, ...deduped].slice(0, 100));
+  writeJson(PRINT_HISTORY_KEY, [label, ...deduped].slice(0, PRINT_HISTORY_LIMIT));
 }
 
 function formatStoredDate(value: string | null): string {
@@ -151,15 +153,15 @@ function labelToSupabaseRow(label: LabelData) {
     id: label.id,
     product_id: label.product.id,
     product_snapshot: label.product,
-    ordem_compra: label.ordem_compra,
-    lote: label.lote,
-    data_entrega: ptDateToIsoDate(label.data_entrega),
-    data_validade: ptDateToIsoDate(label.validade_texto),
-    validade_texto: label.validade_texto,
-    validade_barras: label.validade_barras,
-    caixas: label.caixas,
-    quantidade_etiquetas: label.quantidade_etiquetas,
-    sscc: label.sscc,
+    ordem_compra: String(label.ordem_compra ?? ""),
+    lote: String(label.lote ?? ""),
+    data_entrega: ptDateToIsoDate(String(label.data_entrega ?? "")),
+    data_validade: ptDateToIsoDate(String(label.validade_texto ?? "")),
+    validade_texto: String(label.validade_texto ?? ""),
+    validade_barras: String(label.validade_barras ?? ""),
+    caixas: Number(label.caixas) || 0,
+    quantidade_etiquetas: Number(label.quantidade_etiquetas) || 1,
+    sscc: String(label.sscc ?? ""),
     auchan_validity_status: label.auchan_validity_status ?? null,
     auchan_days_available: label.auchan_days_available ?? null,
     auchan_days_margin: label.auchan_days_margin ?? null,
@@ -167,6 +169,24 @@ function labelToSupabaseRow(label: LabelData) {
     printed_at: new Date().toISOString(),
     created_at: label.created_at,
   };
+}
+
+function isStoredLabel(value: unknown): value is LabelData {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const label = value as LabelData;
+
+  return (
+    typeof label.id === "string" &&
+    typeof label.created_at === "string" &&
+    typeof label.sscc === "string" &&
+    Boolean(label.product) &&
+    typeof label.product === "object" &&
+    typeof label.product.id === "string" &&
+    typeof label.product.name === "string"
+  );
 }
 
 function labelFromSupabaseRow(row: SupabaseLabelRow): LabelData {
@@ -189,30 +209,21 @@ function labelFromSupabaseRow(row: SupabaseLabelRow): LabelData {
   };
 }
 
-async function uploadLocalPrintHistory(labels: LabelData[]): Promise<void> {
-  const supabase = getSupabaseBrowserClient();
+function mergePrintHistories(...histories: LabelData[][]): LabelData[] {
+  const labelsById = new Map<string, LabelData>();
 
-  if (!supabase || labels.length === 0) {
-    return;
+  for (const history of histories) {
+    for (const label of history) {
+      labelsById.set(label.id, label);
+    }
   }
 
-  const { error } = await supabase.from("labels").upsert(labels.map(labelToSupabaseRow), { onConflict: "id" });
-
-  if (error) {
-    console.warn("Could not sync local label history to Supabase.", error);
-  }
+  return Array.from(labelsById.values())
+    .sort((left, right) => Date.parse(right.created_at) - Date.parse(left.created_at))
+    .slice(0, PRINT_HISTORY_LIMIT);
 }
 
-export async function loadPrintHistoryFromSource(): Promise<LabelData[]> {
-  const localHistory = getPrintHistory();
-  const supabase = getSupabaseBrowserClient();
-
-  if (!supabase) {
-    return localHistory;
-  }
-
-  await uploadLocalPrintHistory(localHistory);
-
+async function loadLabelsTableHistory(supabase: SupabaseClient): Promise<LabelData[]> {
   const { data, error } = await supabase
     .from("labels")
     .select(
@@ -220,14 +231,37 @@ export async function loadPrintHistoryFromSource(): Promise<LabelData[]> {
     )
     .order("printed_at", { ascending: false, nullsFirst: false })
     .order("created_at", { ascending: false })
-    .limit(100);
+    .limit(PRINT_HISTORY_LIMIT);
 
   if (error || !data) {
-    console.warn("Could not load Supabase label history, using local history.", error);
-    return localHistory;
+    return [];
   }
 
-  const remoteHistory = (data as SupabaseLabelRow[]).map(labelFromSupabaseRow);
+  return (data as SupabaseLabelRow[]).map(labelFromSupabaseRow);
+}
+
+async function uploadLabelsTableHistory(supabase: SupabaseClient, labels: LabelData[]): Promise<void> {
+  if (labels.length === 0) {
+    return;
+  }
+
+  const { error } = await supabase.from("labels").upsert(labels.map(labelToSupabaseRow), { onConflict: "id" });
+
+  if (error) {
+    console.warn("Could not sync structured Supabase label history.", error);
+  }
+}
+
+export async function loadPrintHistoryFromSource(): Promise<LabelData[]> {
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase) {
+    return getPrintHistory();
+  }
+
+  const labelsTableHistory = await loadLabelsTableHistory(supabase);
+  const remoteHistory = mergePrintHistories(labelsTableHistory);
+
   writeJson(PRINT_HISTORY_KEY, remoteHistory);
 
   return remoteHistory;
@@ -306,9 +340,5 @@ export async function recordPrintHistoryToSource(label: LabelData): Promise<void
     return;
   }
 
-  const { error } = await supabase.from("labels").upsert(labelToSupabaseRow(label), { onConflict: "id" });
-
-  if (error) {
-    console.warn("Could not save Supabase label history.", error);
-  }
+  await uploadLabelsTableHistory(supabase, [label]);
 }

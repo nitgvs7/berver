@@ -138,6 +138,6 @@ describe("label validation", () => {
     expect(errors.data_entrega).toBe("Indique a data de entrega.");
     expect(errors.validade_texto).toBe("Use uma data válida no formato DD-MM-YYYY.");
     expect(errors.validade_barras).toBe("A validade de barras deve ter 6 dígitos YYMMDD.");
-    expect(errors.caixas).toBe("As unidades por caixa devem ser maiores que zero.");
+    expect(errors.caixas).toBe("A caixa deve ser maior que zero.");
   });
 });

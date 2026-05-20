@@ -237,7 +237,7 @@ export function ProductSearch({
                   {renderSortHeader("Produto", "name", "min-w-[390px] px-4 py-3")}
                   {renderSortHeader("Categoria", "category", "min-w-[180px] px-4 py-3")}
                   {renderSortHeader("Código Auchan", "auchan", "min-w-[120px] px-4 py-3")}
-                  {renderSortHeader("Unidades por caixa", "box", "w-32 px-4 py-3")}
+                  {renderSortHeader("Caixa", "box", "w-32 px-4 py-3")}
                   <th className="w-28 px-4 py-3">Validade</th>
                   <th className="w-40 px-4 py-3 text-right">Ação</th>
                 </tr>

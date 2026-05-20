@@ -311,7 +311,7 @@ export function LabelForm() {
             {errors.validade_barras ? <span className="mt-1 block text-sm font-bold text-red-700">{errors.validade_barras}</span> : null}
           </label>
           <Field
-            label="Unidades por caixa"
+            label="Caixa"
             error={errors.caixas}
             inputMode="numeric"
             value={String(values.caixas)}

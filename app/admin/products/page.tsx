@@ -2,11 +2,12 @@
 
 import { ChangeEvent, FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { Download, Plus, RotateCcw, Save, Trash2, Upload } from "lucide-react";
-import { loadProducts, resetProducts, saveProducts, searchProducts } from "../../../lib/products";
+import { deleteProductFromSource, loadProductsForApp, replaceProductsInSource, resetProducts, saveProductToSource, searchProducts } from "../../../lib/products";
 import type { Product } from "../../../types/product";
 
 const emptyProduct: Product = {
   id: "",
+  category: "",
   name: "",
   ean: "",
   ean_cdi: "",
@@ -32,19 +33,53 @@ export default function AdminProductsPage() {
   const [editing, setEditing] = useState<Product>(emptyProduct);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    setProducts(loadProducts());
+    let cancelled = false;
+
+    async function loadInitialProducts() {
+      try {
+        const nextProducts = await loadProductsForApp();
+
+        if (!cancelled) {
+          setProducts(nextProducts);
+        }
+      } catch {
+        if (!cancelled) {
+          setError("Não foi possível carregar produtos.");
+        }
+      } finally {
+        if (!cancelled) {
+          setLoadingProducts(false);
+        }
+      }
+    }
+
+    loadInitialProducts();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const results = useMemo(() => searchProducts(query, products), [products, query]);
   const isEditingExisting = Boolean(editing.id && products.some((product) => product.id === editing.id));
 
-  function persist(nextProducts: Product[], nextMessage: string) {
-    setProducts(nextProducts);
-    saveProducts(nextProducts);
-    setMessage(nextMessage);
+  async function persist(nextProducts: Product[], nextMessage: string, writeSource: () => Promise<void>) {
+    setSaving(true);
     setError(null);
+
+    try {
+      await writeSource();
+      setProducts(nextProducts);
+      setMessage(nextMessage);
+    } catch {
+      setError("Não foi possível guardar no Supabase. Verifique a ligação e permissões.");
+    } finally {
+      setSaving(false);
+    }
   }
 
   function updateEditing(field: keyof Product, value: string) {
@@ -54,7 +89,7 @@ export default function AdminProductsPage() {
     }));
   }
 
-  function submitProduct(event: FormEvent<HTMLFormElement>) {
+  async function submitProduct(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!editing.name.trim()) {
@@ -65,6 +100,7 @@ export default function AdminProductsPage() {
     const product: Product = {
       ...editing,
       id: editing.id || createProductId(),
+      category: editing.category?.trim().toUpperCase(),
       name: editing.name.trim().toUpperCase(),
       ean: editing.ean?.trim(),
       ean_cdi: editing.ean_cdi?.trim(),
@@ -76,13 +112,13 @@ export default function AdminProductsPage() {
     };
 
     const nextProducts = isEditingExisting ? products.map((item) => (item.id === product.id ? product : item)) : [product, ...products];
-    persist(nextProducts, isEditingExisting ? "Produto atualizado." : "Produto adicionado.");
+    await persist(nextProducts, isEditingExisting ? "Produto atualizado." : "Produto adicionado.", () => saveProductToSource(product));
     setEditing(emptyProduct);
   }
 
-  function deleteProduct(product: Product) {
+  async function deleteProduct(product: Product) {
     const nextProducts = products.filter((item) => item.id !== product.id);
-    persist(nextProducts, "Produto removido.");
+    await persist(nextProducts, "Produto removido.", () => deleteProductFromSource(product.id));
 
     if (editing.id === product.id) {
       setEditing(emptyProduct);
@@ -124,13 +160,14 @@ export default function AdminProductsPage() {
         return {
           ...candidate,
           id: candidate.id || createProductId(),
+          category: candidate.category?.trim().toUpperCase(),
           name: String(candidate.name).trim().toUpperCase(),
           caixa_default: Number(candidate.caixa_default) > 0 ? Number(candidate.caixa_default) : 1,
           validade_minima_dias: Number(candidate.validade_minima_dias) > 0 ? Number(candidate.validade_minima_dias) : null,
         };
       });
 
-      persist(imported, "Produtos importados.");
+      await persist(imported, "Produtos importados.", () => replaceProductsInSource(imported));
       setEditing(emptyProduct);
     } catch {
       setError("Não foi possível importar o JSON de produtos.");
@@ -139,12 +176,10 @@ export default function AdminProductsPage() {
     }
   }
 
-  function resetToSeed() {
+  async function resetToSeed() {
     const nextProducts = resetProducts();
-    setProducts(nextProducts);
+    await persist(nextProducts, "Produtos repostos.", () => replaceProductsInSource(nextProducts));
     setEditing(emptyProduct);
-    setMessage("Produtos repostos.");
-    setError(null);
   }
 
   return (
@@ -153,9 +188,12 @@ export default function AdminProductsPage() {
         <h1 className="text-2xl font-black text-[#1f3679]">Admin Produtos</h1>
       </div>
 
+      {loadingProducts ? <div className="rounded-lg border border-[#b9d8f6] bg-white p-4 font-bold text-[#1f3679]">A carregar produtos...</div> : null}
+
       <section className="grid min-w-0 gap-5 xl:grid-cols-[420px_minmax(0,1fr)]">
         <form onSubmit={submitProduct} className="min-w-0 space-y-4 rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm">
           <h2 className="text-lg font-black text-[#1f3679]">{isEditingExisting ? "Editar Produto" : "Adicionar Produto"}</h2>
+          <AdminField label="Categoria" value={editing.category ?? ""} onChange={(event) => updateEditing("category", event.target.value)} />
           <AdminField label="Nome" value={editing.name} onChange={(event) => updateEditing("name", event.target.value)} />
           <div className="grid min-w-0 grid-cols-1 gap-3 md:grid-cols-2">
             <AdminField label="EAN" value={editing.ean ?? ""} onChange={(event) => updateEditing("ean", event.target.value)} inputMode="numeric" />
@@ -169,7 +207,7 @@ export default function AdminProductsPage() {
               inputMode="numeric"
             />
             <AdminField
-              label="Unidades por caixa"
+              label="Caixa"
               value={String(editing.caixa_default ?? "")}
               onChange={(event) => updateEditing("caixa_default", event.target.value)}
               inputMode="numeric"
@@ -186,9 +224,9 @@ export default function AdminProductsPage() {
           {message ? <div className="rounded-md border border-emerald-300 bg-emerald-50 p-3 text-sm font-bold text-emerald-900">{message}</div> : null}
 
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-            <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#1f3679] px-4 py-3 font-black text-white">
+            <button type="submit" disabled={saving} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#1f3679] px-4 py-3 font-black text-white disabled:opacity-60">
               {isEditingExisting ? <Save aria-hidden="true" className="h-5 w-5" /> : <Plus aria-hidden="true" className="h-5 w-5" />}
-              {isEditingExisting ? "Guardar" : "Adicionar"}
+              {saving ? "A guardar..." : isEditingExisting ? "Guardar" : "Adicionar"}
             </button>
             <button
               type="button"
@@ -212,19 +250,20 @@ export default function AdminProductsPage() {
               />
             </label>
             <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
-              <button type="button" onClick={exportProducts} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] px-3 py-2 font-black text-[#1f3679]">
+              <button type="button" disabled={saving} onClick={exportProducts} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] px-3 py-2 font-black text-[#1f3679] disabled:opacity-60">
                 <Download aria-hidden="true" className="h-5 w-5" />
                 Exportar
               </button>
               <button
                 type="button"
+                disabled={saving}
                 onClick={() => fileInputRef.current?.click()}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] px-3 py-2 font-black text-[#1f3679]"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] px-3 py-2 font-black text-[#1f3679] disabled:opacity-60"
               >
                 <Upload aria-hidden="true" className="h-5 w-5" />
                 Importar
               </button>
-              <button type="button" onClick={resetToSeed} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] px-3 py-2 font-black text-[#1f3679]">
+              <button type="button" disabled={saving} onClick={resetToSeed} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-[#2f4fb3] px-3 py-2 font-black text-[#1f3679] disabled:opacity-60">
                 <RotateCcw aria-hidden="true" className="h-5 w-5" />
                 Repor
               </button>
@@ -251,7 +290,7 @@ export default function AdminProductsPage() {
                       <dd className="font-mono">{product.codigo_auchan || "-"}</dd>
                     </div>
                     <div>
-                      <dt className="font-black text-[#2f4fb3]">Unidades por caixa</dt>
+                      <dt className="font-black text-[#2f4fb3]">Caixa</dt>
                       <dd className="font-mono">{product.caixa_default ?? "-"}</dd>
                     </div>
                     <div>
@@ -290,7 +329,7 @@ export default function AdminProductsPage() {
                     <th className="px-3 py-3 font-black">EAN</th>
                     <th className="px-3 py-3 font-black">ITF</th>
                     <th className="px-3 py-3 font-black">Auchan</th>
-                    <th className="px-3 py-3 font-black">Unidades por caixa</th>
+                    <th className="px-3 py-3 font-black">Caixa</th>
                     <th className="px-3 py-3 font-black">Validade</th>
                     <th className="px-3 py-3 font-black">Ações</th>
                   </tr>

@@ -49,6 +49,32 @@ create table if not exists public.labels (
 create index if not exists labels_created_at_idx on public.labels (created_at desc);
 create index if not exists labels_product_id_idx on public.labels (product_id);
 
+create or replace function public.prune_label_history()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  delete from public.labels
+  where id in (
+    select id
+    from public.labels
+    order by coalesce(printed_at, created_at) desc, created_at desc
+    offset 500
+  );
+
+  return null;
+end;
+$$;
+
+drop trigger if exists prune_label_history_after_insert on public.labels;
+
+create trigger prune_label_history_after_insert
+after insert on public.labels
+for each statement
+execute function public.prune_label_history();
+
 create table if not exists public.sscc_counters (
   id text primary key,
   next_serial bigint not null
@@ -87,6 +113,7 @@ grant select, insert, update, delete on public.products to anon, authenticated;
 grant select, insert, update, delete on public.app_defaults to anon, authenticated;
 grant select, insert, update, delete on public.labels to anon, authenticated;
 grant execute on function public.reserve_next_sscc_serial() to anon, authenticated;
+grant execute on function public.prune_label_history() to anon, authenticated;
 
 alter table public.products disable row level security;
 alter table public.app_defaults disable row level security;

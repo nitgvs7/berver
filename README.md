@@ -23,7 +23,7 @@ Para testar a câmara num telemóvel, o browser normalmente exige HTTPS ou uma o
 1. Abra **Digitalizar EAN**.
 2. Digitalize com a câmara ou introduza EAN/ITF/Código Auchan manualmente.
 3. Confirme o produto.
-4. Preencha ordem de compra, lote, validade, unidades por caixa e quantidade de etiquetas.
+4. Preencha ordem de compra, lote, validade, caixa e quantidade de etiquetas.
 5. Veja a pré-visualização.
 6. Abra **Imprimir** e use as definições da impressora.
 
@@ -116,7 +116,7 @@ A página `/history` guarda:
 - data de entrega;
 - validade;
 - estado de validade Auchan;
-- unidades por caixa;
+- caixa;
 - quantidade;
 - SSCC;
 - data de criação.

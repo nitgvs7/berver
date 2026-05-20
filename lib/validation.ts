@@ -54,7 +54,7 @@ export function validateLabelForm(values: LabelFormValues): LabelValidationError
   }
 
   if (!isPositiveInteger(values.caixas)) {
-    errors.caixas = "As unidades por caixa devem ser maiores que zero.";
+    errors.caixas = "A caixa deve ser maior que zero.";
   }
 
   if (!isPositiveInteger(values.quantidade_etiquetas)) {
