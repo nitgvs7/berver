@@ -6,13 +6,11 @@ import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from "react";
 import { calculateAuchanValidity } from "../lib/auchan-validity";
 import { dateToYYMMDD, formatDateInput, todayPtDate } from "../lib/date";
 import { generateSSCCFromCounter } from "../lib/sscc";
-import { getSelectedProduct, loadLabelDefaults, saveDraftLabel, saveLabelDefaults, setSelectedProduct } from "../lib/label-storage";
+import { getSelectedProduct, loadLabelDefaults, saveDraftLabel, saveLabelDefaults } from "../lib/label-storage";
 import { findProductByCode, findProductById, loadProductsForApp } from "../lib/products";
 import { validateLabelForm, type LabelValidationErrors } from "../lib/validation";
 import type { LabelFormValues } from "../types/label";
-import type { Product } from "../types/product";
 import { ProductCard } from "./ProductCard";
-import { ProductSearch } from "./ProductSearch";
 
 const emptyForm: LabelFormValues = {
   product: null,
@@ -139,15 +137,6 @@ export function LabelForm() {
     setErrors((current) => ({ ...current, validade_texto: undefined, validade_barras: undefined }));
   }
 
-  function handleProductSelect(product: Product) {
-    setSelectedProduct(product);
-    setValues((current) => ({
-      ...current,
-      product,
-    }));
-    setErrors((current) => ({ ...current, product: undefined }));
-  }
-
   function resetBarcodeDate() {
     const generated = dateToYYMMDD(values.validade_texto);
     setManualBarcodeDate(false);
@@ -204,7 +193,7 @@ export function LabelForm() {
         : "border-amber-300 bg-amber-50 text-amber-900";
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_390px]">
+    <div className="mx-auto max-w-3xl">
       <form onSubmit={handleSubmit} className="space-y-5 rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm md:p-5">
         <div>
           <h1 className="text-2xl font-black text-[#1f3679]">Criar Etiqueta</h1>
@@ -345,10 +334,6 @@ export function LabelForm() {
           {submitting ? "A preparar..." : "Pré-visualizar"}
         </button>
       </form>
-
-      <aside className="space-y-4">
-        <ProductSearch onSelect={handleProductSelect} actionLabel="Usar Produto" />
-      </aside>
     </div>
   );
 }

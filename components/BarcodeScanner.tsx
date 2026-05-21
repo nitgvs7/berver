@@ -146,7 +146,7 @@ export function BarcodeScanner() {
             className="inline-flex min-h-14 items-center justify-center gap-2 rounded-md bg-[#1f3679] px-4 py-3 text-base font-black text-white"
           >
             <Camera aria-hidden="true" className="h-5 w-5" />
-            Digitalizar EAN
+            Scan EAN
           </button>
           <button
             type="button"

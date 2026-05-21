@@ -39,7 +39,7 @@ export function HistoryTable() {
 
   function reprint(label: LabelData) {
     saveDraftLabel(label);
-    router.push("/print");
+    router.push("/label/preview");
   }
 
   if (history.length === 0 && isLoading) {

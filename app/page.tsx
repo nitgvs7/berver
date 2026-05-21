@@ -4,7 +4,7 @@ import { Boxes, History, ScanBarcode, Settings } from "lucide-react";
 const actions = [
   {
     href: "/scan",
-    label: "Digitalizar EAN",
+    label: "Scan EAN",
     icon: ScanBarcode,
     primary: true,
   },

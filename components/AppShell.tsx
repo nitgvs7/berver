@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
 
 const navItems = [
   { href: "/", label: "Início", icon: Home },
-  { href: "/scan", label: "Digitalizar", icon: ScanBarcode },
+  { href: "/scan", label: "Scan", icon: ScanBarcode },
   { href: "/products", label: "Produtos", icon: Boxes },
   { href: "/history", label: "Histórico", icon: History },
   { href: "/admin/products", label: "Admin", icon: Settings },
