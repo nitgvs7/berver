@@ -12,14 +12,14 @@ type ProductCardProps = {
 
 export function ProductCard({ product, onSelect, actionLabel = "Criar Etiqueta", showCategory = false }: ProductCardProps) {
   return (
-    <article className="rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm">
+    <article className="min-w-0 rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm">
       <div className="flex items-start gap-3">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-[#1f3679] text-white">
           <PackageCheck aria-hidden="true" className="h-6 w-6" />
         </div>
         <div className="min-w-0 flex-1">
-          {showCategory && product.category ? <p className="mb-1 text-xs font-black uppercase text-[#2f4fb3]">{product.category}</p> : null}
-          <h3 className="text-lg font-black uppercase leading-snug text-[#1f3679]">{product.name}</h3>
+          {showCategory && product.category ? <p className="mb-1 break-words text-xs font-black uppercase text-[#2f4fb3]">{product.category}</p> : null}
+          <h3 className="break-words text-base font-black uppercase leading-snug text-[#1f3679] sm:text-lg">{product.name}</h3>
           <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2 text-sm text-[#1f3679]">
             <div>
               <dt className="font-bold">EAN</dt>

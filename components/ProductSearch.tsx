@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ArrowUpDown, Search } from "lucide-react";
+import { ArrowUpDown, ListFilter, Search } from "lucide-react";
 import { filterProducts, groupProductsByCategory, loadProductsForApp, resetProducts, searchProducts, sortProducts, type ProductSort } from "../lib/products";
 import type { Product } from "../types/product";
 import { ProductCard } from "./ProductCard";
@@ -83,7 +83,8 @@ export function ProductSearch({
   const [query, setQuery] = useState(initialQuery);
   const [sort, setSort] = useState<ProductSort>(defaultSort);
   const [category, setCategory] = useState(allCategories);
-  const showSortSelect = enableSort && !tableView;
+  const showSortSelect = enableSort;
+  const controlsGridClassName = enableSort && !tableView ? "lg:grid-cols-[minmax(0,1fr)_18rem]" : "";
 
   useEffect(() => {
     let cancelled = false;
@@ -135,9 +136,13 @@ export function ProductSearch({
     const ariaSort = direction === "asc" ? "ascending" : direction === "desc" ? "descending" : "none";
 
     return (
-      <th className={className} aria-sort={ariaSort}>
-        <button type="button" onClick={() => updateTableSort(column)} className="inline-flex min-h-10 w-full items-center gap-2 text-left font-black uppercase text-[#2f4fb3]">
-          <span>{label}</span>
+      <th className={className} aria-sort={ariaSort} scope="col">
+        <button
+          type="button"
+          onClick={() => updateTableSort(column)}
+          className="inline-flex min-h-10 w-full min-w-0 items-center gap-1.5 text-left font-black uppercase leading-tight text-[#2f4fb3]"
+        >
+          <span className="min-w-0">{label}</span>
           <span aria-hidden="true" className="text-sm text-[#5ab2e8]">
             {direction === "asc" ? "↑" : direction === "desc" ? "↓" : "↕"}
           </span>
@@ -148,30 +153,30 @@ export function ProductSearch({
 
   return (
     <section className="space-y-4">
-      <div className={`grid gap-3 ${showSortSelect ? "lg:grid-cols-[minmax(0,1fr)_18rem]" : ""}`}>
+      <div className={`grid gap-3 ${controlsGridClassName}`}>
         <label className="block">
           <span className="mb-2 block text-sm font-black uppercase text-[#1f3679]">Procurar Produto</span>
-          <div className="flex items-center gap-2 rounded-lg border-2 border-[#5ab2e8] bg-white px-3 focus-within:border-[#1f3679]">
+          <div className="flex min-w-0 items-center gap-2 rounded-lg border-2 border-[#5ab2e8] bg-white px-3 focus-within:border-[#1f3679]">
             <Search aria-hidden="true" className="h-5 w-5 shrink-0 text-[#2f4fb3]" />
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Nome, categoria, EAN, ITF ou Código Auchan"
-              className="min-h-14 w-full bg-transparent text-base font-bold outline-none"
+              className="min-h-14 min-w-0 w-full bg-transparent text-base font-bold outline-none"
               autoComplete="off"
             />
           </div>
         </label>
 
         {showSortSelect ? (
-          <label className="block">
+          <label className={`block ${tableView ? "lg:hidden" : ""}`}>
             <span className="mb-2 block text-sm font-black uppercase text-[#1f3679]">Ordenar</span>
-            <div className="flex items-center gap-2 rounded-lg border-2 border-[#5ab2e8] bg-white px-3 focus-within:border-[#1f3679]">
+            <div className="flex min-w-0 items-center gap-2 rounded-lg border-2 border-[#5ab2e8] bg-white px-3 focus-within:border-[#1f3679]">
               <ArrowUpDown aria-hidden="true" className="h-5 w-5 shrink-0 text-[#2f4fb3]" />
               <select
                 value={sort}
                 onChange={(event) => setSort(event.target.value as ProductSort)}
-                className="min-h-14 w-full bg-transparent text-base font-bold text-[#1f3679] outline-none"
+                className="min-h-14 min-w-0 w-full bg-transparent text-base font-bold text-[#1f3679] outline-none"
               >
                 {sortOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -200,25 +205,45 @@ export function ProductSearch({
       ) : null}
 
       {tableView && products.length > 0 ? (
-        <div className="flex flex-wrap gap-1.5">
-          {categoryTabs.map((group) => {
-            const active = category === group.category;
-
-            return (
-              <button
-                key={group.category}
-                type="button"
-                onClick={() => setCategory(group.category)}
-                className={`inline-flex min-h-8 max-w-full items-center gap-1 rounded-md border px-2 text-xs font-black leading-none shadow-sm ${
-                  active ? "bg-white text-[#1f3679]" : "border-[#d9e9fb] bg-[#e8f3ff] text-[#2f4fb3]"
-                }`}
+        <>
+          <label className="block lg:hidden">
+            <span className="mb-2 block text-sm font-black uppercase text-[#1f3679]">Categoria</span>
+            <div className="flex min-w-0 items-center gap-2 rounded-lg border-2 border-[#5ab2e8] bg-white px-3 focus-within:border-[#1f3679]">
+              <ListFilter aria-hidden="true" className="h-5 w-5 shrink-0 text-[#2f4fb3]" />
+              <select
+                value={category}
+                onChange={(event) => setCategory(event.target.value)}
+                className="min-h-14 min-w-0 w-full bg-transparent text-base font-bold text-[#1f3679] outline-none"
               >
-                <span className="truncate">{group.category === allCategories ? "Todos" : toSentenceCase(group.category)}</span>
-                <span className={`rounded px-1.5 py-0.5 text-[10px] ${active ? "bg-[#dceeff]" : "bg-white"}`}>{group.products.length}</span>
-              </button>
-            );
-          })}
-        </div>
+                {categoryTabs.map((group) => (
+                  <option key={group.category} value={group.category}>
+                    {group.category === allCategories ? "Todos" : toSentenceCase(group.category)} ({group.products.length})
+                  </option>
+                ))}
+              </select>
+            </div>
+          </label>
+
+          <div className="hidden flex-wrap gap-1.5 lg:flex">
+            {categoryTabs.map((group) => {
+              const active = category === group.category;
+
+              return (
+                <button
+                  key={group.category}
+                  type="button"
+                  onClick={() => setCategory(group.category)}
+                  className={`inline-flex min-h-8 min-w-0 max-w-full items-center gap-1 rounded-md border px-2 text-xs font-black leading-none shadow-sm ${
+                    active ? "bg-white text-[#1f3679]" : "border-[#d9e9fb] bg-[#e8f3ff] text-[#2f4fb3]"
+                  }`}
+                >
+                  <span className="min-w-0 truncate">{group.category === allCategories ? "Todos" : toSentenceCase(group.category)}</span>
+                  <span className={`rounded px-1.5 py-0.5 text-[10px] ${active ? "bg-[#dceeff]" : "bg-white"}`}>{group.products.length}</span>
+                </button>
+              );
+            })}
+          </div>
+        </>
       ) : null}
 
       {showAll && products.length > 0 ? (
@@ -227,42 +252,98 @@ export function ProductSearch({
         </p>
       ) : null}
 
-      {!loadingProducts && tableView ? (
-        <div className="overflow-hidden rounded-b-lg rounded-tr-lg border border-[#d9e9fb] bg-white shadow-sm">
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[860px] border-collapse text-left text-sm text-[#1f3679]">
+      {!loadingProducts && tableView && results.length > 0 ? (
+        <div>
+          <div className="grid gap-3 lg:hidden">
+            {results.map((product, index) => (
+              <article key={product.id} className="min-w-0 rounded-lg border border-[#b9d8f6] bg-white p-3 shadow-sm">
+                <div className="flex min-w-0 items-start gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-[#dceeff] font-mono text-xs font-black text-[#1f3679]">
+                    {index + 1}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="break-words text-[11px] font-black uppercase text-[#2f4fb3]">{product.category ?? "Sem categoria"}</p>
+                    <h3 className="mt-1 break-words text-base font-black uppercase leading-snug text-[#1f3679]">{product.name}</h3>
+                  </div>
+                </div>
+
+                <dl className="mt-3 grid grid-cols-3 gap-2 text-xs text-[#1f3679]">
+                  <div className="min-w-0 rounded-md bg-[#eef6ff] p-2">
+                    <dt className="font-black uppercase text-[#2f4fb3]">Código</dt>
+                    <dd className="mt-1 truncate font-mono">{product.codigo_auchan || "-"}</dd>
+                  </div>
+                  <div className="min-w-0 rounded-md bg-[#eef6ff] p-2">
+                    <dt className="font-black uppercase text-[#2f4fb3]">Caixa</dt>
+                    <dd className="mt-1 truncate font-mono">{product.caixa_default ?? "-"}</dd>
+                  </div>
+                  <div className="min-w-0 rounded-md bg-[#eef6ff] p-2">
+                    <dt className="font-black uppercase text-[#2f4fb3]">Validade</dt>
+                    <dd className="mt-1 truncate font-mono">{product.validade_minima_dias ? `${product.validade_minima_dias}d` : "-"}</dd>
+                  </div>
+                </dl>
+
+                {onSelect ? (
+                  <button
+                    type="button"
+                    onClick={() => onSelect(product)}
+                    className="mt-3 flex min-h-11 w-full items-center justify-center rounded-md bg-[#1f3679] px-3 text-sm font-black text-white"
+                  >
+                    {actionLabel ?? "Criar Etiqueta"}
+                  </button>
+                ) : null}
+              </article>
+            ))}
+          </div>
+
+          <div className="hidden overflow-hidden rounded-b-lg rounded-tr-lg border border-[#d9e9fb] bg-white shadow-sm lg:block">
+            <table className="w-full table-fixed border-collapse text-left text-sm text-[#1f3679]">
+              <colgroup>
+                <col className="w-12" />
+                <col className="w-[34%]" />
+                <col className="w-[18%]" />
+                <col className="w-[12%]" />
+                <col className="w-[8%]" />
+                <col className="w-[9%]" />
+                <col className="w-[13%]" />
+              </colgroup>
               <thead className="bg-[#f7fbff] text-xs font-black uppercase text-[#2f4fb3]">
                 <tr className="border-b border-[#d9e9fb]">
-                  <th className="w-14 px-4 py-3">#</th>
-                  {renderSortHeader("Produto", "name", "min-w-[390px] px-4 py-3")}
-                  {renderSortHeader("Categoria", "category", "min-w-[180px] px-4 py-3")}
-                  {renderSortHeader("Código Auchan", "auchan", "min-w-[120px] px-4 py-3")}
-                  {renderSortHeader("Caixa", "box", "w-32 px-4 py-3")}
-                  <th className="w-28 px-4 py-3">Validade</th>
-                  <th className="w-40 px-4 py-3 text-right">Ação</th>
+                  <th className="px-3 py-3" scope="col">#</th>
+                  {renderSortHeader("Produto", "name", "px-3 py-3")}
+                  {renderSortHeader("Categoria", "category", "px-3 py-3")}
+                  {renderSortHeader("Código Auchan", "auchan", "px-3 py-3")}
+                  {renderSortHeader("Caixa", "box", "px-3 py-3")}
+                  <th className="px-3 py-3" scope="col">Validade</th>
+                  <th className="px-3 py-3 text-right" scope="col">Ação</th>
                 </tr>
               </thead>
               <tbody>
                 {results.map((product, index) => (
                   <tr key={product.id} className="group border-b border-[#eef4fb] last:border-b-0 hover:bg-[#f7fbff]">
-                    <td className="px-4 py-3 font-mono text-[#2f4fb3]">{index + 1}</td>
-                    <td className="px-4 py-3">
-                      <p className="max-w-[62ch] truncate font-black uppercase text-[#1f3679]" title={product.name}>
+                    <td className="px-3 py-3 font-mono text-[#2f4fb3]">{index + 1}</td>
+                    <td className="min-w-0 px-3 py-3">
+                      <p className="truncate font-black uppercase text-[#1f3679]" title={product.name}>
                         {product.name}
                       </p>
                     </td>
-                    <td className="px-4 py-3 font-bold uppercase text-[#2f4fb3]">{product.category ?? "-"}</td>
-                    <td className="px-4 py-3 font-mono">{product.codigo_auchan || "-"}</td>
-                    <td className="px-4 py-3 font-mono">{product.caixa_default ?? "-"}</td>
-                    <td className="px-4 py-3 font-mono">{product.validade_minima_dias ? `${product.validade_minima_dias}d` : "-"}</td>
-                    <td className="px-4 py-3 text-right">
+                    <td className="min-w-0 px-3 py-3">
+                      <p className="truncate font-bold uppercase text-[#2f4fb3]" title={product.category ?? "-"}>
+                        {product.category ?? "-"}
+                      </p>
+                    </td>
+                    <td className="min-w-0 px-3 py-3">
+                      <span className="block truncate font-mono">{product.codigo_auchan || "-"}</span>
+                    </td>
+                    <td className="px-3 py-3 font-mono">{product.caixa_default ?? "-"}</td>
+                    <td className="px-3 py-3 font-mono">{product.validade_minima_dias ? `${product.validade_minima_dias}d` : "-"}</td>
+                    <td className="px-3 py-3 text-right">
                       {onSelect ? (
                         <button
                           type="button"
                           onClick={() => onSelect(product)}
-                          className="inline-flex min-h-10 min-w-32 items-center justify-center whitespace-nowrap rounded-md bg-[#1f3679] px-4 text-sm font-black text-white"
+                          className="inline-flex min-h-10 w-full min-w-0 items-center justify-center rounded-md bg-[#1f3679] px-2 text-xs font-black text-white"
                         >
-                          {actionLabel ?? "Criar Etiqueta"}
+                          <span className="truncate">{actionLabel ?? "Criar Etiqueta"}</span>
                         </button>
                       ) : null}
                     </td>
