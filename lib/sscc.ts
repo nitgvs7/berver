@@ -2,6 +2,7 @@ export const DEFAULT_COMPANY_PREFIX = "5603936";
 export const DEFAULT_EXTENSION_DIGIT = "3";
 export const DEFAULT_SERIAL_START = 500000;
 export const COUNTER_DIGITS = 4;
+export const DEFAULT_COUNTER_SERIAL_PREFIX = "00500";
 
 export function calculateGS1CheckDigit(valueWithoutCheckDigit: string): string {
   const digits = valueWithoutCheckDigit.replace(/\D/g, "");
@@ -62,7 +63,10 @@ export function generateSSCCFromCounter(counter: string): string {
     throw new Error(`SSCC counter must contain exactly ${COUNTER_DIGITS} digits.`);
   }
 
-  return generateSSCC(DEFAULT_SERIAL_START + Number(normalizedCounter));
+  const serialReference = `${DEFAULT_COUNTER_SERIAL_PREFIX}${normalizedCounter}`;
+  const withoutCheckDigit = `${DEFAULT_EXTENSION_DIGIT}${DEFAULT_COMPANY_PREFIX}${serialReference}`;
+
+  return `${withoutCheckDigit}${calculateGS1CheckDigit(withoutCheckDigit)}`;
 }
 
 export function formatHumanSSCC(sscc: string): string {

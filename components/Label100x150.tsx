@@ -67,7 +67,7 @@ export function Label100x150({ data }: { data: LabelData }) {
 
       <section className="label-bottom-barcode">
         <Barcode value={barcode.ssccEncoded} type="gs1-128" height={27} scale={2} />
-        <p>{barcode.ssccHuman}</p>
+        <p>(00) {formatHumanSSCC(data.sscc)}</p>
       </section>
     </div>
   );

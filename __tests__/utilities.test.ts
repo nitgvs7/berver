@@ -17,8 +17,12 @@ describe("GS1 and SSCC utilities", () => {
   });
 
   it("generates SSCC from the 4 digit label counter", () => {
-    expect(generateSSCCFromCounter("0003")).toBe("356039360005000031");
-    expect(formatHumanSSCC("356039360005000031")).toBe("3 5603936 000500003 1");
+    expect(generateSSCCFromCounter("0003")).toBe("356039360050000031");
+    expect(formatHumanSSCC("356039360050000031")).toBe("3 5603936 005000003 1");
+    expect(generateSSCCFromCounter("0188")).toBe("356039360050001885");
+    expect(formatHumanSSCC("356039360050001885")).toBe("3 5603936 005000188 5");
+    expect(generateSSCCFromCounter("0456")).toBe("356039360050004565");
+    expect(formatHumanSSCC("356039360050004565")).toBe("3 5603936 005000456 5");
   });
 });
 
