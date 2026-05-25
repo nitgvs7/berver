@@ -57,10 +57,40 @@ const productCollator = new Intl.Collator("pt-PT", {
   sensitivity: "base",
 });
 
+const SUPABASE_PRODUCTS_TIMEOUT_MS = 2500;
+
+function hasSupabasePublicConfig(): boolean {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  return Boolean(url && publishableKey);
+}
+
 async function getOptionalSupabaseBrowserClient() {
+  if (!hasSupabasePublicConfig()) {
+    return null;
+  }
+
   const { getSupabaseBrowserClient } = await import("./supabase");
 
   return getSupabaseBrowserClient();
+}
+
+async function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T | null> {
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+  try {
+    return await Promise.race([
+      promise,
+      new Promise<null>((resolve) => {
+        timeoutId = setTimeout(() => resolve(null), timeoutMs);
+      }),
+    ]);
+  } finally {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+  }
 }
 
 export function getSeedProducts(): Product[] {
@@ -314,14 +344,14 @@ export function loadProducts(): Product[] {
     return seedProducts;
   }
 
-  const stored = window.localStorage.getItem(PRODUCTS_STORAGE_KEY);
-
-  if (!stored) {
-    window.localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(seedProducts));
-    return seedProducts;
-  }
-
   try {
+    const stored = window.localStorage.getItem(PRODUCTS_STORAGE_KEY);
+
+    if (!stored) {
+      window.localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(seedProducts));
+      return seedProducts;
+    }
+
     const parsed = JSON.parse(stored) as unknown;
 
     if (Array.isArray(parsed) && parsed.length > 0 && parsed.every(isProduct)) {
@@ -337,7 +367,6 @@ export function loadProducts(): Product[] {
     window.localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(seedProducts));
     return seedProducts;
   } catch {
-    window.localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(seedProducts));
     return seedProducts;
   }
 }
@@ -365,9 +394,14 @@ export async function loadSupabaseProducts(): Promise<Product[] | null> {
 }
 
 export async function loadProductsForApp(): Promise<Product[]> {
-  const supabaseProducts = await loadSupabaseProducts();
+  try {
+    const supabaseProducts = await withTimeout(loadSupabaseProducts(), SUPABASE_PRODUCTS_TIMEOUT_MS);
 
-  return supabaseProducts?.length ? supabaseProducts : loadProducts();
+    return supabaseProducts?.length ? supabaseProducts : loadProducts();
+  } catch (error) {
+    console.warn("Could not load remote products, using local product data.", error);
+    return loadProducts();
+  }
 }
 
 export function saveProducts(products: Product[]): void {

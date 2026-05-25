@@ -1,10 +1,14 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { dateToYYMMDD, nativeDateToPtDate, ptDateToNativeDate } from "../lib/date";
 import { getProductGtin } from "../lib/barcode";
 import { calculateAuchanValidity } from "../lib/auchan-validity";
-import { findProductByCode, getSeedProducts, groupProductsByCategory, searchProducts, sortProducts, syncProductsWithSeed } from "../lib/products";
+import { findProductByCode, getSeedProducts, groupProductsByCategory, loadProductsForApp, searchProducts, sortProducts, syncProductsWithSeed } from "../lib/products";
 import { calculateGS1CheckDigit, formatHumanSSCC, generateSSCC, generateSSCCFromCounter } from "../lib/sscc";
 import { validateLabelForm } from "../lib/validation";
+
+afterEach(() => {
+  vi.unstubAllEnvs();
+});
 
 describe("GS1 and SSCC utilities", () => {
   it("calculates a GS1 modulo 10 check digit", () => {
@@ -109,6 +113,14 @@ describe("product utilities", () => {
 
   it("returns no products only when an explicitly provided product list is empty", () => {
     expect(searchProducts("", [])).toEqual([]);
+  });
+
+  it("falls back to seed products when remote products are not configured", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_URL", "");
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY", "");
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY", "");
+
+    await expect(loadProductsForApp()).resolves.toHaveLength(getSeedProducts().length);
   });
 });
 
