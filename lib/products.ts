@@ -1,6 +1,5 @@
 import seedProducts from "../data/products.json";
 import type { Product } from "../types/product";
-import { getSupabaseBrowserClient } from "./supabase";
 
 export const PRODUCTS_STORAGE_KEY = "warehouse-label-printer:products";
 export const UNCATEGORIZED_PRODUCT_CATEGORY = "SEM CATEGORIA";
@@ -57,6 +56,12 @@ const productCollator = new Intl.Collator("pt-PT", {
   numeric: true,
   sensitivity: "base",
 });
+
+async function getOptionalSupabaseBrowserClient() {
+  const { getSupabaseBrowserClient } = await import("./supabase");
+
+  return getSupabaseBrowserClient();
+}
 
 export function getSeedProducts(): Product[] {
   return seedProducts.map((product) => ({ ...product }));
@@ -338,7 +343,7 @@ export function loadProducts(): Product[] {
 }
 
 export async function loadSupabaseProducts(): Promise<Product[] | null> {
-  const supabase = getSupabaseBrowserClient();
+  const supabase = await getOptionalSupabaseBrowserClient();
 
   if (!supabase) {
     return null;
@@ -381,7 +386,7 @@ export async function saveProductToSource(product: Product): Promise<void> {
 
   saveProducts(nextProducts);
 
-  const supabase = getSupabaseBrowserClient();
+  const supabase = await getOptionalSupabaseBrowserClient();
 
   if (!supabase) {
     return;
@@ -398,7 +403,7 @@ export async function deleteProductFromSource(productId: string): Promise<void> 
   const nextProducts = loadProducts().filter((item) => item.id !== productId);
   saveProducts(nextProducts);
 
-  const supabase = getSupabaseBrowserClient();
+  const supabase = await getOptionalSupabaseBrowserClient();
 
   if (!supabase) {
     return;
@@ -420,7 +425,7 @@ export async function deleteProductFromSource(productId: string): Promise<void> 
 export async function replaceProductsInSource(products: Product[]): Promise<void> {
   saveProducts(products);
 
-  const supabase = getSupabaseBrowserClient();
+  const supabase = await getOptionalSupabaseBrowserClient();
 
   if (!supabase) {
     return;

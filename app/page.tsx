@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Boxes, History, ScanBarcode, Settings } from "lucide-react";
+import { Boxes, CalendarDays, History, ScanBarcode, Settings } from "lucide-react";
 
 const actions = [
   {
@@ -12,6 +12,12 @@ const actions = [
     href: "/products",
     label: "Procurar Produto",
     icon: Boxes,
+    primary: false,
+  },
+  {
+    href: "/validades",
+    label: "Validades",
+    icon: CalendarDays,
     primary: false,
   },
   {

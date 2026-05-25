@@ -61,6 +61,26 @@ export function ptDateToIsoDate(value: string): string | null {
   return `${year}-${month}-${day}`;
 }
 
+export function nativeDateToPtDate(value: string): string {
+  const [year, month, day] = value.split("-");
+
+  if (!year || !month || !day) {
+    return "";
+  }
+
+  return `${day}-${month}-${year}`;
+}
+
+export function ptDateToNativeDate(value: string): string {
+  const [day, month, year] = value.split("-");
+
+  if (!day || !month || !year || year.length !== 4) {
+    return "";
+  }
+
+  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+}
+
 export function differenceInCalendarDays(laterDateValue: string, earlierDateValue: string): number | null {
   const laterDate = parsePtDate(laterDateValue);
   const earlierDate = parsePtDate(earlierDateValue);

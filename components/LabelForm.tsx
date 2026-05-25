@@ -4,7 +4,7 @@ import { CalendarDays, ClipboardCheck, RotateCcw } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from "react";
 import { calculateAuchanValidity } from "../lib/auchan-validity";
-import { dateToYYMMDD, formatDateInput, todayPtDate } from "../lib/date";
+import { dateToYYMMDD, formatDateInput, nativeDateToPtDate, ptDateToNativeDate, todayPtDate } from "../lib/date";
 import { generateSSCCFromCounter } from "../lib/sscc";
 import { getSelectedProduct, loadLabelDefaults, saveDraftLabel, saveLabelDefaults } from "../lib/label-storage";
 import { findProductByCode, findProductById, loadProductsForApp } from "../lib/products";
@@ -30,26 +30,6 @@ function createLabelId(): string {
   }
 
   return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
-}
-
-function nativeDateToPtDate(value: string): string {
-  const [year, month, day] = value.split("-");
-
-  if (!year || !month || !day) {
-    return "";
-  }
-
-  return `${day}-${month}-${year}`;
-}
-
-function ptDateToNativeDate(value: string): string {
-  const [day, month, year] = value.split("-");
-
-  if (!day || !month || !year || year.length !== 4) {
-    return "";
-  }
-
-  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
 }
 
 export function LabelForm() {

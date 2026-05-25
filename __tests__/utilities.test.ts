@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { dateToYYMMDD } from "../lib/date";
+import { dateToYYMMDD, nativeDateToPtDate, ptDateToNativeDate } from "../lib/date";
 import { getProductGtin } from "../lib/barcode";
 import { calculateAuchanValidity } from "../lib/auchan-validity";
 import { findProductByCode, getSeedProducts, groupProductsByCategory, searchProducts, sortProducts, syncProductsWithSeed } from "../lib/products";
@@ -30,6 +30,13 @@ describe("date utilities", () => {
   it("converts Portuguese visible dates to YYMMDD", () => {
     expect(dateToYYMMDD("30-06-2027")).toBe("270630");
     expect(dateToYYMMDD("31-02-2027")).toBeNull();
+  });
+
+  it("converts between native date input and Portuguese date formats", () => {
+    expect(nativeDateToPtDate("2027-06-30")).toBe("30-06-2027");
+    expect(ptDateToNativeDate("30-06-2027")).toBe("2027-06-30");
+    expect(nativeDateToPtDate("")).toBe("");
+    expect(ptDateToNativeDate("30-06-27")).toBe("");
   });
 });
 

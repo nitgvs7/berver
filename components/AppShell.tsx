@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Boxes, ClipboardList, History, Home, ScanBarcode, Settings } from "lucide-react";
+import { Boxes, CalendarDays, ClipboardList, History, Home, ScanBarcode, Settings } from "lucide-react";
 import type { ReactNode } from "react";
 
 const navItems = [
   { href: "/", label: "Início", icon: Home },
   { href: "/scan", label: "Scan", icon: ScanBarcode },
   { href: "/products", label: "Produtos", icon: Boxes },
+  { href: "/validades", label: "Validades", icon: CalendarDays },
   { href: "/history", label: "Histórico", icon: History },
   { href: "/admin/products", label: "Admin", icon: Settings },
 ];
@@ -53,7 +54,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <main className="app-main mx-auto w-full max-w-5xl px-4 py-5 md:py-8">{children}</main>
       <nav
         aria-label="Navegação móvel"
-        className="no-print fixed inset-x-0 bottom-0 z-20 grid grid-cols-5 border-t border-[#b9d8f6] bg-white md:hidden"
+        className="no-print fixed inset-x-0 bottom-0 z-20 grid grid-cols-6 border-t border-[#b9d8f6] bg-white md:hidden"
       >
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -63,12 +64,12 @@ export function AppShell({ children }: { children: ReactNode }) {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex min-h-16 flex-col items-center justify-center gap-1 text-xs font-bold ${
+              className={`flex min-h-16 min-w-0 flex-col items-center justify-center gap-1 px-0.5 text-[11px] font-bold leading-tight ${
                 active ? "bg-[#1f3679] text-white" : "text-[#1f3679]"
               }`}
             >
               <Icon aria-hidden="true" className="h-5 w-5" />
-              {item.label}
+              <span className="max-w-full truncate">{item.label}</span>
             </Link>
           );
         })}
