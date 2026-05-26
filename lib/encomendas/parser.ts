@@ -43,6 +43,60 @@ type PdfJsGlobal = typeof globalThis & {
   };
 };
 
+class MinimalDOMMatrix {
+  a = 1;
+  b = 0;
+  c = 0;
+  d = 1;
+  e = 0;
+  f = 0;
+
+  constructor(init?: number[]) {
+    if (!Array.isArray(init)) {
+      return;
+    }
+
+    if (init.length >= 16) {
+      this.a = Number(init[0]) || 1;
+      this.b = Number(init[1]) || 0;
+      this.c = Number(init[4]) || 0;
+      this.d = Number(init[5]) || 1;
+      this.e = Number(init[12]) || 0;
+      this.f = Number(init[13]) || 0;
+      return;
+    }
+
+    if (init.length >= 6) {
+      this.a = Number(init[0]) || 1;
+      this.b = Number(init[1]) || 0;
+      this.c = Number(init[2]) || 0;
+      this.d = Number(init[3]) || 1;
+      this.e = Number(init[4]) || 0;
+      this.f = Number(init[5]) || 0;
+    }
+  }
+
+  multiplySelf() {
+    return this;
+  }
+
+  preMultiplySelf() {
+    return this;
+  }
+
+  translate() {
+    return this;
+  }
+
+  scale() {
+    return this;
+  }
+
+  invertSelf() {
+    return this;
+  }
+}
+
 const DATE_PATTERN = /^\d{2}\/\d{2}\/\d{4}$/;
 const NUMBER_PATTERN = /^\d+$/;
 
@@ -55,6 +109,8 @@ function isTextItem(item: PdfTextItem): item is PdfTextItem & { str: string; tra
 }
 
 async function extractPdfTokens(pdfBytes: Uint8Array): Promise<PdfTextToken[][]> {
+  const globals = globalThis as unknown as { DOMMatrix?: unknown };
+  globals.DOMMatrix ??= MinimalDOMMatrix;
   const [pdfjs, worker] = (await Promise.all([
     import("pdfjs-dist/legacy/build/pdf.mjs"),
     import("pdfjs-dist/legacy/build/pdf.worker.mjs"),
