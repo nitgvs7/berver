@@ -49,6 +49,29 @@ create table if not exists public.labels (
 create index if not exists labels_created_at_idx on public.labels (created_at desc);
 create index if not exists labels_product_id_idx on public.labels (product_id);
 
+create table if not exists public.auchan_orders (
+  id text primary key,
+  order_number text not null,
+  delivery_date date,
+  item_count integer not null,
+  generated_pdf_path text not null,
+  generated_filename text not null,
+  parsed_order jsonb not null,
+  generated_at timestamptz not null default now(),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create index if not exists auchan_orders_created_at_idx on public.auchan_orders (created_at desc);
+create index if not exists auchan_orders_order_number_idx on public.auchan_orders (order_number);
+
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('auchan-order-pdfs', 'auchan-order-pdfs', false, 10485760, array['application/pdf'])
+on conflict (id) do update
+set public = false,
+    file_size_limit = excluded.file_size_limit,
+    allowed_mime_types = excluded.allowed_mime_types;
+
 create or replace function public.prune_label_history()
 returns trigger
 language plpgsql
@@ -112,10 +135,12 @@ grant usage on schema public to anon, authenticated;
 grant select, insert, update, delete on public.products to anon, authenticated;
 grant select, insert, update, delete on public.app_defaults to anon, authenticated;
 grant select, insert, update, delete on public.labels to anon, authenticated;
+grant select, insert, update, delete on public.auchan_orders to service_role;
 grant execute on function public.reserve_next_sscc_serial() to anon, authenticated;
 grant execute on function public.prune_label_history() to anon, authenticated;
 
 alter table public.products disable row level security;
 alter table public.app_defaults disable row level security;
 alter table public.labels disable row level security;
+alter table public.auchan_orders disable row level security;
 alter table public.sscc_counters disable row level security;

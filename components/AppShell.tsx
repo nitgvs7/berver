@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Boxes, CalendarDays, ClipboardList, History, Home, ScanBarcode, Settings } from "lucide-react";
+import { Boxes, CalendarDays, ClipboardList, FileCheck2, History, Home, ScanBarcode, Settings } from "lucide-react";
 import type { ReactNode } from "react";
 
 const navItems = [
@@ -10,6 +10,7 @@ const navItems = [
   { href: "/scan", label: "Scan", icon: ScanBarcode },
   { href: "/products", label: "Produtos", icon: Boxes },
   { href: "/validades", label: "Validades", icon: CalendarDays },
+  { href: "/encomendas", label: "Encomendas", icon: FileCheck2 },
   { href: "/history", label: "Histórico", icon: History },
   { href: "/admin/products", label: "Admin", icon: Settings },
 ];
@@ -54,7 +55,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <main className="app-main mx-auto w-full max-w-5xl px-4 py-5 md:py-8">{children}</main>
       <nav
         aria-label="Navegação móvel"
-        className="no-print fixed inset-x-0 bottom-0 z-20 grid grid-cols-6 border-t border-[#b9d8f6] bg-white md:hidden"
+        className="no-print fixed inset-x-0 bottom-0 z-20 grid grid-cols-7 border-t border-[#b9d8f6] bg-white md:hidden"
       >
         {navItems.map((item) => {
           const Icon = item.icon;
