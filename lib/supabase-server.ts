@@ -1,7 +1,10 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { isLocalFallbackAllowed } from "./supabase";
 
 let serverClient: SupabaseClient | null = null;
+
+function isServerLocalFallbackAllowed(): boolean {
+  return process.env.NODE_ENV !== "production";
+}
 
 function createMissingSupabaseServerConfigError(): Error {
   return new Error("Supabase server access is required. Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.");
@@ -22,7 +25,7 @@ export function getSupabaseServerClient(): SupabaseClient | null {
   const config = getSupabaseServerConfig();
 
   if (!config) {
-    if (isLocalFallbackAllowed()) {
+    if (isServerLocalFallbackAllowed()) {
       return null;
     }
 
