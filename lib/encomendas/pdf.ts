@@ -25,6 +25,10 @@ const MARGIN_X = 18;
 const TOP_MARGIN = 18;
 const BOTTOM_MARGIN = 24;
 const TABLE_HEADER_HEIGHT = 24;
+const ROW_TOP_PADDING = 4.5;
+const ROW_BOTTOM_WRITING_SPACE = 9;
+const ROW_LINE_HEIGHT = 8.8;
+const MANUAL_EMPTY_ROWS = 10;
 const BRAND_NAVY = rgb(0.12, 0.21, 0.47);
 const BRAND_COBALT = rgb(0.18, 0.31, 0.7);
 const BRAND_LINE = rgb(0.73, 0.85, 0.96);
@@ -35,15 +39,23 @@ const WHITE = rgb(1, 1, 1);
 const COLUMNS: Column[] = [
   { key: "contador", label: "Contador", width: 36, align: "center", manual: true },
   { key: "codigo", label: "Código", width: 48, align: "center" },
-  { key: "designacao", label: "DESIGNAÇÃO/ARTIGO", width: 172 },
+  { key: "designacao", label: "DESIGNAÇÃO/ARTIGO", width: 180 },
   { key: "uc", label: "U.C.", width: 34, align: "center" },
   { key: "qtd", label: "QTD", width: 28, align: "center" },
-  { key: "pEtiqueta", label: "P/Etq", width: 38, align: "center", manual: true },
-  { key: "qtdEnviada", label: "QTD enviada", width: 46, align: "center", manual: true },
+  { key: "pEtiqueta", label: "P/Etq", width: 32, align: "center", manual: true },
+  { key: "qtdEnviada", label: "QTD enviada", width: 38, align: "center", manual: true },
   { key: "lote", label: "Lote", width: 44, manual: true },
   { key: "dataValidade", label: "Data de Validade", width: 62, manual: true },
-  { key: "obs", label: "Obs", width: 51, manual: true },
+  { key: "obs", label: "Obs", width: 57, manual: true },
 ];
+
+const EMPTY_MANUAL_ITEM: ParsedEncomendaItem = {
+  contador: "",
+  codigo: "",
+  designacao: "",
+  qtd: "",
+  uc: "",
+};
 
 function pdfText(value: string | number | undefined): string {
   return String(value ?? "")
@@ -188,19 +200,19 @@ function drawRow(page: PDFPage, item: ParsedEncomendaItem, fonts: FontSet, topY:
     const size = column.key === "designacao" ? 6.5 : 7;
 
     drawRectangle(page, x, topY, column.width, height, fill);
-    drawWrappedText(page, value, x + 2.4, topY - 6.4, column.width - 4.8, size, font, TEXT_INK, column.align);
+    drawWrappedText(page, value, x + 2.4, topY - ROW_TOP_PADDING, column.width - 4.8, size, font, TEXT_INK, column.align);
     x += column.width;
   }
 }
 
 function rowHeight(item: ParsedEncomendaItem, fonts: FontSet): number {
-  const designacaoLines = wrapText(item.designacao, fonts.bold, 6.5, 167).length;
+  const designacaoLines = wrapText(item.designacao, fonts.bold, 6.5, 175).length;
   const loteLines = wrapText(item.lote ?? "", fonts.regular, 7, 39).length;
   const validityLines = wrapText(item.dataValidade ?? "", fonts.regular, 7, 57).length;
-  const obsLines = wrapText(item.obs ?? "", fonts.regular, 7, 46).length;
+  const obsLines = wrapText(item.obs ?? "", fonts.regular, 7, 52).length;
   const lineCount = Math.max(designacaoLines, loteLines, validityLines, obsLines, 1);
 
-  return Math.max(22, lineCount * 8 + 9);
+  return Math.max(28, lineCount * ROW_LINE_HEIGHT + ROW_TOP_PADDING + ROW_BOTTOM_WRITING_SPACE);
 }
 
 export async function generateCleanEncomendaPdf(order: ParsedEncomenda): Promise<Uint8Array> {
@@ -224,7 +236,9 @@ export async function generateCleanEncomendaPdf(order: ParsedEncomenda): Promise
 
   addPage();
 
-  for (const item of order.items) {
+  const printableItems = [...order.items, ...Array.from({ length: MANUAL_EMPTY_ROWS }, () => EMPTY_MANUAL_ITEM)];
+
+  for (const item of printableItems) {
     const height = rowHeight(item, fonts);
 
     if (!page || y - height < BOTTOM_MARGIN) {
