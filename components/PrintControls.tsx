@@ -2,28 +2,44 @@
 
 import { ArrowLeft, FilePlus2, Printer } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 type PrintControlsProps = {
-  onPrint?: () => void;
+  onPrint?: () => boolean | void | Promise<boolean | void>;
 };
 
 export function PrintControls({ onPrint }: PrintControlsProps) {
   const router = useRouter();
+  const [printing, setPrinting] = useState(false);
 
-  function handlePrint() {
-    onPrint?.();
-    window.print();
+  async function handlePrint() {
+    if (printing) {
+      return;
+    }
+
+    setPrinting(true);
+
+    try {
+      const shouldPrint = await onPrint?.();
+
+      if (shouldPrint !== false) {
+        window.print();
+      }
+    } finally {
+      setPrinting(false);
+    }
   }
 
   return (
     <div className="no-print flex flex-col gap-3 rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm sm:flex-row">
       <button
         type="button"
+        disabled={printing}
         onClick={handlePrint}
-        className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md bg-[#1f3679] px-4 py-3 text-base font-black text-white"
+        className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md bg-[#1f3679] px-4 py-3 text-base font-black text-white disabled:opacity-60"
       >
         <Printer aria-hidden="true" className="h-5 w-5" />
-        Imprimir
+        {printing ? "A preparar..." : "Imprimir"}
       </button>
       <button
         type="button"

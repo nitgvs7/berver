@@ -27,11 +27,20 @@ export function BarcodeScanner() {
     let cancelled = false;
 
     async function loadInitialProducts() {
-      const nextProducts = await loadProductsForApp();
+      try {
+        const nextProducts = await loadProductsForApp();
 
-      if (!cancelled) {
-        setProducts(nextProducts);
-        setLoadingProducts(false);
+        if (!cancelled) {
+          setProducts(nextProducts);
+        }
+      } catch {
+        if (!cancelled) {
+          setError("Não foi possível carregar a base de produtos partilhada.");
+        }
+      } finally {
+        if (!cancelled) {
+          setLoadingProducts(false);
+        }
       }
     }
 

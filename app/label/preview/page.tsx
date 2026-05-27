@@ -9,19 +9,34 @@ import type { LabelData } from "../../../types/label";
 
 export default function PreviewPage() {
   const [label, setLabel] = useState<LabelData | null>(null);
+  const [printError, setPrintError] = useState<string | null>(null);
+  const [printing, setPrinting] = useState(false);
   const recordedRef = useRef(false);
 
   useEffect(() => {
     setLabel(getDraftLabel());
   }, []);
 
-  function handlePrint() {
-    if (label && !recordedRef.current) {
-      void recordPrintHistoryToSource(label);
-      recordedRef.current = true;
+  async function handlePrint() {
+    if (!label || printing) {
+      return;
     }
 
-    window.print();
+    setPrinting(true);
+
+    try {
+      if (!recordedRef.current) {
+        await recordPrintHistoryToSource(label);
+        recordedRef.current = true;
+      }
+
+      setPrintError(null);
+      window.print();
+    } catch {
+      setPrintError("Não foi possível gravar a etiqueta no histórico partilhado. A impressão foi cancelada.");
+    } finally {
+      setPrinting(false);
+    }
   }
 
   if (!label) {
@@ -37,11 +52,12 @@ export default function PreviewPage() {
       <div className="no-print flex flex-col gap-3 rounded-lg border border-[#b9d8f6] bg-white p-4 shadow-sm sm:flex-row">
         <button
           type="button"
+          disabled={printing}
           onClick={handlePrint}
-          className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md bg-[#1f3679] px-4 py-3 text-base font-black text-white"
+          className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md bg-[#1f3679] px-4 py-3 text-base font-black text-white disabled:opacity-60"
         >
           <Printer aria-hidden="true" className="h-5 w-5" />
-          Imprimir
+          {printing ? "A preparar..." : "Imprimir"}
         </button>
         <Link
           href="/label/new"
@@ -58,6 +74,8 @@ export default function PreviewPage() {
           Nova Etiqueta
         </Link>
       </div>
+
+      {printError ? <div className="no-print rounded-lg border border-red-300 bg-red-50 p-4 font-bold text-red-900">{printError}</div> : null}
 
       <div className="no-print rounded-lg border border-[#b9d8f6] bg-white p-4 text-sm font-bold text-[#1f3679] shadow-sm">
         <p>Data de entrega: <span className="font-mono">{label.data_entrega}</span></p>

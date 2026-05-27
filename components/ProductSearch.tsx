@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { ArrowUpDown, ListFilter, Search } from "lucide-react";
-import { filterProducts, groupProductsByCategory, loadProductsForApp, resetProducts, searchProducts, sortProducts, type ProductSort } from "../lib/products";
+import { filterProducts, groupProductsByCategory, loadProductsForApp, searchProducts, sortProducts, type ProductSort } from "../lib/products";
 import type { Product } from "../types/product";
 import { ProductCard } from "./ProductCard";
 
@@ -80,6 +80,7 @@ export function ProductSearch({
 }: ProductSearchProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loadingProducts, setLoadingProducts] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [query, setQuery] = useState(initialQuery);
   const [sort, setSort] = useState<ProductSort>(defaultSort);
   const [category, setCategory] = useState(allCategories);
@@ -90,11 +91,22 @@ export function ProductSearch({
     let cancelled = false;
 
     async function loadInitialProducts() {
-      const nextProducts = await loadProductsForApp();
+      try {
+        const nextProducts = await loadProductsForApp();
 
-      if (!cancelled) {
-        setProducts(nextProducts);
-        setLoadingProducts(false);
+        if (!cancelled) {
+          setProducts(nextProducts);
+          setLoadError(null);
+        }
+      } catch {
+        if (!cancelled) {
+          setProducts([]);
+          setLoadError("Não foi possível carregar a base de produtos partilhada.");
+        }
+      } finally {
+        if (!cancelled) {
+          setLoadingProducts(false);
+        }
       }
     }
 
@@ -120,11 +132,6 @@ export function ProductSearch({
   }, [category, enableSort, products, query, showAll, sort]);
   const groupedResults = useMemo(() => groupProductsByCategory(results), [results]);
   const categoryTabs = useMemo(() => [{ category: allCategories, products }, ...categoryGroups], [categoryGroups, products]);
-
-  function handleResetProducts() {
-    setProducts(resetProducts());
-    setCategory(allCategories);
-  }
 
   function updateTableSort(column: TableSortColumn) {
     const direction = sortDirection(sort, column);
@@ -191,16 +198,15 @@ export function ProductSearch({
 
       {loadingProducts ? <div className="rounded-lg border border-[#b9d8f6] bg-white p-4 font-bold text-[#1f3679]">A carregar produtos...</div> : null}
 
-      {!loadingProducts && products.length === 0 ? (
-        <div className="rounded-lg border border-amber-300 bg-amber-50 p-4 font-bold text-amber-900">
-          <p>Base de produtos vazia.</p>
-          <button type="button" onClick={handleResetProducts} className="mt-3 min-h-12 w-full rounded-md bg-[#1f3679] px-4 py-3 font-black text-white">
-            Repor produtos
-          </button>
-        </div>
+      {!loadingProducts && loadError ? (
+        <div className="rounded-lg border border-red-300 bg-red-50 p-4 font-bold text-red-900">{loadError}</div>
       ) : null}
 
-      {query && results.length === 0 ? (
+      {!loadingProducts && !loadError && products.length === 0 ? (
+        <div className="rounded-lg border border-amber-300 bg-amber-50 p-4 font-bold text-amber-900">Base de produtos vazia.</div>
+      ) : null}
+
+      {!loadError && query && results.length === 0 ? (
         <div className="rounded-lg border border-red-300 bg-red-50 p-4 font-bold text-red-900">Produto não encontrado.</div>
       ) : null}
 

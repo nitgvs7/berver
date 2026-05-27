@@ -1,6 +1,6 @@
 # warehouse-label-printer
 
-Aplicação web mobile-first para imprimir etiquetas de armazém em formato **100 mm x 150 mm**. O MVP usa Next.js App Router, TypeScript, Tailwind CSS, base local JSON/localStorage, scanner por câmara no browser e códigos de barras gerados localmente com `@bwip-js/browser`.
+Aplicação web mobile-first para imprimir etiquetas de armazém em formato **100 mm x 150 mm**. Usa Next.js App Router, TypeScript, Tailwind CSS, Supabase como base partilhada obrigatória em produção, scanner por câmara no browser e códigos de barras gerados localmente com `@bwip-js/browser`.
 
 ## Requisitos
 
@@ -29,9 +29,11 @@ Para testar a câmara num telemóvel, o browser normalmente exige HTTPS ou uma o
 
 ## Atualizar produtos
 
-Produtos iniciais estão em `data/products.json`.
+Produtos iniciais/seed estão em `data/products.json`.
 
-Com Supabase configurado, a aplicação carrega primeiro a tabela `products`. Sem Supabase, continua a usar `data/products.json`/`localStorage`.
+Em produção, a aplicação usa apenas Supabase como fonte de verdade. Se as variáveis públicas de Supabase não estiverem configuradas em produção, a app falha em vez de usar dados locais.
+
+Em desenvolvimento/testes, quando Supabase não está configurado, a aplicação pode usar `data/products.json`/`localStorage` como fallback local para facilitar trabalho offline.
 
 Para preparar a base Supabase:
 
@@ -58,14 +60,14 @@ O importador usa por defeito:
 
 A coluna I desse ficheiro alimenta `validade_minima_dias`.
 
-A página **Admin Produtos** permite:
+A página **Admin Produtos** permite gerir a tabela Supabase `products`:
 
 - adicionar, editar e apagar produtos;
 - importar JSON;
 - exportar JSON;
 - repor a base inicial.
 
-As alterações feitas no admin ficam em `localStorage` quando Supabase não está a ser usado.
+Sem Supabase, estas alterações só são guardadas em `localStorage` durante desenvolvimento/testes.
 
 ## Impressão correta
 
@@ -101,9 +103,7 @@ Configuração default:
 - `extensionDigit = "3"`
 - `serialStart = 500000`
 
-No MVP, o serial SSCC é guardado em `localStorage`.
-
-Aviso de produção: **localStorage só é seguro para um dispositivo**. Em produção com vários dispositivos, gere SSCC num backend/base de dados central para evitar duplicados.
+Em produção, a reserva de serial SSCC deve ser feita pela função Supabase `reserve_next_sscc_serial()`/tabela `sscc_counters`, para evitar duplicados entre dispositivos. O fallback local só existe em desenvolvimento/testes.
 
 ## Histórico
 
@@ -121,7 +121,7 @@ A página `/history` guarda:
 - SSCC;
 - data de criação.
 
-Com Supabase configurado, as etiquetas impressas também são gravadas na tabela `labels`.
+Em produção, as etiquetas impressas são gravadas na tabela Supabase `labels`. O histórico local só é usado como fallback em desenvolvimento/testes.
 
 O botão **Reimprimir** volta a carregar a etiqueta para `/print`.
 

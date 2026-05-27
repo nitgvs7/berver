@@ -3,7 +3,7 @@ import type { LabelData } from "../types/label";
 import type { Product } from "../types/product";
 import { formatPtDate, parsePtDate, ptDateToIsoDate } from "./date";
 import { DEFAULT_SERIAL_START } from "./sscc";
-import { getSupabaseBrowserClient } from "./supabase";
+import { createMissingSupabaseConfigError, getSupabaseBrowserClient, isLocalFallbackAllowed } from "./supabase";
 
 const DRAFT_LABEL_KEY = "warehouse-label-printer:draft-label";
 const SELECTED_PRODUCT_KEY = "warehouse-label-printer:selected-product";
@@ -68,6 +68,16 @@ function writeJson(key: string, value: unknown): void {
   window.localStorage.setItem(key, JSON.stringify(value));
 }
 
+function getSourceSupabaseClient() {
+  const supabase = getSupabaseBrowserClient();
+
+  if (!supabase && !isLocalFallbackAllowed()) {
+    throw createMissingSupabaseConfigError();
+  }
+
+  return supabase;
+}
+
 export function setSelectedProduct(product: Product): void {
   writeJson(SELECTED_PRODUCT_KEY, product);
 }
@@ -97,6 +107,10 @@ export function clearDraftLabel(): void {
 }
 
 export function getNextSSCCSerial(): number {
+  if (!isLocalFallbackAllowed()) {
+    throw new Error("Local SSCC serial fallback is disabled in production. Configure the Supabase SSCC counter.");
+  }
+
   if (!canUseStorage()) {
     return DEFAULT_SERIAL_START;
   }
@@ -111,7 +125,7 @@ export function getNextSSCCSerial(): number {
 }
 
 export async function reserveNextSSCCSerial(): Promise<number> {
-  const supabase = getSupabaseBrowserClient();
+  const supabase = getSourceSupabaseClient();
 
   if (!supabase) {
     return getNextSSCCSerial();
@@ -121,6 +135,10 @@ export async function reserveNextSSCCSerial(): Promise<number> {
   const serial = Number(data);
 
   if (error || !Number.isInteger(serial) || serial < DEFAULT_SERIAL_START) {
+    if (!isLocalFallbackAllowed()) {
+      throw error ?? new Error("Could not reserve Supabase SSCC serial.");
+    }
+
     console.warn("Could not reserve Supabase SSCC serial, using local counter.", error);
     return getNextSSCCSerial();
   }
@@ -129,10 +147,18 @@ export async function reserveNextSSCCSerial(): Promise<number> {
 }
 
 export function getPrintHistory(): LabelData[] {
+  if (!isLocalFallbackAllowed()) {
+    throw new Error("Local print history fallback is disabled in production. Load label history from Supabase.");
+  }
+
   return readJson<LabelData[]>(PRINT_HISTORY_KEY, []).filter(isStoredLabel);
 }
 
 export function recordPrintHistory(label: LabelData): void {
+  if (!isLocalFallbackAllowed()) {
+    throw new Error("Local print history fallback is disabled in production. Save label history to Supabase.");
+  }
+
   const history = getPrintHistory();
   const deduped = history.filter((item) => item.id !== label.id);
   writeJson(PRINT_HISTORY_KEY, [label, ...deduped].slice(0, PRINT_HISTORY_LIMIT));
@@ -234,7 +260,7 @@ async function loadLabelsTableHistory(supabase: SupabaseClient): Promise<LabelDa
     .limit(PRINT_HISTORY_LIMIT);
 
   if (error || !data) {
-    return [];
+    throw error ?? new Error("Could not load Supabase label history.");
   }
 
   return (data as SupabaseLabelRow[]).map(labelFromSupabaseRow);
@@ -248,46 +274,68 @@ async function uploadLabelsTableHistory(supabase: SupabaseClient, labels: LabelD
   const { error } = await supabase.from("labels").upsert(labels.map(labelToSupabaseRow), { onConflict: "id" });
 
   if (error) {
-    console.warn("Could not sync structured Supabase label history.", error);
+    throw error;
   }
 }
 
 export async function loadPrintHistoryFromSource(): Promise<LabelData[]> {
-  const supabase = getSupabaseBrowserClient();
+  const supabase = getSourceSupabaseClient();
 
   if (!supabase) {
     return getPrintHistory();
   }
 
-  const labelsTableHistory = await loadLabelsTableHistory(supabase);
-  const remoteHistory = mergePrintHistories(labelsTableHistory);
+  try {
+    const labelsTableHistory = await loadLabelsTableHistory(supabase);
+    const remoteHistory = mergePrintHistories(labelsTableHistory);
 
-  writeJson(PRINT_HISTORY_KEY, remoteHistory);
+    if (isLocalFallbackAllowed()) {
+      writeJson(PRINT_HISTORY_KEY, remoteHistory);
+    }
 
-  return remoteHistory;
+    return remoteHistory;
+  } catch (error) {
+    if (!isLocalFallbackAllowed()) {
+      throw error;
+    }
+
+    console.warn("Could not load Supabase label history, using local history.", error);
+    return getPrintHistory();
+  }
 }
 
 export function getLocalLabelDefaults(): LabelDefaults {
+  if (!isLocalFallbackAllowed()) {
+    throw new Error("Local label defaults fallback is disabled in production. Load defaults from Supabase.");
+  }
+
   return readJson<LabelDefaults>(LABEL_DEFAULTS_KEY, {});
 }
 
 export function saveLocalLabelDefaults(defaults: LabelDefaults): void {
+  if (!isLocalFallbackAllowed()) {
+    throw new Error("Local label defaults fallback is disabled in production. Save defaults to Supabase.");
+  }
+
   writeJson(LABEL_DEFAULTS_KEY, { ...getLocalLabelDefaults(), ...defaults });
 }
 
 export async function loadLabelDefaults(): Promise<LabelDefaults> {
-  const localDefaults = getLocalLabelDefaults();
-  const supabase = getSupabaseBrowserClient();
+  const supabase = getSourceSupabaseClient();
 
   if (!supabase) {
-    return localDefaults;
+    return getLocalLabelDefaults();
   }
 
   const { data, error } = await supabase.from("app_defaults").select("key, value").in("key", ["data_entrega", "ordem_compra"]);
 
   if (error || !data) {
+    if (!isLocalFallbackAllowed()) {
+      throw error ?? new Error("Could not load Supabase label defaults.");
+    }
+
     console.warn("Could not load Supabase defaults, using local defaults.", error);
-    return localDefaults;
+    return getLocalLabelDefaults();
   }
 
   const remoteDefaults = data.reduce<LabelDefaults>((defaults, item) => {
@@ -300,15 +348,14 @@ export async function loadLabelDefaults(): Promise<LabelDefaults> {
     return defaults;
   }, {});
 
-  return { ...localDefaults, ...remoteDefaults };
+  return isLocalFallbackAllowed() ? { ...getLocalLabelDefaults(), ...remoteDefaults } : remoteDefaults;
 }
 
 export async function saveLabelDefaults(defaults: LabelDefaults): Promise<void> {
-  saveLocalLabelDefaults(defaults);
-
-  const supabase = getSupabaseBrowserClient();
+  const supabase = getSourceSupabaseClient();
 
   if (!supabase) {
+    saveLocalLabelDefaults(defaults);
     return;
   }
 
@@ -327,18 +374,31 @@ export async function saveLabelDefaults(defaults: LabelDefaults): Promise<void> 
   const { error } = await supabase.from("app_defaults").upsert(rows, { onConflict: "key" });
 
   if (error) {
-    console.warn("Could not save Supabase defaults.", error);
+    if (!isLocalFallbackAllowed()) {
+      throw error;
+    }
+
+    console.warn("Could not save Supabase defaults, using local defaults.", error);
+    saveLocalLabelDefaults(defaults);
   }
 }
 
 export async function recordPrintHistoryToSource(label: LabelData): Promise<void> {
-  recordPrintHistory(label);
-
-  const supabase = getSupabaseBrowserClient();
+  const supabase = getSourceSupabaseClient();
 
   if (!supabase) {
+    recordPrintHistory(label);
     return;
   }
 
-  await uploadLabelsTableHistory(supabase, [label]);
+  try {
+    await uploadLabelsTableHistory(supabase, [label]);
+  } catch (error) {
+    if (!isLocalFallbackAllowed()) {
+      throw error;
+    }
+
+    console.warn("Could not save Supabase label history, using local history.", error);
+    recordPrintHistory(label);
+  }
 }

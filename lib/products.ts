@@ -1,5 +1,6 @@
 import seedProducts from "../data/products.json";
 import type { Product } from "../types/product";
+import { createMissingSupabaseConfigError, getSupabaseBrowserClient, isLocalFallbackAllowed } from "./supabase";
 
 export const PRODUCTS_STORAGE_KEY = "warehouse-label-printer:products";
 export const UNCATEGORIZED_PRODUCT_CATEGORY = "SEM CATEGORIA";
@@ -59,21 +60,14 @@ const productCollator = new Intl.Collator("pt-PT", {
 
 const SUPABASE_PRODUCTS_TIMEOUT_MS = 2500;
 
-function hasSupabasePublicConfig(): boolean {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+function getProductSupabaseClient() {
+  const supabase = getSupabaseBrowserClient();
 
-  return Boolean(url && publishableKey);
-}
-
-async function getOptionalSupabaseBrowserClient() {
-  if (!hasSupabasePublicConfig()) {
-    return null;
+  if (!supabase && !isLocalFallbackAllowed()) {
+    throw createMissingSupabaseConfigError();
   }
 
-  const { getSupabaseBrowserClient } = await import("./supabase");
-
-  return getSupabaseBrowserClient();
+  return supabase;
 }
 
 async function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T | null> {
@@ -338,6 +332,10 @@ export function syncProductsWithSeed(products: Product[], seedProducts: Product[
 }
 
 export function loadProducts(): Product[] {
+  if (!isLocalFallbackAllowed()) {
+    throw new Error("Local product data is only available in development and test. Use Supabase as the production product source.");
+  }
+
   const seedProducts = getSeedProducts();
 
   if (typeof window === "undefined") {
@@ -372,7 +370,7 @@ export function loadProducts(): Product[] {
 }
 
 export async function loadSupabaseProducts(): Promise<Product[] | null> {
-  const supabase = await getOptionalSupabaseBrowserClient();
+  const supabase = getProductSupabaseClient();
 
   if (!supabase) {
     return null;
@@ -386,18 +384,32 @@ export async function loadSupabaseProducts(): Promise<Product[] | null> {
     .order("name", { ascending: true });
 
   if (error || !data) {
-    console.warn("Could not load Supabase products, using local product data.", error);
-    return null;
+    if (isLocalFallbackAllowed()) {
+      console.warn("Could not load Supabase products, using local product data.", error);
+      return null;
+    }
+
+    throw error ?? new Error("Could not load Supabase products.");
   }
 
   return (data as SupabaseProductRow[]).map(fromSupabaseProduct);
 }
 
 export async function loadProductsForApp(): Promise<Product[]> {
+  if (!isLocalFallbackAllowed()) {
+    const supabaseProducts = await loadSupabaseProducts();
+
+    if (supabaseProducts === null) {
+      throw createMissingSupabaseConfigError();
+    }
+
+    return supabaseProducts;
+  }
+
   try {
     const supabaseProducts = await withTimeout(loadSupabaseProducts(), SUPABASE_PRODUCTS_TIMEOUT_MS);
 
-    return supabaseProducts?.length ? supabaseProducts : loadProducts();
+    return supabaseProducts ?? loadProducts();
   } catch (error) {
     console.warn("Could not load remote products, using local product data.", error);
     return loadProducts();
@@ -405,6 +417,10 @@ export async function loadProductsForApp(): Promise<Product[]> {
 }
 
 export function saveProducts(products: Product[]): void {
+  if (!isLocalFallbackAllowed()) {
+    throw new Error("Local product storage is only available in development and test. Save production products in Supabase.");
+  }
+
   if (typeof window === "undefined") {
     return;
   }
@@ -413,16 +429,15 @@ export function saveProducts(products: Product[]): void {
 }
 
 export async function saveProductToSource(product: Product): Promise<void> {
-  const currentProducts = loadProducts();
-  const nextProducts = currentProducts.some((item) => item.id === product.id)
-    ? currentProducts.map((item) => (item.id === product.id ? product : item))
-    : [product, ...currentProducts];
-
-  saveProducts(nextProducts);
-
-  const supabase = await getOptionalSupabaseBrowserClient();
+  const supabase = getProductSupabaseClient();
 
   if (!supabase) {
+    const currentProducts = loadProducts();
+    const nextProducts = currentProducts.some((item) => item.id === product.id)
+      ? currentProducts.map((item) => (item.id === product.id ? product : item))
+      : [product, ...currentProducts];
+
+    saveProducts(nextProducts);
     return;
   }
 
@@ -434,12 +449,11 @@ export async function saveProductToSource(product: Product): Promise<void> {
 }
 
 export async function deleteProductFromSource(productId: string): Promise<void> {
-  const nextProducts = loadProducts().filter((item) => item.id !== productId);
-  saveProducts(nextProducts);
-
-  const supabase = await getOptionalSupabaseBrowserClient();
+  const supabase = getProductSupabaseClient();
 
   if (!supabase) {
+    const nextProducts = loadProducts().filter((item) => item.id !== productId);
+    saveProducts(nextProducts);
     return;
   }
 
@@ -457,11 +471,10 @@ export async function deleteProductFromSource(productId: string): Promise<void> 
 }
 
 export async function replaceProductsInSource(products: Product[]): Promise<void> {
-  saveProducts(products);
-
-  const supabase = await getOptionalSupabaseBrowserClient();
+  const supabase = getProductSupabaseClient();
 
   if (!supabase) {
+    saveProducts(products);
     return;
   }
 
@@ -493,7 +506,7 @@ export async function replaceProductsInSource(products: Product[]): Promise<void
 export function resetProducts(): Product[] {
   const products = getSeedProducts();
 
-  if (typeof window !== "undefined") {
+  if (isLocalFallbackAllowed() && typeof window !== "undefined") {
     window.localStorage.removeItem(PRODUCTS_STORAGE_KEY);
   }
 

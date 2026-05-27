@@ -122,6 +122,15 @@ describe("product utilities", () => {
 
     await expect(loadProductsForApp()).resolves.toHaveLength(getSeedProducts().length);
   });
+
+  it("requires Supabase instead of seed fallback in production", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_URL", "");
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY", "");
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY", "");
+
+    await expect(loadProductsForApp()).rejects.toThrow("Supabase is required in production");
+  });
 });
 
 describe("Auchan validity utilities", () => {

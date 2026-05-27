@@ -37,6 +37,7 @@ export function LabelForm() {
   const searchParams = useSearchParams();
   const [values, setValues] = useState<LabelFormValues>(emptyForm);
   const [errors, setErrors] = useState<LabelValidationErrors>({});
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [manualBarcodeDate, setManualBarcodeDate] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
@@ -44,24 +45,31 @@ export function LabelForm() {
     let cancelled = false;
 
     async function loadInitialData() {
-      const [products, defaults] = await Promise.all([loadProductsForApp(), loadLabelDefaults()]);
-      const productId = searchParams.get("productId");
-      const code = searchParams.get("code");
-      const selected =
-        (productId ? findProductById(productId, products) : undefined) ??
-        (code ? findProductByCode(code, products) : undefined) ??
-        getSelectedProduct();
+      try {
+        const [products, defaults] = await Promise.all([loadProductsForApp(), loadLabelDefaults()]);
+        const productId = searchParams.get("productId");
+        const code = searchParams.get("code");
+        const selected =
+          (productId ? findProductById(productId, products) : undefined) ??
+          (code ? findProductByCode(code, products) : undefined) ??
+          getSelectedProduct();
 
-      if (cancelled) {
-        return;
+        if (cancelled) {
+          return;
+        }
+
+        setLoadError(null);
+        setValues((current) => ({
+          ...current,
+          data_entrega: current.data_entrega || defaults.data_entrega || todayPtDate(),
+          ordem_compra: current.ordem_compra || defaults.ordem_compra || "",
+          product: selected ?? current.product,
+        }));
+      } catch {
+        if (!cancelled) {
+          setLoadError("Não foi possível carregar os dados partilhados do Supabase.");
+        }
       }
-
-      setValues((current) => ({
-        ...current,
-        data_entrega: current.data_entrega || defaults.data_entrega || todayPtDate(),
-        ordem_compra: current.ordem_compra || defaults.ordem_compra || "",
-        product: selected ?? current.product,
-      }));
     }
 
     loadInitialData();
@@ -156,13 +164,17 @@ export function LabelForm() {
       created_at: new Date().toISOString(),
     };
 
-    await saveLabelDefaults({
-      data_entrega: values.data_entrega.trim(),
-      ordem_compra: values.ordem_compra.trim(),
-    });
-    saveDraftLabel(label);
-    router.push("/label/preview");
-    setSubmitting(false);
+    try {
+      await saveLabelDefaults({
+        data_entrega: values.data_entrega.trim(),
+        ordem_compra: values.ordem_compra.trim(),
+      });
+      saveDraftLabel(label);
+      router.push("/label/preview");
+    } catch {
+      setLoadError("Não foi possível guardar os dados partilhados no Supabase.");
+      setSubmitting(false);
+    }
   }
 
   const validityClassName =
@@ -179,6 +191,8 @@ export function LabelForm() {
           <h1 className="text-2xl font-black text-[#1f3679]">Criar Etiqueta</h1>
           <p className="mt-1 text-sm font-semibold text-[#2f4fb3]">Preencha os dados da etiqueta de palete/produto.</p>
         </div>
+
+        {loadError ? <div className="rounded-lg border border-red-300 bg-red-50 p-4 font-bold text-red-900">{loadError}</div> : null}
 
         {values.product ? (
           <ProductCard product={values.product} />
